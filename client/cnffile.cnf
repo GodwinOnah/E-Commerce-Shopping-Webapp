@@ -1,0 +1,18 @@
+[req]
+default_bits=2048
+prompt=no
+default_md=sha256
+x509_extensions=v3_req
+distinguished_name=dn
+[dn]
+C=IN
+ST=United kingdom
+L=United kingdom
+O=Localhost Org
+OU=Localhost Org Unit
+emailaddress=onahgodwinobande.com@gmail.com
+CN=Localhost
+[v3_req]
+subjectAltName=@alt_names
+[alt_names]
+DNS.1=Localhost
