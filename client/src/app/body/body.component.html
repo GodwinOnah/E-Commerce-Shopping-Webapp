@@ -1,0 +1,12 @@
+<ul>
+    <li class="list-unstyle" *ngFor="let product from Products" >
+    <div class="card" style="width: 18rem;">
+    <img src={{product.ProdPicture}} class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{product.ProdName}}</h5>
+      <p class="card-text">{{product.ProdDetails}}</p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+</li>
+</ul>
