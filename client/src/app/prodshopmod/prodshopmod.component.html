@@ -1,0 +1,50 @@
+<div class="container body">
+
+  <div class="row ">
+
+    <section class="col-2">
+
+      <div class="left-section" >
+      <h1>Brands</h1>
+      <ul class="list-group">
+        <li class="list-group-item"
+       *ngFor="let item of brands"
+      [class.active]="item.productId===this.brandSelected" 
+      [value]="item.productId"
+      (click)="SelectedBrand(item.productId)"
+      >
+      {{item.name}}
+  </li>
+</ul>
+  </div>
+
+   <div class="left-section" >
+    <h1>Types</h1>
+    <ul class="list-group my-3">
+      <li class="list-group-item"
+       *ngFor="let item of productTypes"
+      [class.active]="item.productId===this.typeSelected" 
+      [value]="item.productId"
+      (click)="SelectedType(item.productId)"
+      > 
+      {{item.name}}
+    
+    </li>
+    </ul>
+ 
+  </div>
+    </section>
+
+    <section class="item-container  pb-1 col-10 py-5 text-center container item-container">
+    <div class="card-container mb-4" *ngFor="let item of products">
+      <app-product-item-child [product]="item"></app-product-item-child>
+  </div>
+    </section>
+   
+
+  </div>
+
+
+</div>
+
+
