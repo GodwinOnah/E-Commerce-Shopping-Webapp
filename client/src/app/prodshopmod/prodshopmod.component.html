@@ -1,11 +1,13 @@
 <div class="container body">
 
-  <div class="row ">
+  <div><Marquee class="marquee">Welcome to my Shop</Marquee></div>
 
-    <section class="col-2">
+  <div class="row content">
 
-      <div class="left-section" >
-      <h1>Brands</h1>
+    <section class="col-1">
+
+      <div class="left-section-1" >
+      <h6>Brands</h6>
       <ul class="list-group">
         <li class="list-group-item"
        *ngFor="let item of brands"
@@ -18,8 +20,8 @@
 </ul>
   </div>
 
-   <div class="left-section" >
-    <h1>Types</h1>
+   <div class="left-section-2" >
+    <h6>Types</h6>
     <ul class="list-group my-3">
       <li class="list-group-item"
        *ngFor="let item of productTypes"
@@ -35,10 +37,19 @@
   </div>
     </section>
 
-    <section class="item-container  pb-1 col-10 py-5 text-center container item-container">
+    <section class="item-container  pb-1 col-9 py-5 text-center container item-container">
     <div class="card-container mb-4" *ngFor="let item of products">
       <app-product-item-child [product]="item"></app-product-item-child>
   </div>
+    </section>
+
+    <section class="col-2 right-section-1">
+      <h6>Sort Products</h6>
+      <select class="form-select" (click)="SortedProducts($event.target.value)">
+        <option *ngFor="let item of sortingOptions"
+        [value]="item.value"
+        >{{item.name}}</option>
+      </select>
     </section>
    
 

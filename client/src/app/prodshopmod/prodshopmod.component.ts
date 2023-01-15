@@ -15,6 +15,12 @@ export class ProdshopmodComponent implements OnInit {
   productTypes:IBrands[];
   brandSelected=0;
   typeSelected=0;
+  sort="name";
+  sortingOptions=[
+    {name:'Alphabeltical', value:'name'},
+    {name:'High to Low', value:'priceDecrease'},
+    {name:'Low to High', value:'priceIncrease'}
+  ];
 
   constructor(private prodshopmodService: ProdshopmodService) {
   }
@@ -28,7 +34,7 @@ export class ProdshopmodComponent implements OnInit {
 
   GetProducts(){
 
-  this.prodshopmodService.getProducts(this.brandSelected,this.typeSelected).subscribe(response=>{
+  this.prodshopmodService.getProducts(this.brandSelected,this.typeSelected,this.sort).subscribe(response=>{
 
             this.products=response.data;
             console.log(this.products)
@@ -68,6 +74,12 @@ export class ProdshopmodComponent implements OnInit {
   SelectedType(typeId:number){
     this.typeSelected=typeId;
     this.GetProducts();
+
+}
+
+SortedProducts(sort:string){
+this.sort=sort;
+this.GetProducts();
 
 }
 
