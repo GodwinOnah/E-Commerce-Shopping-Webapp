@@ -1,5 +1,5 @@
 
-    <div class="card " style="width: 250px; height:350px; margin-top: 20px;">
+    <div class="card " style="width: 200px; height:250px; margin-top: 20px;">
     <img src={{product.prodPicture}} class="card-img-top img-fluids" height="50%" 
                  width="auto" alt={{product.prodName}}>
     <a routerLink="/prodshopmod/{{product.productId}}"
@@ -8,7 +8,8 @@
       <h5 class="pricing">£{{product.prodPrice}}</h5>
       <div class="btn-group mt-auto" >
         <button routerLink="/prodshopmod/{{product.productId}}" 
-         type="button" type="button" class="btn b-">Check</button>
+         type="button" type="button" class="btn " 
+         style="width:30px ;height: 25px; padding-bottom: 15px;">Check</button>
       </div>
     </div>
   </div>
