@@ -1,0 +1,47 @@
+<div *ngIf="productDetails" class="d-flex justify-content-center" 
+style="width: 80%; height:100%; margin-left:10%; margin-top:10%">
+
+<div class="d-flex flex-column align-items-center" style="width:150%;">
+
+        <div class="">
+            <div class="d-flex  w-auto">
+            <h1 ><strong>{{productDetails.prodName}}</strong> (<Strong style="color: purple;">£{{productDetails.prodPrice}}</Strong>)</h1>
+            </div>
+        </div>
+
+        <div class="row">
+
+                <div class="col-9 align-items-center">
+                    <img src={{productDetails.prodPicture}} class="card-img-top img-fluids" height="100%" 
+                    width="150%" alt={{productDetails.prodName}}>
+                </div>
+                
+                <div class="col-3 ">
+                    <h5 style="font-weight: bold; color: yellowgreen;">Product Details</h5>
+                    <p>{{productDetails.prodDescription}}</p>
+                   
+                </div>
+        </div>
+
+        <div class="d-flex flex-column align-items-center">
+            <div class="btn-quantity-name">
+               Quantity: <button>-</button><span class="btn-quantity-number"> 1</span> <button>+</button>
+                
+            </div>
+            <div class="btn-order">
+                Add to Cart: 
+                <button  class="btn btn-prodDetails fa fa-shoping-cart" style="color:red; font-size:120%; padding: 10px;">
+                    <i class="fonntAwsom1 fa-light fa-cart-plus fa-2x"></i>
+                </button>
+            </div>
+         </div>
+
+    </div>
+</div>
+
+  
+  
+    
+       
+
+ 
