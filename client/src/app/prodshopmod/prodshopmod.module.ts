@@ -5,6 +5,7 @@ import { ProdsharemodModule } from '../prodsharemod/prodsharemod.module';
 import { ProductItemChildComponent } from './product-item-child.component';
 import { RouterModule } from '@angular/router';
 import { ProductDetaialsComponent } from './product-detaials/product-detaials.component';
+import { ProdshopmodRoutingModule } from './prodshopmod-routing.module';
 
 
 
@@ -18,7 +19,7 @@ import { ProductDetaialsComponent } from './product-detaials/product-detaials.co
   imports: [
     CommonModule,
     ProdsharemodModule,
-    RouterModule
+    ProdshopmodRoutingModule
   ],
   exports :[ProdshopmodComponent,
     ProductDetaialsComponent
