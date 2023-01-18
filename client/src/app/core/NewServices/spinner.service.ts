@@ -13,9 +13,9 @@ export class SpinnerService {
   WhenBusy(){
     this.counter++;
     this.spinnerService.show(undefined,{
-      type:'pacman',
-      bdColor:'rgba(255, 255, 255, 0.5)',
-      color:'skytblue'
+      type:'timer',
+      bdColor:'rgba(255, 255, 255, 0.6)',
+      color:'skyblue'
 });   
   }
 
