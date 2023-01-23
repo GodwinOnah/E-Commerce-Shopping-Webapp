@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { BasketService } from '../basket/basket.service';
 import { IProduct } from '../prodsharemod/models/IProduct';
 
 @Component({
@@ -17,4 +18,5 @@ export class ProductItemChildComponent implements OnInit{
     
   }
 
+ 
 }
