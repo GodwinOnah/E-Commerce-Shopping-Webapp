@@ -1,0 +1,28 @@
+<!-- <carousel>
+    <slide>
+        <img src="assets/gif-images/bag1.webp" alt="First Slide" style="display:block; width:100%">
+    </slide>
+
+    <slide>
+        <img src="assets/gif-images/bag1.webp" alt="Second Slide" style="display:block; width:100%">
+    </slide>
+
+    <slide>
+        <img src="assets/gif-images/bag1.webp" alt="Third Slide" style="display:block; width:100%">
+    </slide>
+</carousel> -->
+
+<ng-container  *ngFor="let product of products">
+    <ng-container *ngIf="product.productId<5">
+    <div>
+        <img src={{product.prodPicture}} class="card-img-top img-fluids" height="100%" width="100%" 
+                    alt={{product.prodName}}>
+
+                 <h6>{{product.prodName}}</h6>
+       
+          <h5 class="pricing">£{{product.prodPrice}}</h5>
+        </div>
+   
+    </ng-container>
+    
+    </ng-container>

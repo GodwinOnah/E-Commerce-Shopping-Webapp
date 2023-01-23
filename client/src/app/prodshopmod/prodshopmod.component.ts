@@ -3,6 +3,8 @@ import { IProduct } from '../prodsharemod/models/IProduct';
 import { IBrands} from '../prodsharemod/models/IBrands';
 import { ProdshopmodService } from './prodshopmod.service';
 import { ShopParameters } from '../prodsharemod/models/shopParameters';
+import { delay } from 'rxjs';
+
 
 @Component({
   selector: 'app-shop',
@@ -10,7 +12,7 @@ import { ShopParameters } from '../prodsharemod/models/shopParameters';
   styleUrls: ['./prodshopmod.component.scss']
 })
 export class ProdshopmodComponent implements OnInit {
-  @ViewChild('search',{static:true}) searchText: ElementRef;
+  @ViewChild('search',{static:false}) searchText: ElementRef;
   products:IProduct[];
   brands:IBrands[];
   productTypes:IBrands[];
@@ -35,8 +37,8 @@ export class ProdshopmodComponent implements OnInit {
   GetProducts(){
 
   this.prodshopmodService.getProducts(this.shopParameters).subscribe(response=>{
-
-           this.products=response.data;
+           
+           this.products=response.data; 
            this.shopParameters.pageNumber=response.pageIndex;
            this.shopParameters.pageSize=response.pageSize;
            this.totalPageNumber=response.count;
@@ -62,7 +64,7 @@ export class ProdshopmodComponent implements OnInit {
   this.prodshopmodService.getProductTypes().subscribe(response=>{
 
               this.productTypes=[{productId:0,name:'All'}, ...response];;
-              console.log(this.productTypes)
+              console.log(window.location.href)
             },
             error=>{console.log(error)   
   });

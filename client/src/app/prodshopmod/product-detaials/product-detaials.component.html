@@ -1,7 +1,7 @@
 <div *ngIf="productDetails" class="d-flex justify-content-center" 
-style="width: 80%; height:100%; margin-left:10%; margin-top:10%">
+    style="width: 80%; height:100%; margin-left:10%; margin-top:10%">
 
-<div class="d-flex flex-column align-items-center" style="width:150%;">
+    <div class="d-flex flex-column align-items-center" style="width:150%;">
 
         <div class="">
             <div class="d-flex  w-auto">
@@ -30,7 +30,7 @@ style="width: 80%; height:100%; margin-left:10%; margin-top:10%">
             </div>
             <div class="btn-order">
                 Add to Cart: 
-                <button  class="btn btn-prodDetails fa fa-shoping-cart" style="color:red; font-size:120%; padding: 10px;">
+                <button  (click)="AddItem()" class="btn btn-prodDetails fa fa-shoping-cart" style="color:red; font-size:120%; padding: 10px;">
                     <i class="fonntAwsom1 fa-light fa-cart-plus fa-2x"></i>
                 </button>
             </div>

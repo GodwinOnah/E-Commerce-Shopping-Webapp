@@ -22,5 +22,27 @@
         padding-right: 8%;
         padding-left: 5%;			
     }
+
+    a{
+        &.active{
+            color: white;
+        }
+
+    }
+    .log2{
+        margin-left: 15px;
+        border-left: 2px solid white;
+        padding-left: 10px;
+        color: wheat;
+        font-weight: bolder; 
+        margin-right: 15px;    
+    }
+    .log1{
+        font-weight: bolder; 
+    }
+    .cartLabel{
+        margin-left: 50px;
+        color: red;
+    }
     
     
