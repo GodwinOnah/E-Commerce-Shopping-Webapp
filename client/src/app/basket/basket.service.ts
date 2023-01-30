@@ -11,7 +11,7 @@ import { IProduct } from '../prodsharemod/models/IProduct';
 export class BasketService {
 
   // baseUrl = location.origin;
-  baseUrl = 'https://localhost:7135/';
+  baseUrl = environment.apiUrl;
   private basketSource = new BehaviorSubject<IBasket>(null);
   basket$  = this.basketSource.asObservable();
 
