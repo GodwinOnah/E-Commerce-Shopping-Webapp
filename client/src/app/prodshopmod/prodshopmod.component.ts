@@ -51,20 +51,18 @@ export class ProdshopmodComponent implements OnInit {
 
   GetProductBrands(){
   
-  this.prodshopmodService.getBrands().subscribe(response=>{
+        this.prodshopmodService.getBrands().subscribe(response=>{
 
-            this.brands=[{productId:0,name:'All'}, ...response];
-            console.log(this.brands)
+            this.brands=[{productId:0,name:'All'}, ...response];         
           },
           error=>{console.log(error)         
   });
 }
    
   GetProductTypes(){
-  this.prodshopmodService.getProductTypes().subscribe(response=>{
+        this.prodshopmodService.getProductTypes().subscribe(response=>{
 
               this.productTypes=[{productId:0,name:'All'}, ...response];;
-              console.log(window.location.href)
             },
             error=>{console.log(error)   
   });
