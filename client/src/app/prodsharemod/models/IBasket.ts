@@ -20,6 +20,12 @@ export class Basket implements IBasket {
    id= uuidv4();
   //  id= '3';
     items=[];
-
-
 }
+  export interface TotalBasketPrice {
+      overallTotal: number
+      delivery: number
+      total: number
+      
+    }
+
+
