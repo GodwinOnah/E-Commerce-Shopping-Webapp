@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HomePageComponent } from './home-page.component';
 import { ProdshopmodModule } from '../prodshopmod/prodshopmod.module';
 import { RouterModule } from '@angular/router';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 
 
 
@@ -12,7 +13,8 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     CommonModule,
-    ProdshopmodModule
+    ProdshopmodModule,
+    CarouselModule
 
   ],
   exports: [HomePageComponent]

@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import { CoreModule  } from './core/core.module';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { WhenLoadingPage } from './core/Interceptors/WhenLoadingPage';
+import { ErrorInterceptor } from './core/Interceptors/error.interceptor';
+import { HomePageModule } from './home-page/home-page.module';
 
 
 @NgModule({
@@ -22,10 +24,13 @@ import { WhenLoadingPage } from './core/Interceptors/WhenLoadingPage';
     BrowserAnimationsModule ,
     CoreModule ,
     HttpClientModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    HomePageModule
+    
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS,useClass: WhenLoadingPage,multi:true}],
+    {provide: HTTP_INTERCEPTORS,useClass: WhenLoadingPage,multi:true},
+    {provide: HTTP_INTERCEPTORS,useClass: ErrorInterceptor,multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

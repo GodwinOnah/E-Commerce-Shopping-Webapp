@@ -38,7 +38,6 @@ export class ProductDetaialsComponent implements OnInit{
 
   AddItem(){
     this.basketService.AddItemsToBasket(this.productDetails,1)
-  //  console.log(this.productDetails)
   }
 
 }

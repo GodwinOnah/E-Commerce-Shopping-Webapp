@@ -12,6 +12,7 @@ export class HomePageComponent implements OnInit{
 
   products:IProduct[];
   shopParameters=new ShopParameters();
+  console=console;
 
 
   constructor(private prodshopmodService: ProdshopmodService) {
@@ -21,7 +22,6 @@ export class HomePageComponent implements OnInit{
     this.prodshopmodService.getProducts(this.shopParameters).subscribe(response=>{
            
     this.products=response.data; 
-    console.log(this.products);
     
   },
   error=>{console.log(error)
