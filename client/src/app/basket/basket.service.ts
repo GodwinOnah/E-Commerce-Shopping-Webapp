@@ -14,8 +14,10 @@ export class BasketService {
   baseUrl = environment.apiUrl;
   private basketSource = new BehaviorSubject<IBasket>(null);
   basket$  = this.basketSource.asObservable();
-  constructor(private http:HttpClient) { }
 
+  constructor(private http:HttpClient) {
+
+   }
 
 
   GetBasket(id:string){
@@ -28,8 +30,10 @@ export class BasketService {
   }
 
 SetBasket(basket:IBasket){
+  console.log(basket)
     return this.http.post(this.baseUrl+'basket',basket).subscribe((response:IBasket)=>{
       this.basketSource.next(response);//updates basket with new values
+      console.log(response)
     },error=>{console.log(error)}
     );    
 }
@@ -46,12 +50,12 @@ AddItemsToBasket(item:IProduct,quantity){
 }
 
 private AddOrUpdate(items: IBasketItem[], itemToAdd: IBasketItem, quantity: number): IBasketItem[] {
-    const index=items.findIndex(index=>index.itemId===itemToAdd.itemId);
+    const index=items.findIndex(index=>index.productId===itemToAdd.productId);
     if(index==-1){
-      itemToAdd.itemQuantity=quantity;
+      itemToAdd.quantity=quantity;
       items.push(itemToAdd);
     }
-      else{ items[index].itemQuantity+=quantity;}
+      else{ items[index].quantity+=quantity;}
 
     return items;
 
@@ -66,13 +70,13 @@ private CreateBasket(): IBasket {
 private MapBasketToBasketItem(item: IProduct, quantity: number): IBasketItem {
   
   return {
-    itemId: item.productId,
-    itemName: item.prodName,
-    itemPrice: item.prodPrice,
-    itemQuantity:quantity,
-    itemPicture: item.prodPicture,
-    itemBrand: item.productBrand,
-    itemType: item.productType
+    productId: item.productId,
+    prodName: item.prodName,
+    prodPrice: item.prodPrice,
+    quantity,
+    prodPicture: item.prodPicture,
+    productBrand: item.productBrand,
+    productType: item.productType
   }
 }
 }
