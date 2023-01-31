@@ -36,7 +36,10 @@
               <span class="cartLabel fa fa-shoping-cart">
                   <i class=" fa-light fa-cart-plus fa-2x"></i>
               </span>
-              <span class="cartQuantity" class="border border-primary cartQuantity">0</span>
+              <span *ngIf="(basketService.basket$|async) as basket" 
+              class="cartQuantity" class="border border-primary cartQuantity">
+                  {{TotalQuantity(basket.items)}}
+            </span>
             </a>
             </div>
  

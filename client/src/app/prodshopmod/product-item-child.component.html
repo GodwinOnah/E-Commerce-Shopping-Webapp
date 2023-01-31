@@ -3,13 +3,16 @@
     <img src={{product.prodPicture}} class="card-img-top img-fluids" height="50%" 
                  width="auto" alt={{product.prodName}}>
     <a routerLink="/prodshopmod/{{product.productId}}"
-  type="button"><h5 class="card-title">{{product.prodName}}</h5></a>
+  type="button"><h4 class="productname">{{product.prodName}}</h4></a>
     <div class="card-body  " >
       <h5 class="pricing">£{{product.prodPrice}}</h5>
-      
-        <button routerLink="/prodshopmod/{{product.productId}}" 
-         type="button" type="button" class="btn " 
-         style="width:100px ;height: 25px; padding-bottom: 25px;">Check</button>
-      
+
+      <div class="d-flex">
+      <button (click)="AddItem()" class="btnOrder" style="width:100px ;height: 25px; 
+      padding-bottom: 25px;">Add</button>
+   
+        <button routerLink="/prodshopmod/{{product.productId}}" class="btnOrder" 
+         style="width:100px ;height: 25px; padding-bottom: 25px;">View</button>
+        </div>
     </div>
   </div>
