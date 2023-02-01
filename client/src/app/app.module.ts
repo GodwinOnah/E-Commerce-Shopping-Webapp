@@ -15,6 +15,7 @@ import { HomePageModule } from './home-page/home-page.module';
 @NgModule({
   declarations: [
     AppComponent
+    
    
     
   ],

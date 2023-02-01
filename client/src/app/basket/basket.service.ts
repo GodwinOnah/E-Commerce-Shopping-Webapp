@@ -1,4 +1,5 @@
 import { HttpClient } from '@angular/common/http';
+import { isNgTemplate } from '@angular/compiler';
 import {Injectable } from '@angular/core';
 import { BehaviorSubject, map } from 'rxjs';
 import { environment } from 'src/environment/environment';
@@ -35,15 +36,12 @@ export class BasketService {
   }
 
 SetBasket(basket:IBasket){
-  console.log(basket)
     return this.http.post<Basket>(this.baseUrl+'basket',basket).subscribe({
       next: basket =>{
         this.basketSource.next(basket);
         this.TotalBasketValue();
         
       }
-      //updates basket with new values
-      
     }
     );    
 }
@@ -62,21 +60,45 @@ private TotalBasketValue(){
   this.totalBasketPriceSource.next({overallTotal,delivery,total})
 }
 
-AddItemsToBasket(item:IProduct,quantity){
-  const itemToAdd:IBasketItem = this.MapBasketToBasketItem(item,quantity);
+AddItemsToBasket(item:IProduct|IBasketItem,quantity=1){
+  if(this.isProduct(item)) item= this.MapBasketToBasketItem(item);
   const basket = this.CurrentBasket()??this.CreateBasket();
-  basket.items = this.AddOrUpdate(basket.items,itemToAdd,quantity);
+  basket.items = this.AddOrUpdate(basket.items,item,quantity);
   this.SetBasket(basket);
 }
 
-private AddOrUpdate(items: IBasketItem[], itemToAdd: IBasketItem, quantity: number): IBasketItem[] {
-    const index=items.findIndex(index=>index.productId===itemToAdd.productId);
-    if(index==-1){
-      itemToAdd.quantity=quantity;
-      items.push(itemToAdd);
-    }
-      else{ items[index].quantity+=quantity;}
+RemoveItemsFromBasket(id:number,quantity?:number){
 
+        const basket=this.CurrentBasket();
+        if(!basket) return;
+        const item=basket.items.find(index=>index.productId===id);//finding item 
+        if(item){
+            item.quantity-=quantity;
+            if(item.quantity===0)
+            basket.items=basket.items.filter(index=>index.productId!=id);
+            if(basket.items.length>0) this.SetBasket(basket);
+            else{this.RemoveItem(basket)}
+        }
+
+
+}
+  RemoveItem(basket: IBasket) {
+
+    return this.http.delete(this.baseUrl+'basket?id='+basket.id).subscribe({
+      next:() =>{
+        this.basketSource.next(null);
+        this.totalBasketPriceSource.next(null);
+        localStorage.removeItem('basket_id')  
+  }});
+  }
+
+private AddOrUpdate(items: IBasketItem[], itemToAdd: IBasketItem, quantity: number): IBasketItem[] {
+    
+  const item=items.find(index=>index.productId===itemToAdd.productId);//finding item index
+    if(item)item.quantity+=quantity;
+     else{ itemToAdd.quantity=quantity;
+      items.push(itemToAdd);
+     }
     return items;
 
   }
@@ -87,17 +109,22 @@ private CreateBasket(): IBasket {
     return basket;
   }
 
-private MapBasketToBasketItem(item: IProduct, quantity: number): IBasketItem {
+private MapBasketToBasketItem(item: IProduct): IBasketItem {
   
   return {
     productId: item.productId,
     prodName: item.prodName,
     prodPrice: item.prodPrice,
-    quantity,
+    quantity:0,
     prodPicture: item.prodPicture,
     productBrand: item.productBrand,
     productType: item.productType
   }
+}
+
+private isProduct(item:IProduct|IBasketItem):item is IProduct{
+return (item as IProduct).productBrand != undefined;
+
 }
 
 }
