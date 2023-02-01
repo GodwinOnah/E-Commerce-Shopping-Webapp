@@ -13,6 +13,7 @@ import { ProdshopmodService } from '../prodshopmod.service';
 export class ProductDetaialsComponent implements OnInit{
 
   productDetails:IProduct;
+  quantity=0;
 
   constructor(private prodshopService:ProdshopmodService, 
             private activatedroute:ActivatedRoute,
@@ -37,7 +38,28 @@ export class ProductDetaialsComponent implements OnInit{
   }
 
   AddItem(){
-    this.basketService.AddItemsToBasket(this.productDetails)
+
+    this.basketService.AddItemsToBasket(this.productDetails,this.quantity)
   }
+
+  RemoveItem(){
+
+    this.basketService.RemoveItemsFromBasket(this.productDetails.productId,this.quantity)
+  }
+
+  ReduceQuantity(){
+
+    if(this.quantity<=0) return;
+
+    this.quantity--;
+   
+  }
+
+  IncreaseQuantity(){
+
+    this.quantity++;
+   
+  }
+
 
 }

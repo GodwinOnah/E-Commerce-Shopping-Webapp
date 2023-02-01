@@ -25,12 +25,22 @@
 
         <div class="d-flex flex-column align-items-center">
             <div class="btn-quantity-name">
-               Quantity: <button>-</button><span class="btn-quantity-number"> 1</span> <button>+</button>
+               Quantity:  <i (click)="ReduceQuantity()" 
+               class="fa fa-minus-circle text-warning m-2" 
+               style="cursor: pointer; font-size:2.5em;"></i> 
+        <strong  style="font-size:2.5em;"> {{quantity}}</strong>
+                <i (click)=" IncreaseQuantity()" 
+               class="fa fa-plus-circle text-warning m-2" 
+               style="cursor: pointer; font-size:2.5em;"></i>
                 
             </div>
             <div class="btn-order">   
+                
+                <button  (click)="RemoveItem()" class="btn btn-prodDetails fa fa-shoping-cart" style="color:black; font-size:120%; padding: 10px; border-color: black;">
+                    <strong>Remove this quantity</strong>
+                </button>
                 <button  (click)="AddItem()" class="btn btn-prodDetails fa fa-shoping-cart" style="color:black; font-size:120%; padding: 10px; border-color: black;">
-                    Add to Cart
+                    <strong>Add this quantity</strong>
                 </button>
             </div>
          </div>

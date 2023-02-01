@@ -67,11 +67,12 @@ AddItemsToBasket(item:IProduct|IBasketItem,quantity=1){
   this.SetBasket(basket);
 }
 
-RemoveItemsFromBasket(id:number,quantity?:number){
+RemoveItemsFromBasket(id:number,quantity:number){
 
         const basket=this.CurrentBasket();
         if(!basket) return;
         const item=basket.items.find(index=>index.productId===id);//finding item 
+        if(item.quantity<0)return;
         if(item){
             item.quantity-=quantity;
             if(item.quantity===0)
