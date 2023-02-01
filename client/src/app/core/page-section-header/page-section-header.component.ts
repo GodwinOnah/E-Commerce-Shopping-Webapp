@@ -18,7 +18,7 @@ export class PageSectionHeaderComponent implements OnInit{
   }
   ngOnInit(): void {
 
-   this. breadcrumb$= this.breadcrumbService.breadcrumbs$
+   this. breadcrumb$ = this.breadcrumbService.breadcrumbs$
    
   }
 

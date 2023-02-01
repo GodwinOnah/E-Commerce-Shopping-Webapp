@@ -63,9 +63,9 @@
                                  <!-- Quantity -->
                                 <td class="align-middle">
                                     <div class="d-flex align-items-center">
-                                        <i class="fa fa-minus-circle text-warning m-2" style="cursor: pointer; font-size:1.5em;"></i>
+                                        <i (click)="ReduceQuantity(item.productId,1)" class="fa fa-minus-circle text-warning m-2" style="cursor: pointer; font-size:1.5em;"></i>
                                         <strong>{{item.quantity}}</strong>
-                                        <i class="fa fa-plus-circle text-warning mx-2" style="cursor: pointer ;font-size:1.5em;"></i>
+                                        <i (click)="IncreaseQuantity(item)"  class="fa fa-plus-circle text-warning mx-2" style="cursor: pointer ;font-size:1.5em;"></i>
                                     </div>
                                 </td>
                                  <!-- product price -->
@@ -80,7 +80,7 @@
                                     </strong>
                                 </td>
                                 <td class="text-danger" >
-                                    <i class="fa fa-trash  mt-4" 
+                                    <i (click)="ReduceQuantity(item.productId,item.quantity)" class="fa fa-trash  mt-4" 
                                     style="cursor: pointer ;font-size:1.5em; margin-left: 20px;"></i>
                                     
                                 </td>
@@ -90,6 +90,17 @@
 
                     </div>
 
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-6 offset-6">
+                    <app-order-toatal></app-order-toatal>
+                    <div class="d-grid">
+                        <a routerLink="/checkout" class="btn btn-outline-primary py-2">
+                            Checkout
+                        </a>
+                    </div>
                 </div>
             </div>
             </div>

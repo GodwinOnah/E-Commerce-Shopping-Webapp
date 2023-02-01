@@ -37,7 +37,7 @@ export class ProductDetaialsComponent implements OnInit{
   }
 
   AddItem(){
-    this.basketService.AddItemsToBasket(this.productDetails,1)
+    this.basketService.AddItemsToBasket(this.productDetails)
   }
 
 }

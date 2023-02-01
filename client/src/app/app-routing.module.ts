@@ -10,7 +10,7 @@ const routes: Routes = [
       // {path:'**', redirectTo: '',pathMatch:'full'},
       {path:'not-found', component:NotFoundComponent},
       {path:'server-error', component:ServerErrorComponent},
-      {path:'basket', loadChildren: ()=>import('./basket/basket.module').then(mod=>mod.BasketModule),data:{breadcrumb:'Basket'}},
+      {path:'basket', loadChildren: ()=>import('./basket/basket.module').then(mod=>mod.BasketModule),data:{breadcrumb:'My Orders'}},
   ];
 
 @NgModule({

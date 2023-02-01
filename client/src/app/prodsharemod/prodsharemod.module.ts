@@ -5,13 +5,15 @@ import {CarouselModule} from 'ngx-bootstrap/carousel';
 //import {SlidelModule} from 'ngx-bootstrap/materials/slide';
 import { PageAnalyserComponent } from './sheredComponents/page-analyser/page-analyser.component';
 import { PaginationSharedComponetComponent } from './sheredComponents/pagination-shared-componet/pagination-shared-componet.component';
+import { OrderToatalComponent } from './order-toatal/order-toatal.component';
 
 
 
 @NgModule({
   declarations: [
     PageAnalyserComponent,
-    PaginationSharedComponetComponent
+    PaginationSharedComponetComponent,
+    OrderToatalComponent
   ],
   imports: [
     CommonModule,
@@ -22,7 +24,8 @@ import { PaginationSharedComponetComponent } from './sheredComponents/pagination
   exports: [PaginationModule,
     PageAnalyserComponent,
     PaginationSharedComponetComponent,
-    CarouselModule
+    CarouselModule,
+    OrderToatalComponent
   ]
 })
 export class ProdsharemodModule { }

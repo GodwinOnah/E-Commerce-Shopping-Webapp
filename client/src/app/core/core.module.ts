@@ -17,10 +17,11 @@ import {ToastrModule} from 'ngx-toastr'
     RouterModule,
     BreadcrumbModule,
     ToastrModule.forRoot({
-      positionClass:'toast-top',
-      preventDuplicates:true
+                      positionClass:'toast-top',
+                      preventDuplicates:true
     })
   ],
-  exports : [NavBarComponent,PageSectionHeaderComponent]
+  exports : [NavBarComponent,PageSectionHeaderComponent,BreadcrumbModule
+  ]
 })
 export class CoreModule { }
