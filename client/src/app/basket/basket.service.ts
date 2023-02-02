@@ -51,23 +51,24 @@ CurrentBasket(){
 }
 
 private TotalBasketValue(){
-
-  const basket=this.CurrentBasket();
+  const basket = this.CurrentBasket();
   if(!basket)return;
-  const delivery=0
-  const total=basket.items.reduce((sum,item)=>item.prodPrice*item.quantity+sum,0)
-  const overallTotal=total+delivery;
+  const delivery = 0
+  const total = basket.items.reduce((sum,item) => item.prodPrice*item.quantity+sum,0)
+  const overallTotal = total+delivery;
   this.totalBasketPriceSource.next({overallTotal,delivery,total})
 }
 
-AddItemsToBasket(item:IProduct|IBasketItem,quantity=1){
-  if(this.isProduct(item)) item= this.MapBasketToBasketItem(item);
+AddItemsToBasket(item:IProduct|IBasketItem,quantity = 1){
+  if(this.isProduct(item)) item = this.MapBasketToBasketItem(item);
   const basket = this.CurrentBasket()??this.CreateBasket();
   basket.items = this.AddOrUpdate(basket.items,item,quantity);
   this.SetBasket(basket);
 }
 
-RemoveItemsFromBasket(id:number,quantity:number){
+
+
+RemoveItemsFromBasket(id:number,quantity?:number){
 
         const basket=this.CurrentBasket();
         if(!basket) return;
@@ -95,9 +96,9 @@ RemoveItemsFromBasket(id:number,quantity:number){
 
 private AddOrUpdate(items: IBasketItem[], itemToAdd: IBasketItem, quantity: number): IBasketItem[] {
     
-  const item=items.find(index=>index.productId===itemToAdd.productId);//finding item index
-    if(item)item.quantity+=quantity;
-     else{ itemToAdd.quantity=quantity;
+  const item = items.find(index=>index.productId === itemToAdd.productId);//finding item index
+    if(item)item.quantity += quantity;
+     else{ itemToAdd.quantity = quantity;
       items.push(itemToAdd);
      }
     return items;

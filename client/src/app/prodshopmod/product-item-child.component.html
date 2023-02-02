@@ -1,6 +1,6 @@
 
     <div class="card " style="width: 200px; height:250px; margin-top: 20px;">
-    <img src={{product.prodPicture}} class="card-img-top img-fluids" height="50%" 
+    <img routerLink="/prodshopmod/{{product.productId}}" src={{product.prodPicture}} class="card-img-top img-fluids" height="50%" 
                  width="auto" alt={{product.prodName}}>
     <a routerLink="/prodshopmod/{{product.productId}}"
   type="button"><h4 class="productname">{{product.prodName}}</h4></a>
@@ -12,7 +12,7 @@
       padding-bottom: 25px;">Add</button>
    
         <button routerLink="/prodshopmod/{{product.productId}}" class="btnOrder" 
-         style="width:100px ;height: 25px; padding-bottom: 25px;">View</button>
+         style="width:100px ;height: 25px; padding-bottom: 25px;">View/Update</button>
         </div>
     </div>
   </div>

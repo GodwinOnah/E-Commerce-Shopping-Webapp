@@ -1,11 +1,18 @@
+
+<div class="container">
+<div *ngIf="(basketService.basket$|async)===null">
+    <strong style="color: red; font-size:30px; margin-top:500px">No Item selected by this time...</strong>
+     
+ </div> 
+
+
+ 
 <div class="container mt-10" style="margin-top:110px; margin-left:50px;">
 
-    <div *ngIf="(basketService.basket$|async)===null">
-       <strong style="color: red; font-size:100px; margin-top:100px">No Item Ordered yet...</strong>
-        
-    </div> 
-
     <ng-container  *ngIf="(basketService.basket$|async) as basket">
+
+        <marquee class="mb-4 fst-italic">Thank you for you interest in our product.   Your feedback is important to us for improvement...</marquee>
+
             <div class="container">
 
             <div class="row">
@@ -51,7 +58,7 @@
                                          <!-- product Name -->
                                        <div class="ms-3 d-inline-block align-middle">
                                         <h5 class="mb-0">
-                                            <a class="text-dark text-decoration-none">
+                                            <a routerLink="/prodshopmod/{{item.productId}}" class="text-dark text-decoration-none">
                                                 {{item.prodName}}
                                             </a>
                                         </h5>
@@ -112,3 +119,5 @@
             </div>
     </ng-container>
 </div>
+</div>
+
