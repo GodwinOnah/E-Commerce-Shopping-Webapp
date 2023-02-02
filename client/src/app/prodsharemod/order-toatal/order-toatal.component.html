@@ -1,20 +1,21 @@
-<div class="bg-light px-4 py-3 text-uppercase fw-bold">
+
+<div class=" px-4 py-3 text-uppercase fw-bold" style="background-color: skyblue;margin: 0%;">
    Order summary
 </div>
-<div class="p-4">
-    <p class="mb-4 fst-italic">Delivery depends upon checkout</p>
+<div class="p-4" style="background-color: lightgrey;">
+    <p class="mb-4 fst-italic">Your oder charge and arrival time depends on your location</p>
     <ul class="list-unstyled mb-4" *ngIf="(basketService.totalBasketPrice$|async) as basketTotals">
         <li class="d-flex justify-content-between py-4 border-bottom">
             <strong class="text-muted">Total Price Before Shipping</strong>
-            <strong >£{{basketTotals.total}}</strong>
+            <strong style="color: red;">£{{basketTotals.total}}</strong>
         </li>
         <li class="d-flex justify-content-between py-4 border-bottom">
             <strong class="text-muted">Shipping Price</strong>
-            <strong >£{{basketTotals.delivery}}</strong>
+            <strong style="color: red;">£{{basketTotals.delivery}}</strong>
         </li>
         <li class="d-flex justify-content-between py-4 border-bottom">
             <strong class="text-muted">Total Price with Shipping</strong>
-            <strong >£{{basketTotals.overallTotal}}</strong>
+            <strong style="color: red;">£{{basketTotals.overallTotal}}</strong>
         </li>
     </ul>
 

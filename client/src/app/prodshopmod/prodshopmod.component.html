@@ -1,6 +1,6 @@
 <div class="container body">
 
-       <div class="marquee"><Marquee >Welcome to my Shop</Marquee></div>
+      
 
            <div class="row content">
 
@@ -25,7 +25,11 @@
 
     <!-- Section2 -->
                 <section class=" pb-1 col-9 py-5 text-center">
+                  <div class="marquee "><Marquee >Welcome to my Shop</Marquee></div>
+
                     <ng-container *ngIf="products">
+
+                      
                     
                       <div class=" item-container container" >
                         <div class="card-container mb-4 " *ngFor="let item of products">
