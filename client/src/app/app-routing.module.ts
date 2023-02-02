@@ -10,6 +10,7 @@ const routes: Routes = [
       // {path:'**', redirectTo: '',pathMatch:'full'},
       {path:'not-found', component:NotFoundComponent},
       {path:'server-error', component:ServerErrorComponent},
+      {path:'Checkout', loadChildren: ()=>import('./Checkout/Checkout.module').then(mod=>mod.CheckoutModule),data:{breadcrumb:'Checkout'}},
       {path:'basket', loadChildren: ()=>import('./basket/basket.module').then(mod=>mod.BasketModule),data:{breadcrumb:'My Orders'}},
   ];
 
