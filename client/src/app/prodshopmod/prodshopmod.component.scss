@@ -1,23 +1,10 @@
-// .body {
 
-// 	background: url(../../images/toyota8.jpg) no-repeat center center fixed; 
-//   -webkit-background-size: cover;
-//   -moz-background-size: cover;
-//   -o-background-size: cover;
-//   background-size: cover;
-//   height: 100%;
-//   width: 100%;
-//   margin: auto 0;
-// }
 .item-container {
 
     width: 100%;
     height: 600px;
-    margin-top: 20px;
-    margin-right: 10px;
-
    overflow: scroll;
-
+   margin-left: 10px;
    
    border: 2px solid black ;
    border-radius: 10px;
@@ -28,9 +15,9 @@
 
    display:grid;
 
-   grid-gap: 10px;
+//    grid-gap: 10px;
 
-   grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
+   grid-template-columns: repeat(auto-fill,minmax(250px,1fr));
 
    grid-template-rows: repeat(auto-fill,minmax(300px,1fr));
 
@@ -69,6 +56,7 @@ li{list-style-type: none;
    
     font-size: small; 
     margin-left: 0;
+    margin-right: 50pix;
     padding: 0;
 }
 
