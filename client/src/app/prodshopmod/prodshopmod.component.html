@@ -8,7 +8,7 @@
                 <section class="col-1  left-section">
                       <h6>Our Mission</h6>
                       <p>Our mission is to make sure we statify our customer
-                        need putting smiles on their faces after a business transction with us.
+                        needs by putting smiles on faces after business transctions with us.
                       </p>
                       <hr>
                       <div>
@@ -16,8 +16,7 @@
                       </div>
                       <hr>
                       <h6>Policy</h6>
-                      <p>Our policy is in connnection our mission which is to make sure we statify our customer
-                        need putting smiles on their faces after a business transction with us.
+                      <p>Our policy is unique and is geared towards making you happy when you patrozize us
                       </p>
                       
                 </section>
@@ -25,7 +24,14 @@
 
     <!-- Section2 -->
                 <section class=" pb-1 col-9 py-5 text-center container-section">
-                  <div class="marquee "><Marquee >Welcome to my Shop</Marquee></div>
+
+                  <div *ngIf="(accountService.AppUser$|async) ==null" >
+                    <div class="marquee "><Marquee >Welcome to Obande Bag Collections. Make your choice from the best collections you can find in the world below</Marquee></div>
+                    </div>
+
+                  <div *ngIf="(accountService.AppUser$|async) as user" >
+                  <div class="marquee2 "><Marquee >{{user.nickName}} thank you for patronizing us. Your commitment is the reason we have upgraded to serve you better</Marquee></div>
+                  </div>
 
                     <ng-container *ngIf="products">
 

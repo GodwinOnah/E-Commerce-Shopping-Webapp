@@ -12,7 +12,6 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
   ],
   imports: [
     CommonModule,
-    ProdshopmodModule,
     CarouselModule
 
   ],

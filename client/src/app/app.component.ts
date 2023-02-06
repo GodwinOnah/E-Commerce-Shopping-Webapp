@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserAccountService } from './Account/account.service';
 import { BasketService } from './basket/basket.service';
 
 
@@ -14,15 +15,29 @@ export class AppComponent
 
   
 
-  constructor(private basketService: BasketService){
+  constructor(private basketService: BasketService,private accountService:UserAccountService){
 
   }
 
   ngOnInit(): void {
 
-    const basketId = localStorage.getItem('basket_id')
+   this.loadBasket()
+   this.loadPreviousUser();
     
-      this.basketService.GetBasket(basketId);
-    
-    
-}}
+}
+
+loadBasket(){
+
+  const basketId = localStorage.getItem('basket_id')   
+  this.basketService.GetBasket(basketId);
+}
+
+loadPreviousUser(){
+ const token = localStorage.getItem('token');
+//  console.log(token)
+//  console.log(5)
+ if(token) this.accountService.LoadPreviousUser(token).subscribe();
+}
+
+
+}

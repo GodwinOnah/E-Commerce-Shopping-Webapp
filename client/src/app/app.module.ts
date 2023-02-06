@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule  } from './core/core.module';
@@ -10,11 +9,16 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { WhenLoadingPage } from './core/Interceptors/WhenLoadingPage';
 import { ErrorInterceptor } from './core/Interceptors/error.interceptor';
 import { HomePageModule } from './home-page/home-page.module';
+import { LoginComponent } from './Account/login/login.component';
+import { RegisterComponent } from './Account/Register/register.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    RegisterComponent
     
    
     
@@ -26,8 +30,8 @@ import { HomePageModule } from './home-page/home-page.module';
     CoreModule ,
     HttpClientModule,
     NgxSpinnerModule,
-    HomePageModule
-    
+    HomePageModule ,
+    ReactiveFormsModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS,useClass: WhenLoadingPage,multi:true},

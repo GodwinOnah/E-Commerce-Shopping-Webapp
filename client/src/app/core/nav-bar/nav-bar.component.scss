@@ -1,17 +1,18 @@
 .nav-item{color:red}
-#cartLabel{
-    color: red;
-    margin-left: 70px;
-    
-    }
 
     .cartQuantity{
 
-        font-size: 30px;
-        color: yellowgreen;
-        padding: 8px;
-        border: 3px solid black;
-        border-radius: 100px;   
+        font-size: 17px;
+        color: gold;
+       text-decoration: none;
+       text-decoration-line: none;
+        font-weight: bold; 
+        margin-left: 30px; 
+        margin-bottom: 0; 
+        padding:1px;
+        border-radius: 7px;
+        width: auto;
+        background-color: black;
         
     }
 
@@ -35,14 +36,28 @@
         padding-left: 10px;
         color: wheat;
         font-weight: bolder; 
-        margin-right: 15px;    
+        margin-right: 15px; 
+        cursor: pointer;   
     }
     .log1{
         font-weight: bolder; 
     }
     .cartLabel{
-        margin-left: 50px;
-        color: red;
+       
+        color:white;
+        font-size: 20px;
+        margin-top: 0;
+        padding-top: 0;
+        margin-left: 0;
+    }
+
+    .basket{
+        border: solid gold 0.5px;
+        border-radius: 20px;
+        width: auto;
+        margin-left: 120px;
+        margin-right: 50px;
+        padding: 5px;
     }
     
     
