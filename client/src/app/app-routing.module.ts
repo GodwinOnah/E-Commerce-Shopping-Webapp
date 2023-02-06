@@ -11,6 +11,7 @@ const routes: Routes = [
       {path:'not-found', component:NotFoundComponent},
       {path:'server-error', component:ServerErrorComponent},
       {path:'Checkout', loadChildren: ()=>import('./Checkout/Checkout.module').then(mod=>mod.CheckoutModule),data:{breadcrumb:'Checkout'}},
+      {path:'account', loadChildren: ()=>import('./Account/account.module').then(mod=>mod.UserAccountModule),data:{breadcrumb:'User Account'}},
       {path:'basket', loadChildren: ()=>import('./basket/basket.module').then(mod=>mod.BasketModule),data:{breadcrumb:'My Orders'}},
   ];
 

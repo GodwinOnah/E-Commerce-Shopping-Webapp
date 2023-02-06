@@ -21,26 +21,45 @@
          
         </ul>
         </div>
-
+       
           <div class=" d-flex ">
+            <ng-container *ngIf="(accountservice.AppUser$|async)==null" >
            <div class="log1">
-              <a class="nav-link" href="#">Logout</a>
+              <a routerLink="/account/register" class="nav-link" >Register</a>
            </div>
            
             <div class="log2">
-              <a class="nav-link" href="#">Login</a>
+              <a routerLink="/account/login" class="nav-link" >Login</a>
             </div>
+
+          </ng-container  >
+
+        <ng-container *ngIf="(accountservice.AppUser$|async) as user">
+          <div class="btn-group" dropdown>
+            <button style="font-size:30px ;color: gold;" id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle log1"
+                    aria-controls="dropdown-basic">
+                    Wellcome {{user.nickName}}   <span class="caret"></span>
+            </button>
+            <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+                role="menu" aria-labelledby="button-basic">
+              <li role="menuitem"><a class="dropdown-item" (click)="Logout()">Logout</a></li>
+              <li role="menuitem"><a class="dropdown-item" href="#">View Orders</a></li>
+              <li role="menuitem"><a class="dropdown-item" routerLink="/basket">View basket</a></li>
+        
+            </ul>
+          </div>
+      </ng-container >
            
-            <div >
-              <a routerLink="/basket">
-              <span class="cartLabel fa fa-shoping-cart">
-                  <i class=" fa-light fa-cart-plus fa-2x"></i>
-              </span>
-              <span *ngIf="(basketService.basket$|async) as basket" 
-              class="cartQuantity" class="border border-primary cartQuantity">
+            <div class="basket" routerLink="/basket">
+                <div  *ngIf="(basketService.basket$|async) as basket" 
+              class="cartQuantity" class=" cartQuantity">
                   {{TotalQuantity(basket.items)}}
-            </span>
-            </a>
+            </div>
+              <div class="cartLabel fa fa-shoping-cart">
+                  <i class=" fa-cart-plus fa-2x"></i>
+              </div>
+              
+        
             </div>
  
           </div>

@@ -1,0 +1,25 @@
+<div class="d-flex justify-content-center">
+
+    <div class="col-3">
+
+        <form [formGroup] = "loginForm" (ngSubmit)="onSubmit()">
+
+            <div class="text-center mt-5">
+                <div class="form-floating mb-3">
+                    <input formControlName="email" type="email" class="form-control" id="floatingInput" placeholder="Email Address">
+                    <label for="floatingInput">Email address</label>
+                  </div>
+                  <div class="form-floating">
+                    <input formControlName="password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                    <label for="floatingPassword">Password</label>
+                  </div>
+            </div>
+
+            <div class="d-grid">
+                <button class="btn btn-lg btn-success" type="submit" style="margin-top:10px ;">
+                    Login
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

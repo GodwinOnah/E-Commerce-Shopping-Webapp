@@ -4,6 +4,7 @@ import { IBrands} from '../prodsharemod/models/IBrands';
 import { ProdshopmodService } from './prodshopmod.service';
 import { ShopParameters } from '../prodsharemod/models/shopParameters';
 import { delay } from 'rxjs';
+import { UserAccountService } from '../Account/account.service';
 
 
 @Component({
@@ -24,7 +25,7 @@ export class ProdshopmodComponent implements OnInit {
     {name:'Price: Low to High', value:'priceIncrease'}
   ];
 
-  constructor(private prodshopmodService: ProdshopmodService) {
+  constructor(private prodshopmodService: ProdshopmodService, public accountService:UserAccountService) {
   }
 
   ngOnInit(){
