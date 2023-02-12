@@ -34,9 +34,7 @@ loadBasket(){
 
 loadPreviousUser(){
  const token = localStorage.getItem('token');
-//  console.log(token)
-//  console.log(5)
- if(token) this.accountService.LoadPreviousUser(token).subscribe();
+  this.accountService.LoadPreviousUser(token).subscribe();
 }
 
 

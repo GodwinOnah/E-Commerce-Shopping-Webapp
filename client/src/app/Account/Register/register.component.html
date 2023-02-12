@@ -5,57 +5,37 @@
         <form [formGroup] = "registerForm" (ngSubmit)="onSubmit()">
 
             <div class="text-center mt-5">
-                <div class="form-floating mb-3">
-                    <input formControlName="firstname" type="text" class="form-control" id="floatingInput" placeholder="Email Address">
-                    <label for="floatingInput">First Name</label>
-                  </div>
-                  <div class="form-floating mb-3">
-                    <input formControlName="middlename" type="text"class="form-control" id="floatingInput" placeholder="Email Address">
-                    <label for="floatingInput">Middle Name (Optional)</label>
-                  </div>
-                 <div class="form-floating mb-3">
-                    <input formControlName="familyname" type="text"class="form-control" id="floatingInput" placeholder="Email Address">
-                    <label for="floatingInput">Family Name</label>
-                  </div>
+              
+              <app-text-inputs [formControl]=" registerForm.controls['firstname']"  [label]="'FirstName'"></app-text-inputs>
 
-                  <div class="form-floating mb-3">
-                    <input formControlName="address" type="text"class="form-control" id="floatingInput" placeholder="Email Address">
-                    <label for="floatingInput">Address</label>
-                  </div>
-                  <div class="form-floating mb-3">
-                    <input formControlName="city" type="text" class="form-control" id="floatingInput" placeholder="Email Address">
-                    <label for="floatingInput">City</label>
-                  </div>
-                  <div class="form-floating mb-3">
-                    <input formControlName="country" type="text" class="form-control" id="floatingInput" placeholder="Email Address">
-                    <label for="floatingInput">Country</label>
-                  </div>
+              <app-text-inputs [formControl]=" registerForm.controls['middlename']"  [label]="'MiddleName (optional)'"></app-text-inputs>
 
-                  <div class="form-floating mb-3">
-                    <input formControlName="zipcode" type="text" class="form-control" id="floatingInput" placeholder="Email Address">
-                    <label for="floatingInput">Zipcode</label>
-                  </div>
-                  <div class="form-floating mb-3">
-                    <input formControlName="phone" type="text" class="form-control" id="floatingInput" placeholder="Email Address">
-                    <label for="floatingInput">Phone</label>
-                  </div>
+              <app-text-inputs [formControl]=" registerForm.controls['familyname']"  [label]="'FamilyName'"></app-text-inputs>
 
-                <div class="form-floating mb-3">
-                    <input formControlName="email" type="email" class="form-control" id="floatingInput" placeholder="Email Address">
-                    <label for="floatingInput">Email address</label>
-                  </div>
-                  <div class="form-floating">
-                    <input formControlName="password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                    <label for="floatingPassword">Choose Password</label>
-                  </div>
-                  <div class="form-floating">
-                    <input formControlName="confirmpassword" type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                    <label for="floatingPassword">Confirm Password</label>
-                  </div>
+              <app-text-inputs [formControl]=" registerForm.controls['address']"  [label]="'Address'"></app-text-inputs>
+
+              <app-text-inputs [formControl]=" registerForm.controls['city']"  [label]="'City'"></app-text-inputs>
+
+              <app-text-inputs [formControl]=" registerForm.controls['zipcode']"  [label]="'Zipcode'"></app-text-inputs>
+
+              <app-text-inputs [formControl]=" registerForm.controls['phone']"  [label]="'Phone'"></app-text-inputs>
+
+              <app-text-inputs [formControl]=" registerForm.controls['email']"  [label]="'Email Address'" [type]="'email'"></app-text-inputs>
+
+              <app-text-inputs [formControl]=" registerForm.controls['password']"  [label]="'Password'" [type]="'password'"></app-text-inputs>
+
+              <app-text-inputs [formControl]=" registerForm.controls['confirmpassword']"  [label]="'Confirm Password'" [type]="'password'"></app-text-inputs>
+
             </div>
-
-            <div class="d-grid">
-                <button class="btn btn-lg btn-success" type="submit" style="margin-top:10px ;">
+            <div>
+            <ul class="text-danger list-unstyled" *ngIf="errors">
+                    <li *ngIf="let error of errors">
+                            {{error}}
+                    </li>
+            </ul>
+        </div>
+            <div class="d-grid" >
+                <button [disabled]="registerForm.invalid" class="btn btn-lg btn-success" type="submit" style="margin-top:10px ;">
                    Register
                 </button>
             </div>

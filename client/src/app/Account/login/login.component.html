@@ -3,20 +3,13 @@
     <div class="col-3">
 
         <form [formGroup] = "loginForm" (ngSubmit)="onSubmit()">
-
             <div class="text-center mt-5">
-                <div class="form-floating mb-3">
-                    <input formControlName="email" type="email" class="form-control" id="floatingInput" placeholder="Email Address">
-                    <label for="floatingInput">Email address</label>
-                  </div>
-                  <div class="form-floating">
-                    <input formControlName="password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                    <label for="floatingPassword">Password</label>
-                  </div>
-            </div>
-
+                    <app-text-inputs [formControl]="loginForm.controls['email']" [label]="'Email Address'"></app-text-inputs>
+                    <app-text-inputs [formControl]="loginForm.controls['password']" [type]="'password'" [label]="'Password'"></app-text-inputs>
+                </div>
+            
             <div class="d-grid">
-                <button class="btn btn-lg btn-success" type="submit" style="margin-top:10px ;">
+                <button [disabled]="loginForm.invalid" class="btn btn-lg btn-success" type="submit" style="margin-top:10px ;">
                     Login
                 </button>
             </div>
