@@ -4,9 +4,10 @@ import {PaginationModule } from 'ngx-bootstrap/pagination';
 import {CarouselModule} from 'ngx-bootstrap/carousel';
 import { PageAnalyserComponent } from './sheredComponents/page-analyser/page-analyser.component';
 import { PaginationSharedComponetComponent } from './sheredComponents/pagination-shared-componet/pagination-shared-componet.component';
-import { OrderToatalComponent } from './order-toatal/order-toatal.component';
+import { OrderTotalComponent } from './order-total/order-total.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { TextInputsComponent } from './components/text-inputs/text-inputs.component';
 
 
 
@@ -14,7 +15,8 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
   declarations: [
     PageAnalyserComponent,
     PaginationSharedComponetComponent,
-    OrderToatalComponent
+    OrderTotalComponent,
+    TextInputsComponent
   ],
   imports: [
     CommonModule,
@@ -27,9 +29,10 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     PageAnalyserComponent,
     PaginationSharedComponetComponent,
     CarouselModule,
-    OrderToatalComponent,
+    OrderTotalComponent,
     ReactiveFormsModule,
-    BsDropdownModule
+    BsDropdownModule,
+    TextInputsComponent
   ]
 })
 export class ProdsharemodModule { }

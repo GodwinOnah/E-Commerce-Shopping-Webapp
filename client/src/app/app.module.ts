@@ -9,16 +9,12 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { WhenLoadingPage } from './core/Interceptors/WhenLoadingPage';
 import { ErrorInterceptor } from './core/Interceptors/error.interceptor';
 import { HomePageModule } from './home-page/home-page.module';
-import { LoginComponent } from './Account/login/login.component';
-import { RegisterComponent } from './Account/Register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    LoginComponent,
-    RegisterComponent
+    AppComponent
     
    
     
@@ -26,8 +22,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule ,
-    CoreModule ,
+    BrowserAnimationsModule,
+    CoreModule,
     HttpClientModule,
     NgxSpinnerModule,
     HomePageModule ,

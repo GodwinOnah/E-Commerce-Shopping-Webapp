@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserAccountService } from '../account.service';
 
 @Component({
@@ -9,23 +10,30 @@ import { UserAccountService } from '../account.service';
 })
 export class LoginComponent {
 
-  constructor(private accountService:UserAccountService){
+  RegularExpression="^(?=(.*[a-z]){1,})(?=(.*[\\d]){1,})(?=(.*[\\W]){1,})(?!.*\\s).{7,30}$";
+
+  returnUrl:string;
+
+  constructor(private formbuilder:FormBuilder,private router : Router,
+    private accountService:UserAccountService,
+   private activatedRoute:ActivatedRoute){
+
+    this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl']||'/prodshopmod'
 
   }
 
-  loginForm = new FormGroup({
-    email: new FormControl('',Validators.required),
-    password: new FormControl('',Validators.required)
+  loginForm = this.formbuilder.group({
+    email: ['',[Validators.required]],
+    password: ['',[Validators.required]]
   });
 
   onSubmit(){
     // console.log(5);
     this.accountService.Login(this.loginForm.value).subscribe({
-      next: user=>{
-        // console.log(5);
-        console.log(user);
+      next: ()=> {
+        this.router.navigateByUrl('/prodshopmod')}
      
-   } });
+    });
     
   }
 
