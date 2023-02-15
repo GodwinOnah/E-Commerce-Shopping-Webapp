@@ -6,7 +6,9 @@
 
             <div class="text-center mt-5">
               
-              <app-text-inputs [formControl]=" registerForm.controls['firstname']"  [label]="'FirstName'"></app-text-inputs>
+              <app-text-inputs [formControl]=" registerForm.controls['nickname']"  [label]="'Nick Name'"></app-text-inputs>
+
+              <!-- <app-text-inputs [formControl]=" registerForm.controls['firstname']"  [label]="'FirstName'"></app-text-inputs>
 
               <app-text-inputs [formControl]=" registerForm.controls['middlename']"  [label]="'MiddleName (optional)'"></app-text-inputs>
 
@@ -18,7 +20,7 @@
 
               <app-text-inputs [formControl]=" registerForm.controls['zipcode']"  [label]="'Zipcode'"></app-text-inputs>
 
-              <app-text-inputs [formControl]=" registerForm.controls['phone']"  [label]="'Phone'"></app-text-inputs>
+              <app-text-inputs [formControl]=" registerForm.controls['phone']"  [label]="'Phone'"></app-text-inputs> -->
 
               <app-text-inputs [formControl]=" registerForm.controls['email']"  [label]="'Email Address'" [type]="'email'"></app-text-inputs>
 
@@ -35,7 +37,7 @@
             </ul>
         </div>
             <div class="d-grid" >
-                <button [disabled]="registerForm.invalid" class="btn btn-lg btn-success" type="submit" style="margin-top:10px ;">
+                <button class="btn btn-lg btn-success" type="submit" style="margin-top:10px ;">
                    Register
                 </button>
             </div>

@@ -1,0 +1,29 @@
+<div class="mt-4" *ngIf="checkoutform" [formGroup]="checkoutform">
+    <div class="d-flex justify-content-between align-items-cetnter">
+        <h4>Address</h4>
+        <button class="btn bg-primary">Save as default address</button>
+    </div>
+    <div class="row mt-3" formGroupName = "addressForm" >
+        <div class="form-group col-6">
+            <app-text-inputs formControlName="firstname"  [label]="'FirstName'"></app-text-inputs>
+        </div>
+            <div class="form-group col-6">
+              <app-text-inputs formControlName="middlename"  [label]="'MiddleName (optional)'"></app-text-inputs>
+            </div>
+             <div class="form-group col-6">
+              <app-text-inputs formControlName="familyname"  [label]="'FamilyName'"></app-text-inputs>
+            </div>
+            <div class="form-group col-6">
+              <app-text-inputs formControlName="address"  [label]="'Address'"></app-text-inputs>
+            </div>
+             <div class="form-group col-6">
+              <app-text-inputs formControlName="city"  [label]="'City'"></app-text-inputs>
+            </div>
+             <div class="form-group col-6">
+              <app-text-inputs formControlName="zipcode"  [label]="'Zipcode'"></app-text-inputs>
+            </div>
+             <div class="form-group col-6">
+              <app-text-inputs formControlName="phone"  [label]="'Phone'"></app-text-inputs>
+        </div>
+    </div>
+</div>

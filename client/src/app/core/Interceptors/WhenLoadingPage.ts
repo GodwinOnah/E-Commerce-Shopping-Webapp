@@ -1,7 +1,8 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { delay, finalize, Observable } from "rxjs";
-import { SpinnerService } from "../SpinnerService/spinner.service";
+import { SpinnerService } from "../NewServices/spinner.service";
+
 
 @Injectable()
 export class WhenLoadingPage implements HttpInterceptor{

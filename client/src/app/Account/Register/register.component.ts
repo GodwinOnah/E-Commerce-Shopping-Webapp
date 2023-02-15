@@ -19,14 +19,15 @@ export class RegisterComponent {
   private accountService:UserAccountService, private router : Router){
   }
   registerForm = this.formbuilder.group({
-          firstname: ['',Validators.required],
-          middlename: [''],
-          familyname: ['',Validators.required],
-          address: ['',Validators.required],
-          city: ['',Validators.required],
-          country: ['',Validators.required],
-          zipcode: ['',Validators.required],
-          phone: ['',Validators.required],
+          nickname: ['',Validators.required],
+          // firstname: ['',Validators.required],
+          // middlename: [''],
+          // familyname: ['',Validators.required],
+          // address: ['',Validators.required],
+          // city: ['',Validators.required],
+          // country: ['',Validators.required],
+          // zipcode: ['',Validators.required],
+          // phone: ['',Validators.required],
           email: ['',[Validators.required, Validators.email],[this.validateEmail()]],
           password: ['',[Validators.required,Validators.pattern(this.RegularExpression)]],
           confirmpassword: ['',[Validators.required]]

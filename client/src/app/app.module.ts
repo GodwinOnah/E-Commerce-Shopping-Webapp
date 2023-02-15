@@ -11,10 +11,10 @@ import { ErrorInterceptor } from './core/Interceptors/error.interceptor';
 import { HomePageModule } from './home-page/home-page.module';
 import { ReactiveFormsModule } from '@angular/forms';
 
-
 @NgModule({
   declarations: [
     AppComponent
+  
     
    
     
