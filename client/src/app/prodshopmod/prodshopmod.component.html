@@ -54,19 +54,19 @@
                       
                       </ng-container>
 
-            <div class="d-flex justify-content-center mt-3" *ngIf="totalPageNumber&&totalPageNumber>0">
+            <div class="d-grid justify-content-center mt-3" *ngIf="totalPageNumber&&totalPageNumber>0">
                   <app-pagination-shared-componet
                   [totalPageNumber]="this.totalPageNumber"
                   [pageSize]="this.shopParameters.pageSize"
                   (pageChange)="PageChange($event)">
                   ></app-pagination-shared-componet>
-
+                <div style="color:blue ; font-weight:bolder">
                   <app-page-analyser 
                   [totalPageNumber]="this.totalPageNumber"
                   [pageNumber]="this.shopParameters.pageNumber"
                   [pageSize]="this.shopParameters.pageSize">
                   </app-page-analyser>
-                    
+                </div>  
                 </div>
             </section>
                 

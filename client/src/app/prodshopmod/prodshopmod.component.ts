@@ -62,7 +62,6 @@ export class ProdshopmodComponent implements OnInit {
    
   GetProductTypes(){
         this.prodshopmodService.getProductTypes().subscribe(response=>{
-
               this.productTypes=[{productId:0,name:'All'}, ...response];;
             },
             error=>{console.log(error)   

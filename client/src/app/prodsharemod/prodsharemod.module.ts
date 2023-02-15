@@ -8,7 +8,8 @@ import { OrderTotalComponent } from './order-total/order-total.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TextInputsComponent } from './components/text-inputs/text-inputs.component';
-
+import { StepperComponent } from './components/stepper/stepper.component';
+import {  CdkStepperModule } from '@angular/cdk/stepper';
 
 
 @NgModule({
@@ -16,14 +17,16 @@ import { TextInputsComponent } from './components/text-inputs/text-inputs.compon
     PageAnalyserComponent,
     PaginationSharedComponetComponent,
     OrderTotalComponent,
-    TextInputsComponent
+    TextInputsComponent,
+    StepperComponent
   ],
   imports: [
     CommonModule,
     PaginationModule.forRoot(),
     CarouselModule.forRoot(),
     ReactiveFormsModule,
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
+    CdkStepperModule
   ],
   exports: [PaginationModule,
     PageAnalyserComponent,
@@ -32,7 +35,10 @@ import { TextInputsComponent } from './components/text-inputs/text-inputs.compon
     OrderTotalComponent,
     ReactiveFormsModule,
     BsDropdownModule,
-    TextInputsComponent
+    TextInputsComponent,
+    StepperComponent,
+    CdkStepperModule
+    
   ]
 })
 export class ProdsharemodModule { }
