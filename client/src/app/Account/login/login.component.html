@@ -4,8 +4,8 @@
 
         <form [formGroup] = "loginForm" (ngSubmit)="onSubmit()">
             <div class="text-center mt-5">
-                    <app-text-inputs [formControl]="loginForm.controls['email']" [label]="'Email Address'"></app-text-inputs>
-                    <app-text-inputs [formControl]="loginForm.controls['password']" [type]="'password'" [label]="'Password'"></app-text-inputs>
+                    <app-text-inputs [formControl]="loginForm.controls['Email']" [type]="'email'"  [label]="'Email Address'"></app-text-inputs>
+                    <app-text-inputs [formControl]="loginForm.controls['Password']" [type]="'password'" [label]="'Password'"></app-text-inputs>
                 </div>
             
             <div class="d-grid">

@@ -23,15 +23,15 @@ export class LoginComponent {
   }
 
   loginForm = this.formbuilder.group({
-    email: ['',[Validators.required]],
-    password: ['',[Validators.required]]
+        Email: ['',[Validators.required]],
+        Password: ['',[Validators.required]]
   });
 
   onSubmit(){
     // console.log(5);
     this.accountService.Login(this.loginForm.value).subscribe({
       next: ()=> {
-        this.router.navigateByUrl('/prodshopmod')}
+        this.router.navigateByUrl('/products')}
      
     });
     

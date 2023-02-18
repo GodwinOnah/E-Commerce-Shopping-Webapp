@@ -1,18 +1,26 @@
 <div class="mt-4" *ngIf="deliveryform" [formGroup]="deliveryform">
-    <div class="row mt-3" formGroupName = "deliveryForm" >
-        <div class="form-group col-6" *ngFor="let delivery in  deliverys">
+    <div class="row mt-3" formGroupName = "deliveryForm" >     
+        <div class = "col-6 form-group"  *ngFor="let delivery of  deliverys"> 
             <input 
             type="radio" 
             class="form-check-input"
             id="{{delivery.id}}"
             value="{{delivery.id}}"
-            formControlName="delivery"
-            >
-            <label for="{{delivery.id}}"  class="form-check-label ms-2 mb-3">
-                <strong>{{delivery.DelName}}-£{{delivery.DelPrice}}</strong>
-                <span class="label-description">{{delivery.Description}}</span>
-            </label>
-            
+            formControlName="delivery">
+            <label for="{{delivery.id}}" class="form-check-label ms-2 mb-3">
+                <strong>{{delivery.delName}}(£{{delivery.delPrice}})</strong>
+                <br>
+                <span class="label-description">{{delivery.description}}</span>
+            </label>           
         </div>
     </div>
+</div>
+<div class="d-flex justify-content-between flex-row mb-5">
+    <button class="btn btn-danger" cdkStepperPrevious>
+        <i class="fa fa-angle-left"></i> Address
+    </button>
+    <button class="btn btn-danger" cdkStepperNext>
+        Review <i class="fa fa-angle-right"></i>
+    </button>
+
 </div>

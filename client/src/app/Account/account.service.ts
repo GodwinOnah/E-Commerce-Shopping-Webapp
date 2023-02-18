@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, map, of, ReplaySubject } from 'rxjs';
 import { environment } from 'src/environment/environment';
-import { User } from '../prodsharemod/models/User';
+import { Address, User } from '../prodsharemod/models/User';
 
 @Injectable({
   providedIn: 'root'
@@ -31,20 +31,13 @@ export class UserAccountService {
           map(
             user=>{
               if(user){
-                localStorage.setItem("token",user.token)
+                localStorage.setItem("token",user.Token)
                 this.AppUserSource.next(user);
                 return user;
               }
-
-              else{return null}
-                
-            
-            
+              else{return null}    
           }))
-
   }
-
-  
 
     Login(value:any){
 
@@ -52,45 +45,40 @@ export class UserAccountService {
           .pipe(
             map(
               user=>{
-                // console.log(5);
-                // console.log(user.nickName);
-                // localStorage.setItem('login_status', JSON.stringify(this.loginStatus))
-                    localStorage.setItem('token',user.token)
-                   
-                    // localStorage.setItem('login_status',false)
-                  this.AppUserSource.next(user);
-              
-              
+                    localStorage.setItem('token',user.Token)
+                  this.AppUserSource.next(user);             
             }))
       }
 
     Register(value:any){
+      // console.log(value)
           return this.http.post<User>(this.baseUrl+'user/register',value)
           .pipe(
             map(
               user=>{
-                    localStorage.setItem('token',user.token)
-                   this.AppUserSource.next(user);
-              
-              
+                    localStorage.setItem('token',user.Token)
+                   this.AppUserSource.next(user);          
             }))
   
 }
 
     CheckEmail(email:string){
-
       return this.http.get<boolean>(this.baseUrl+'user/emailexist?email='+email)
-
     }
 
     Logout(){
-
       localStorage.removeItem('token');
       this.AppUserSource.next(null);
       this.router.navigateByUrl('/');
       localStorage.setItem('login_status', JSON.stringify(!this.loginStatus))
     }
 
+    GetAddress(){
+      return this.http.get<Address>(this.baseUrl+'user/address')
+    }
 
+    UpdateAddress(address:Address){
+      return this.http.put<Address>(this.baseUrl+'user/address',address)
+    }
 
 }

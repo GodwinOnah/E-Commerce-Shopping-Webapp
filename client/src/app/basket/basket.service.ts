@@ -26,8 +26,7 @@ export class BasketService {
   GetBasket(id:string){return this.http.get<Basket>(this.baseUrl+'basket?id='+id).subscribe({
     next: basket =>{
       this.basketSource.next(basket);
-      this.TotalBasketValue();
-      
+      this.TotalBasketValue();     
     }
   
     //updates basket with new values
@@ -66,10 +65,7 @@ AddItemsToBasket(item:IProduct|IBasketItem,quantity = 1){
   this.SetBasket(basket);
 }
 
-
-
 RemoveItemsFromBasket(id:number,quantity?:number){
-
         const basket=this.CurrentBasket();
         if(!basket) return;
         const item=basket.items.find(index=>index.productId===id);//finding item 
@@ -81,11 +77,8 @@ RemoveItemsFromBasket(id:number,quantity?:number){
             if(basket.items.length>0) this.SetBasket(basket);
             else{this.RemoveItem(basket)}
         }
-
-
 }
   RemoveItem(basket: IBasket) {
-
     return this.http.delete(this.baseUrl+'basket?id='+basket.id).subscribe({
       next:() =>{
         this.basketSource.next(null);
@@ -111,8 +104,7 @@ private CreateBasket(): IBasket {
     return basket;
   }
 
-private MapBasketToBasketItem(item: IProduct): IBasketItem {
-  
+private MapBasketToBasketItem(item: IProduct): IBasketItem {  
   return {
     productId: item.productId,
     prodName: item.prodName,
