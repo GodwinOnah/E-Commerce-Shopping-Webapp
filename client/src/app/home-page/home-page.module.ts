@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomePageComponent } from './home-page.component';
-import { ProdshopmodModule } from '../prodshopmod/prodshopmod.module';
+import { ProdshopmodModule } from '../products/prodshopmod.module';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IProduct } from '../prodsharemod/models/IProduct';
 import { ShopParameters } from '../prodsharemod/models/shopParameters';
-import { ProdshopmodService } from '../prodshopmod/prodshopmod.service';
+import { ProdshopmodService } from '../products/prodshopmod.service';
 
 @Component({
   selector: 'app-home-page',

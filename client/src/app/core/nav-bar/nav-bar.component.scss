@@ -23,8 +23,11 @@
         padding-right: 8%;
         padding-left: 5%;			
     }
-
+ a:hover{
+    color: red;
+ }
     a{
+        
         &.active{
             color: white;
         }

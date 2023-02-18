@@ -1,29 +1,41 @@
 <div class="mt-4" *ngIf="checkoutform" [formGroup]="checkoutform">
     <div class="d-flex justify-content-between align-items-cetnter">
         <h4>Address</h4>
-        <button class="btn bg-primary">Save as default address</button>
+        <button class="btn bg-primary">Make default address</button>
     </div>
     <div class="row mt-3" formGroupName = "addressForm" >
         <div class="form-group col-6">
-            <app-text-inputs formControlName="firstname"  [label]="'FirstName'"></app-text-inputs>
+            <app-text-inputs formControlName="FirstName"  [label]="'Firstname'"></app-text-inputs>
         </div>
             <div class="form-group col-6">
-              <app-text-inputs formControlName="middlename"  [label]="'MiddleName (optional)'"></app-text-inputs>
+              <app-text-inputs formControlName="MiddleName"  [label]="'Middlename (optional)'"></app-text-inputs>
             </div>
              <div class="form-group col-6">
-              <app-text-inputs formControlName="familyname"  [label]="'FamilyName'"></app-text-inputs>
+              <app-text-inputs formControlName="LastName"  [label]="'Lastname'"></app-text-inputs>
             </div>
             <div class="form-group col-6">
-              <app-text-inputs formControlName="address"  [label]="'Address'"></app-text-inputs>
+              <app-text-inputs formControlName="Street"  [label]="'Street Address'"></app-text-inputs>
             </div>
              <div class="form-group col-6">
-              <app-text-inputs formControlName="city"  [label]="'City'"></app-text-inputs>
+              <app-text-inputs formControlName="City"  [label]="'City'"></app-text-inputs>
+            </div>
+            <div class="form-group col-6">
+                <app-text-inputs formControlName="Country"  [label]="'Country'"></app-text-inputs>
+              </div>
+             <div class="form-group col-6">
+              <app-text-inputs formControlName="Zipcode"  [label]="'Zipcode'"></app-text-inputs>
             </div>
              <div class="form-group col-6">
-              <app-text-inputs formControlName="zipcode"  [label]="'Zipcode'"></app-text-inputs>
-            </div>
-             <div class="form-group col-6">
-              <app-text-inputs formControlName="phone"  [label]="'Phone'"></app-text-inputs>
+              <app-text-inputs formControlName="Phone"  [label]="'Phone'"></app-text-inputs>
         </div>
     </div>
+</div>
+<div class="d-flex justify-content-between flex-row mb-5">
+    <button class="btn btn-danger" routerLink="/prodsharemod/basket">
+        <i class="fa fa-angle-left"></i>  Go to basket
+    </button>
+    <button class="btn btn-danger" cdkStepperNext>
+        Delivery <i class="fa fa-angle-right"></i>
+    </button>
+
 </div>

@@ -6,27 +6,29 @@
 
             <div class="text-center mt-5">
               
-              <app-text-inputs [formControl]=" registerForm.controls['nickname']"  [label]="'Nick Name'"></app-text-inputs>
+              <app-text-inputs [formControl]=" registerForm.controls['NickName']"  [label]="'Nickname'"></app-text-inputs>
 
-              <!-- <app-text-inputs [formControl]=" registerForm.controls['firstname']"  [label]="'FirstName'"></app-text-inputs>
+              <app-text-inputs [formControl]=" registerForm.controls['FirstName']"  [label]="'Firstname'"></app-text-inputs>
 
-              <app-text-inputs [formControl]=" registerForm.controls['middlename']"  [label]="'MiddleName (optional)'"></app-text-inputs>
+              <app-text-inputs [formControl]=" registerForm.controls['MiddleName']"  [label]="'Middlename (optional)'"></app-text-inputs>
 
-              <app-text-inputs [formControl]=" registerForm.controls['familyname']"  [label]="'FamilyName'"></app-text-inputs>
+              <app-text-inputs [formControl]=" registerForm.controls['LastName']"  [label]="'Lastname'"></app-text-inputs>
 
-              <app-text-inputs [formControl]=" registerForm.controls['address']"  [label]="'Address'"></app-text-inputs>
+              <app-text-inputs [formControl]=" registerForm.controls['Street']"  [label]="'Street'"></app-text-inputs>
+         
+              <app-text-inputs [formControl]=" registerForm.controls['City']"  [label]="'City'"></app-text-inputs>
+            
+              <app-text-inputs [formControl]=" registerForm.controls['Country']"  [label]="'Country'"></app-text-inputs>
 
-              <app-text-inputs [formControl]=" registerForm.controls['city']"  [label]="'City'"></app-text-inputs>
+              <app-text-inputs [formControl]=" registerForm.controls['Zipcode']"  [label]="'Zipcode'"></app-text-inputs>
 
-              <app-text-inputs [formControl]=" registerForm.controls['zipcode']"  [label]="'Zipcode'"></app-text-inputs>
+              <app-text-inputs [formControl]=" registerForm.controls['Phone']"  [label]="'Phone'"></app-text-inputs>
 
-              <app-text-inputs [formControl]=" registerForm.controls['phone']"  [label]="'Phone'"></app-text-inputs> -->
+              <app-text-inputs [formControl]=" registerForm.controls['Email']"  [label]="'Email Address'" [type]="'email'"></app-text-inputs>
 
-              <app-text-inputs [formControl]=" registerForm.controls['email']"  [label]="'Email Address'" [type]="'email'"></app-text-inputs>
+              <app-text-inputs [formControl]=" registerForm.controls['Password']"  [label]="'Password'" [type]="'password'"></app-text-inputs>
 
-              <app-text-inputs [formControl]=" registerForm.controls['password']"  [label]="'Password'" [type]="'password'"></app-text-inputs>
-
-              <app-text-inputs [formControl]=" registerForm.controls['confirmpassword']"  [label]="'Confirm Password'" [type]="'password'"></app-text-inputs>
+              <!-- <app-text-inputs [formControl]=" registerForm.controls['ConfirmPassword']"  [label]="'Confirm Password'" [type]="'password'"></app-text-inputs> -->
 
             </div>
             <div>
@@ -37,7 +39,7 @@
             </ul>
         </div>
             <div class="d-grid" >
-                <button class="btn btn-lg btn-success" type="submit" style="margin-top:10px ;">
+                <button [disabled]="registerForm.invalid" class="btn btn-lg btn-success" type="submit" style="margin-top:10px ;">
                    Register
                 </button>
             </div>

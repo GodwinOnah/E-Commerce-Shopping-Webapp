@@ -2,23 +2,22 @@
 
    export interface User
     {
-        email:string;
-        nickName:string;
-        token:string
+        Email:string;
+        NickName:string;
+        Token:string
     }
 
 
     export interface Address
-    {
-        id:string 
-        firstName :string 
-        middleName :string 
-        lastName :string 
-        street:string 
-        city :string 
-        country:string 
-        zipcode :string
-        phone:string 
+    {      
+        FirstName :string 
+        MiddleName :string 
+        LastName :string 
+        Street:string 
+        City :string 
+        Country:string 
+        Zipcode :string
+        Phone:string 
 
     }
 

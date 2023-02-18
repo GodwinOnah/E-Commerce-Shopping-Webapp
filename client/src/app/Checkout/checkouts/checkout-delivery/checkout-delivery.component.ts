@@ -11,6 +11,7 @@ import { CheckoutServiceService } from '../../checkout-service.service';
 export class CheckoutDeliveryComponent implements OnInit{
   @Input() deliveryform?: FormGroup;
   deliverys : IDelivery[] = [];
+ 
   
   constructor(private checkoutService: CheckoutServiceService){}
 
@@ -18,6 +19,8 @@ export class CheckoutDeliveryComponent implements OnInit{
     this.checkoutService.GetDeliveryMethod().subscribe(
       {
         next: delivery => this.deliverys = delivery
+        // console.log(delivery);}
+        
       }
     )
   }

@@ -9,25 +9,19 @@ import { BasketService } from './basket/basket.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent 
-{
-  
+{ 
   title = 'BagShop';
 
-  
-
-  constructor(private basketService: BasketService,private accountService:UserAccountService){
-
+constructor(private basketService: BasketService,private accountService:UserAccountService){
   }
 
-  ngOnInit(): void {
-
+ngOnInit(): void {
+  this.loadPreviousUser(); 
    this.loadBasket()
-   this.loadPreviousUser();
-    
+     
 }
 
 loadBasket(){
-
   const basketId = localStorage.getItem('basket_id')   
   this.basketService.GetBasket(basketId);
 }
@@ -36,6 +30,4 @@ loadPreviousUser(){
  const token = localStorage.getItem('token');
   this.accountService.LoadPreviousUser(token).subscribe();
 }
-
-
 }

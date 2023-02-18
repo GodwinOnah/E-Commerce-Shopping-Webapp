@@ -19,27 +19,29 @@ export class RegisterComponent {
   private accountService:UserAccountService, private router : Router){
   }
   registerForm = this.formbuilder.group({
-          nickname: ['',Validators.required],
-          // firstname: ['',Validators.required],
-          // middlename: [''],
-          // familyname: ['',Validators.required],
-          // address: ['',Validators.required],
-          // city: ['',Validators.required],
-          // country: ['',Validators.required],
-          // zipcode: ['',Validators.required],
-          // phone: ['',Validators.required],
-          email: ['',[Validators.required, Validators.email],[this.validateEmail()]],
-          password: ['',[Validators.required,Validators.pattern(this.RegularExpression)]],
-          confirmpassword: ['',[Validators.required]]
+          NickName: ['',Validators.required],
+          FirstName: ['',Validators.required],
+          MiddleName: [''],
+          LastName: ['',Validators.required],
+          Street: ['',Validators.required],
+          City: ['',Validators.required],
+          Country: ['',Validators.required],
+          Zipcode: ['',Validators.required],
+          Phone: ['',Validators.required],
+          Email: ['',[Validators.required, Validators.email],[this.validateEmail()]],
+          Password: ['',[Validators.required,Validators.pattern(this.RegularExpression)]],
+          // ConfirmPassword: ['',[Validators.required]]
   });
 
   onSubmit(){
+    // console.log(this.registerForm.value)
     this.accountService.Register(this.registerForm.value).subscribe({
-      next: ()=> this.router.navigateByUrl('/prodshopmod'),
+      next: ()=> this.router.navigateByUrl('/products'),
       error : error => this.errors = error.errors   
     });
   }
-    validateEmail() : AsyncValidatorFn {
+
+  validateEmail() : AsyncValidatorFn {
       return (control:AbstractControl)=>{
         return(control.valueChanges.pipe(
           debounceTime(1000),
