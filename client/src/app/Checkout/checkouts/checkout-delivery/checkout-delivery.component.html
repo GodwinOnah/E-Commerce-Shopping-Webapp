@@ -1,14 +1,18 @@
 <div class="mt-4" *ngIf="deliveryform" [formGroup]="deliveryform">
-    <div class="row mt-3" formGroupName = "deliveryForm" >     
+    <div class="row mt-3" formGroupName = "deliveryForm" >    
         <div class = "col-6 form-group"  *ngFor="let delivery of  deliverys"> 
             <input 
             type="radio" 
             class="form-check-input"
             id="{{delivery.id}}"
             value="{{delivery.id}}"
-            formControlName="delivery">
+            formControlName="delivery"
+            (click)="setDeliveryPrice(delivery)">
             <label for="{{delivery.id}}" class="form-check-label ms-2 mb-3">
-                <strong>{{delivery.delName}}(£{{delivery.delPrice}})</strong>
+                <p><strong style="color: purple;">Name</strong>-{{delivery.delName}}</p>
+                <p><strong style="color: purple;">Type</strong>-{{delivery.delDescription}}</p>
+                <p><strong style="color: purple;">Arrival date</strong>-{{delivery.delTime}}</p>
+                <p><strong style="color: purple;">Price</strong>-<strong>£{{delivery.delPrice}}</strong></p>
                 <br>
                 <span class="label-description">{{delivery.description}}</span>
             </label>           
