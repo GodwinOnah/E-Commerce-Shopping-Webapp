@@ -4,6 +4,7 @@ import {Injectable } from '@angular/core';
 import { BehaviorSubject, map } from 'rxjs';
 import { environment } from 'src/environment/environment';
 import { Basket, IBasket, IBasketItem, TotalBasketPrice } from '../prodsharemod/models/IBasket';
+import { IDelivery } from '../prodsharemod/models/IDelivery';
 import { IProduct } from '../prodsharemod/models/IProduct';
 
 @Injectable({
@@ -17,13 +18,15 @@ export class BasketService {
   private totalBasketPriceSource = new BehaviorSubject<TotalBasketPrice|null>(null);
   basket$  = this.basketSource.asObservable();
   totalBasketPrice$  = this.totalBasketPriceSource.asObservable();
+  deliveryPrice = 0;
 
   constructor(private http:HttpClient) {
 
    }
 
 
-  GetBasket(id:string){return this.http.get<Basket>(this.baseUrl+'basket?id='+id).subscribe({
+  GetBasket(id:string){
+    return this.http.get<Basket>(this.baseUrl+'basket?id='+id).subscribe({
     next: basket =>{
       this.basketSource.next(basket);
       this.TotalBasketValue();     
@@ -52,10 +55,9 @@ CurrentBasket(){
 private TotalBasketValue(){
   const basket = this.CurrentBasket();
   if(!basket)return;
-  const delivery = 0
-  const total = basket.items.reduce((sum,item) => item.prodPrice*item.quantity+sum,0)
-  const overallTotal = total+delivery;
-  this.totalBasketPriceSource.next({overallTotal,delivery,total})
+  const subTotal = basket.items.reduce((sum,item) => item.prodPrice*item.quantity+sum,0);
+  const total = subTotal+this.deliveryPrice;
+  this.totalBasketPriceSource.next({deliveryPrice:this.deliveryPrice,subTotal,total})
 }
 
 AddItemsToBasket(item:IProduct|IBasketItem,quantity = 1){
@@ -119,6 +121,14 @@ private MapBasketToBasketItem(item: IProduct): IBasketItem {
 private isProduct(item:IProduct|IBasketItem):item is IProduct{
 return (item as IProduct).productBrand != undefined;
 
+}
+
+SetDelivery(delievery:IDelivery){
+  const basket=this.CurrentBasket();
+  this.deliveryPrice = delievery.delPrice;
+  if(basket){ basket.deliveryId = delievery.id;
+  this.SetBasket(basket);
+}
 }
 
 }

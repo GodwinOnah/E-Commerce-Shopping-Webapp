@@ -28,7 +28,7 @@ export class RegisterComponent {
           Country: ['',Validators.required],
           Zipcode: ['',Validators.required],
           Phone: ['',Validators.required],
-          Email: ['',[Validators.required, Validators.email],[this.validateEmail()]],
+          Email: ['',[Validators.required, Validators.email]],
           Password: ['',[Validators.required,Validators.pattern(this.RegularExpression)]],
           // ConfirmPassword: ['',[Validators.required]]
   });

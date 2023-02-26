@@ -7,15 +7,15 @@
     <ul class="list-unstyled mb-4" *ngIf="(basketService.totalBasketPrice$|async) as basketTotals">
         <li class="d-flex justify-content-between py-4 border-bottom">
             <strong class="text-muted">Total Price Before Shipping</strong>
-            <strong style="color: red;">£{{basketTotals.total}}</strong>
+            <strong style="color: red;">£{{basketTotals.subTotal}}</strong>
         </li>
         <li class="d-flex justify-content-between py-4 border-bottom">
             <strong class="text-muted">Shipping Price</strong>
-            <strong style="color: red;">£{{basketTotals.delivery}}</strong>
+            <strong style="color: red;">£{{basketTotals.deliveryPrice}}</strong>
         </li>
         <li class="d-flex justify-content-between py-4 border-bottom">
             <strong class="text-muted">Total Price with Shipping</strong>
-            <strong style="color: red;">£{{basketTotals.overallTotal}}</strong>
+            <strong style="color: red;">£{{basketTotals.total}}</strong>
         </li>
     </ul>
 

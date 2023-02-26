@@ -1,8 +1,8 @@
 export  interface IDelivery
     {      
-        Id: number
-        DelName: string
-        DelTime: string
-        Description: string
-        DelPrice: number    
+        id: number
+        delName: string
+        delTime: string
+        delDescription: string
+        delPrice: number    
 }
