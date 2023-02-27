@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { UserAccountService } from '../account.service';
 
 @Component({
@@ -31,6 +32,7 @@ export class LoginComponent {
     // console.log(5);
     this.accountService.Login(this.loginForm.value).subscribe({
       next: ()=> {
+       
         this.router.navigateByUrl('/products')}
      
     });

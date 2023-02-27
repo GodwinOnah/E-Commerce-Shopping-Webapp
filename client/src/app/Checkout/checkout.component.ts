@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { UserAccountService } from '../Account/account.service';
 import { BasketService } from '../basket/basket.service';
+import { IOrderToCreate } from '../prodsharemod/models/IOrderToCreate';
 
 @Component({
   selector: 'app-checkout',
@@ -15,12 +16,12 @@ export class CheckoutComponent implements OnInit{
     private basketService : BasketService){}
 
   ngOnInit(): void {
-    // this.AttachAddress();
+    // this.AttachAddress();   
     this.AttachDelivery();
+  
   }
 
-    checkOutForm = this.fb.group({
-
+checkOutForm = this.fb.group({
       addressForm :  this.fb.group({
           FirstName: ['',Validators.required],
           MiddleName: [''],
@@ -30,11 +31,10 @@ export class CheckoutComponent implements OnInit{
           Country: ['',Validators.required],
           Zipcode: ['',Validators.required],
           Phone: ['',Validators.required],
-
       }),
 
       deliveryForm :  this.fb.group({
-        delivery: ['',Validators.required]}),
+        delivery : ['',Validators.required]}),
 
       paymentForm :  this.fb.group({
           nameOnCard : ['',Validators.required]})
@@ -48,12 +48,11 @@ export class CheckoutComponent implements OnInit{
       })
     }
 
-    AttachDelivery(){
-      const basket = this.basketService.CurrentBasket();
-      if(basket && basket.deliveryId){
+    AttachDelivery(){  
+      const basket = this.basketService.CurrentBasket();    
+      if(basket && basket.deliveryId){     
         this.checkOutForm.get('deliveryForm')?.get('delivery')
         ?.patchValue(basket.deliveryId.toString());
-      }
-
+      }      
     }
 }

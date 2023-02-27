@@ -2,9 +2,10 @@ import { IProduct } from './IProduct';
 
 
 export  interface IItemOrdered
-    {
-        itemOrdered : IProduct[]
-        itemPrice : number
-        itemQuntity : number
+    {   productId:number
+        prodName:string
+        prodPicture:string
+        prodPrice : number
+        quantity : number
 
     }
