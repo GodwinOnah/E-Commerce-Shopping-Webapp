@@ -125,9 +125,12 @@ return (item as IProduct).productBrand != undefined;
 
 SetDelivery(delievery:IDelivery){
   const basket=this.CurrentBasket();
+  
   this.deliveryPrice = delievery.delPrice;
-  if(basket){ basket.deliveryId = delievery.id;
-  this.SetBasket(basket);
+  if(basket){
+     basket.deliveryId = delievery.productId;    
+     this.SetBasket(basket);
+     console.log(basket)
 }
 }
 

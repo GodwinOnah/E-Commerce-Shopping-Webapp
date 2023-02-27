@@ -8,6 +8,6 @@ import { FormGroup } from '@angular/forms';
 })
 export class CheckoutAddressComponent {
 
-  @Input() checkoutform?: FormGroup;
+  @Input() checkOutForm?: FormGroup;
 
 }
