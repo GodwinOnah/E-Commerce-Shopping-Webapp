@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { take } from 'rxjs';
 import { BreadcrumbService } from 'xng-breadcrumb';
+import { BasketService } from '../basket/basket.service';
 import { IOrders } from '../prodsharemod/models/IOrders';
 import { OrdersService } from './orders.service';
 
@@ -11,11 +13,13 @@ import { OrdersService } from './orders.service';
 })
 export class OrdersDetailsComponent implements OnInit{
 
-  order: IOrders;
-
-  constructor(private orderService: OrdersService,
+  order?: IOrders;
+ 
+  constructor(
+    private orderService: OrdersService,
     private activatedroute:ActivatedRoute,
-    private breadcrumbService:BreadcrumbService
+    private breadcrumbService:BreadcrumbService,
+
     ){
 
   }
@@ -26,25 +30,13 @@ export class OrdersDetailsComponent implements OnInit{
   ViewOrder(){
     const id = +this.activatedroute.snapshot.paramMap.get('id');
     // console.log(id)
-    if(id)this.orderService.GetOrdersById(id).subscribe(
-          { next : order=>
-              {
-              this.order = order;
-              this.breadcrumbService.set('@OrderDetailed', `Order# ${order.id} - ${order.orderStatus}`);
-              // this.basketService.basket$.pipe(take(1)).subscribe({
-              //   next : basket=>{
-              //     const item = basket?.items.find ( i=>i.productId === id )
-              //                 if(item){
-              //                   this.quantity = item.quantity;
-              //                   this.quantityInBasket=item.quantity
-              //                         }
-              //                  }
-
-              //                                                     })
-             },
-                error:error=>console.log(error)
-            })
+    id && this.orderService.  GetOrdersById(id).subscribe({
+      next: order => {
+        this.order = order;
+        this.breadcrumbService.set('@OrderDetailed', `Order# ${order.id} - ${order.orderStatus}`);
+} })
+}
   }
 
 
-}
+
