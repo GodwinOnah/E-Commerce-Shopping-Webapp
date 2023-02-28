@@ -7,7 +7,7 @@ import { PaginationSharedComponetComponent } from './sheredComponents/pagination
 import { OrderTotalComponent } from './order-total/order-total.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import { TextInputsComponent } from './components/text-inputs/text-inputs.component';
+import { TextInputsComponent } from '../Account/text-inputs/text-inputs.component';
 import { StepperComponent } from './components/stepper/stepper.component';
 import {  CdkStepperModule } from '@angular/cdk/stepper';
 import { BasketSummaryComponent } from './basket-summary/basket-summary.component';

@@ -30,10 +30,7 @@ export class BasketService {
     next: basket =>{
       this.basketSource.next(basket);
       this.TotalBasketValue();     
-    }
-  
-    //updates basket with new values
-    
+    }  
   });
   }
 
@@ -41,8 +38,7 @@ SetBasket(basket:IBasket){
     return this.http.post<Basket>(this.baseUrl+'basket',basket).subscribe({
       next: basket =>{
         this.basketSource.next(basket);
-        this.TotalBasketValue();
-        
+        this.TotalBasketValue();    
       }
     }
     );    
@@ -70,12 +66,12 @@ AddItemsToBasket(item:IProduct|IBasketItem,quantity = 1){
 RemoveItemsFromBasket(id:number,quantity?:number){
         const basket=this.CurrentBasket();
         if(!basket) return;
-        const item=basket.items.find(index=>index.productId===id);//finding item 
+        const item = basket.items.find(index => index.productId === id);//finding item 
         if(item.quantity<0)return;
         if(item){
-            item.quantity-=quantity;
-            if(item.quantity===0)
-            basket.items=basket.items.filter(index=>index.productId!=id);
+            item.quantity -= quantity;
+            if(item.quantity === 0)
+            basket.items = basket.items.filter(index => index.productId != id);
             if(basket.items.length>0) this.SetBasket(basket);
             else{this.RemoveItem(basket)}
         }
@@ -125,12 +121,10 @@ return (item as IProduct).productBrand != undefined;
 
 SetDelivery(delievery:IDelivery){
   const basket=this.CurrentBasket();
-  
   this.deliveryPrice = delievery.delPrice;
   if(basket){
      basket.deliveryId = delievery.productId;    
      this.SetBasket(basket);
-     console.log(basket)
 }
 }
 

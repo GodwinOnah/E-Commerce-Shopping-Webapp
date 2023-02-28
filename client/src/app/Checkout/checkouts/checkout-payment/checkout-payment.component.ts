@@ -12,28 +12,39 @@ import { CheckoutServiceService } from '../../checkout-service.service';
   styleUrls: ['./checkout-payment.component.scss']
 })
 export class CheckoutPaymentComponent {
+  errors : string[] | null = null;
 
   @Input() checkOutForm? : FormGroup;
 
     constructor(private basketService:BasketService,
-    private checkOutService:CheckoutServiceService){
+    private checkOutService:CheckoutServiceService,private toastr:ToastrService){
 
   }
 
   OrderSubmission(){
+   
     const basket = this.basketService.CurrentBasket();
     if(!basket)return;
     const orderToCreate = this.GetOrderDetails(basket);
+   
     if(!orderToCreate)return;
     this.checkOutService.CreateAnOrder(orderToCreate).subscribe({
-      next: order=>{   
+      next: order=>{  
+        this.toastr.success("Submitted succecssfully") 
         console.log(order);
-      }
+      },
+      error : error => { 
+        this.toastr.success("Order not submitted");
+        this.errors = error.errors  } 
+      
     })
   }
   private GetOrderDetails(basket: IBasket) {
+    console.log(57)
     const deliveryId = this.checkOutForm?.get('deliveryForm')?.get('delivery')?.value;
+    console.log(deliveryId)
     const shippingAddress = this.checkOutForm?.get('addressForm')?.value as Address;
+    console.log(shippingAddress)
     if(!deliveryId && !shippingAddress)return;
     return{
       basketId:basket.id,

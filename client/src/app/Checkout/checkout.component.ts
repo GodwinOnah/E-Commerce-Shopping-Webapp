@@ -34,10 +34,12 @@ checkOutForm = this.fb.group({
       }),
 
       deliveryForm :  this.fb.group({
-        delivery : ['',Validators.required]}),
+        delivery : ['',Validators.required]
+      }),
 
       paymentForm :  this.fb.group({
-          nameOnCard : ['',Validators.required]})
+          nameOnCard : ['',Validators.required]
+        })
     })
 
     AttachAddress(){
@@ -50,7 +52,7 @@ checkOutForm = this.fb.group({
 
     AttachDelivery(){  
       const basket = this.basketService.CurrentBasket();    
-      if(basket && basket.deliveryId){     
+      if(basket && basket.deliveryId){    
         this.checkOutForm.get('deliveryForm')?.get('delivery')
         ?.patchValue(basket.deliveryId.toString());
       }      

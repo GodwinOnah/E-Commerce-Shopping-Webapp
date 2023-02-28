@@ -5,7 +5,7 @@
         <cdk-step [label]="'Address'" [completed]="checkOutForm.get('addressForm')?.valid">
             <app-checkout-address [checkOutForm]="checkOutForm"></app-checkout-address>    
         </cdk-step>
-        <cdk-step [label]="'Delivery'" [completed]="checkOutForm.get('deliveryForm')?.valid">
+        <cdk-step [label]="'Shipping'" [completed]="checkOutForm.get('deliveryForm')?.valid">
             <app-checkout-delivery [deliveryForm]="checkOutForm"></app-checkout-delivery>  
         </cdk-step>
         <cdk-step [label]="'Review'" >
