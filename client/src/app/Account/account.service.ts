@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject, map, of, ReplaySubject } from 'rxjs';
 import { environment } from 'src/environment/environment';
 import { Address, User } from '../prodsharemod/models/User';
@@ -15,7 +16,10 @@ export class UserAccountService {
   AppUser$  = this.AppUserSource.asObservable();
    loginStatus = true;
 
-  constructor(private http : HttpClient, private router : Router) { }
+  constructor(
+    private http : HttpClient, 
+    private router : Router,
+    private toastr : ToastrService) { }
 
   LoadPreviousUser(token:string|null){
 
@@ -67,10 +71,11 @@ export class UserAccountService {
     }
 
     Logout(){
+      this.toastr.success("Logged Out") 
       localStorage.removeItem('token');
       this.AppUserSource.next(null);
       this.router.navigateByUrl('/');
-      localStorage.setItem('login_status', JSON.stringify(!this.loginStatus))
+      // localStorage.setItem('login_status', JSON.stringify(!this.loginStatus))
     }
 
     GetAddress(){

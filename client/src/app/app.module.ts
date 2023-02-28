@@ -10,6 +10,7 @@ import { WhenLoadingPage } from './core/Interceptors/WhenLoadingPage';
 import { ErrorInterceptor } from './core/Interceptors/error.interceptor';
 import { HomePageModule } from './home-page/home-page.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -25,7 +26,13 @@ import { ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     NgxSpinnerModule,
     HomePageModule ,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+      closeButton: true
+   })
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS,useClass: WhenLoadingPage,multi:true},

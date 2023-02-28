@@ -10,14 +10,18 @@ import { UserAccountService } from '../account.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
+  errors : string[] | null = null;
 
   RegularExpression="^(?=(.*[a-z]){1,})(?=(.*[\\d]){1,})(?=(.*[\\W]){1,})(?!.*\\s).{7,30}$";
 
   returnUrl:string;
 
-  constructor(private formbuilder:FormBuilder,private router : Router,
+  constructor(
+    private formbuilder:FormBuilder,
+    private router : Router,
     private accountService:UserAccountService,
-   private activatedRoute:ActivatedRoute){
+    private activatedRoute:ActivatedRoute,
+    private toastr : ToastrService){
 
     this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl']||'/prodshopmod'
 
@@ -32,9 +36,11 @@ export class LoginComponent {
     // console.log(5);
     this.accountService.Login(this.loginForm.value).subscribe({
       next: ()=> {
-       
-        this.router.navigateByUrl('/products')}
-     
+        this.toastr.success("Login succecssfully") 
+        this.router.navigateByUrl('/products')},
+        error : error => {
+          this.toastr.success("Wrong password") 
+          this.errors = error.errors}
     });
     
   }

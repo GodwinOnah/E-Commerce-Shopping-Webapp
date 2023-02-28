@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, AsyncValidatorFn, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { debounceTime, finalize, map, switchMap, take } from 'rxjs';
 import { UserAccountService } from '../account.service';
 
@@ -16,7 +17,9 @@ export class RegisterComponent {
   RegularExpression="^(?=(.*[a-z]){1,})(?=(.*[\\d]){1,})(?=(.*[\\W]){1,})(?!.*\\s).{7,30}$";
 
   constructor(private formbuilder:FormBuilder, 
-  private accountService:UserAccountService, private router : Router){
+  private accountService:UserAccountService, 
+  private router : Router,
+  private toastr : ToastrService){
   }
   registerForm = this.formbuilder.group({
           NickName: ['',Validators.required],
@@ -36,8 +39,13 @@ export class RegisterComponent {
   onSubmit(){
     // console.log(this.registerForm.value)
     this.accountService.Register(this.registerForm.value).subscribe({
-      next: ()=> this.router.navigateByUrl('/products'),
-      error : error => this.errors = error.errors   
+      next: ()=>{
+         this.toastr.success("Registered succecssfully");
+         this.router.navigateByUrl('/products')},
+      error : error => { 
+        this.toastr.success("Not Registered");
+        this.errors = error.errors  } 
+      
     });
   }
 
