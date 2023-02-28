@@ -17,12 +17,21 @@ export class CheckoutPaymentComponent {
   @Input() checkOutForm? : FormGroup;
 
     constructor(private basketService:BasketService,
-    private checkOutService:CheckoutServiceService,private toastr:ToastrService){
+    private checkOutService:CheckoutServiceService,
+    private toastr:ToastrService){
 
+  }
+  CreatePaymentIntent(){
+    this.basketService.CreatePaymentIntent().subscribe({
+      next:()=>this.toastr.success("PaymentIntent created succecssfully"),
+      error : error => { 
+        this.toastr.success("PaymentIntent not created");
+        this.errors = error.errors  }    
+    })
   }
 
   OrderSubmission(){
-   
+    this.CreatePaymentIntent();
     const basket = this.basketService.CurrentBasket();
     if(!basket)return;
     const orderToCreate = this.GetOrderDetails(basket);
