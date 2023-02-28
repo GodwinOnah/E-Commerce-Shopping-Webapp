@@ -9,7 +9,7 @@ import { OrdersService } from './orders.service';
 })
 export class OrdersComponent implements OnInit{
 
-  Orders: IOrders[];
+  orders: IOrders[];
 
   constructor(private orderservice: OrdersService){
 
@@ -21,7 +21,7 @@ export class OrdersComponent implements OnInit{
   GetOrders(){
     this.orderservice.GetOrders().subscribe({
       next: oders=>{
-        this.Orders=oders
+        this.orders=oders
       }
     })
   }

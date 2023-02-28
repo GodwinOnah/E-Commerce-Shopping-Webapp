@@ -38,7 +38,7 @@
                              <td class="align-middle">
                              <span class="font-weight-bold px-2">{{item.quantity}}</span>
                              </td>
-                             <td class="align-middle"><strong>{{item.ProdPrice * item.quantity | currency}}</strong></td>
+                             <td class="align-middle"><strong>£{{item.ProdPrice * item.quantity}}</strong></td>
                              </tr>
                     </tbody>
              </table>
@@ -60,7 +60,7 @@
                  </li>
                  <li class="d-flex justify-content-between py-3 border-bottom">
                      <strong class="text-muted">Total</strong>
-                     <strong>£{{order.Total}}</strong>
+                     <strong>£{{order.total}}</strong>
                  </li>
                  </ul>
              </div>

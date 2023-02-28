@@ -11,11 +11,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let order of Orders" routerLink="/orders/{{order.id}}">
+                    <tr *ngFor="let order of orders" routerLink="/orders/{{order.id}}">
                         <th># {{order.id}}</th>
                         <td>{{order.orderDate | date: 'medium'}}</td>
                         <td>{{order.total | currency}}</td>
-                        <td>{{order.status}}</td>
+                        <td>{{order.orderStatus}}</td>
                     </tr>
                 </tbody>
             </table>
