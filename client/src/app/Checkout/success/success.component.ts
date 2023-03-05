@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { IOrders } from '../prodsharemod/models/IOrders';
+import { IOrders } from 'src/app/prodsharemod/models/IOrders';
+
 
 @Component({
   selector: 'app-success',

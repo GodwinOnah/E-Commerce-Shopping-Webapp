@@ -18,6 +18,5 @@
         Country:string 
         Zipcode :string
         Phone:string 
-
     }
 

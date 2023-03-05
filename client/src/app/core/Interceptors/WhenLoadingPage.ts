@@ -11,13 +11,17 @@ export class WhenLoadingPage implements HttpInterceptor{
 
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-       if(!req.url.includes('emailExists')){ 
-        this.spinnerService.WhenBusy();}
-       return next.handle(req).pipe(
-        finalize(()=>{this.spinnerService.WhenIdle()})
+       if(req.url.includes('emailExists')||req.method==='Post'
+       &&req.url.includes('order'))
+            return next.handle(req);
 
-        )
-    }
+       this.spinnerService.WhenBusy();
+
+            return next.handle(req).pipe(
+                finalize(()=>{this.spinnerService.WhenIdle()})
+
+                )
+            }
 
 
 }
