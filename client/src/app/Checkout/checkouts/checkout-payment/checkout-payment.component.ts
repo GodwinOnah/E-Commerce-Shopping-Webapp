@@ -24,7 +24,10 @@ export class CheckoutPaymentComponent implements OnInit{
   stripe:Stripe|null=null;
   cardNumber?:StripeCardNumberElement;
   cardExpiry?:StripeCardExpiryElement;
-  cvc?:StripeCardCvcElement
+  cvc?:StripeCardCvcElement;
+  cardNumberComplet=false;
+  cardExpiryComplet=false;
+  cvcComplet=false;
   cardErrors:any;
   loading=false;
 
@@ -44,6 +47,7 @@ export class CheckoutPaymentComponent implements OnInit{
       this.cardNumber = elements.create('cardNumber');
       this.cardNumber.mount(this.cardNumberElement?.nativeElement);
       this.cardNumber.on('change',event=>{
+        this.cardNumberComplet=event.complete;
         if(event.error)
             this.cardErrors=event.error.message;
         else{this.cardErrors=null}
@@ -51,6 +55,7 @@ export class CheckoutPaymentComponent implements OnInit{
       this.cardExpiry = elements.create('cardExpiry');
       this.cardExpiry.mount(this.cardExpiryElement?.nativeElement);
       this.cardExpiry.on('change',event=>{
+        this.cardExpiryComplet=event.complete;
         if(event.error)
             this.cardErrors=event.error.message;
         else{this.cardErrors=null}
@@ -58,6 +63,7 @@ export class CheckoutPaymentComponent implements OnInit{
       this.cvc= elements.create('cardCvc');
       this.cvc.mount(this.cvcElement?.nativeElement);
       this.cvc.on('change',event=>{
+        this.cvcComplet=event.complete;
         if(event.error)
             this.cardErrors=event.error.message;
         else{this.cardErrors=null}
@@ -66,17 +72,15 @@ export class CheckoutPaymentComponent implements OnInit{
    })
   }
 
-  CreatePaymentIntent(){
-    this.basketService.CreatePaymentIntent().subscribe({
-      next:()=>this.toastr.success("PaymentIntent created succecssfully"),
-      error : error => { 
-        this.toastr.success("PaymentIntent not created");
-        this.errors = error.errors  }    
-    })
+  paymentIsComplete(){
+    this.checkOutForm.get('paymentForm')?.valid
+    &&this.cardNumberComplet&&this.cardExpiryComplet
+    &&this.cvcComplet
   }
 
+  
+
   async OrderSubmission(){
-    this.CreatePaymentIntent();
     this.loading=true;
     const basket = this.basketService.CurrentBasket();
     try{
@@ -124,9 +128,7 @@ export class CheckoutPaymentComponent implements OnInit{
     return firstValueFrom(this.checkOutService.CreateAnOrder(orderToCreate));
   }
   private GetOrderDetails(basket: IBasket):IOrderToCreate {
-    // const deliveryId = this.checkOutForm?.get('deliveryForm')?.get('delivery')?.value;
-    const deliveryId = basket.deliveryId
-    // console.log(deliveryId)
+    const deliveryId = this.checkOutForm?.get('deliveryForm')?.get('delivery')?.value;
     const shippingAddress = this.checkOutForm?.get('addressForm')?.value as Address;
     if(!deliveryId && !shippingAddress)throw new Error('problem with basket');;
     return{

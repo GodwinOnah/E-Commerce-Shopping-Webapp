@@ -4,6 +4,7 @@
             <div class="d-grid">             
                 <button 
                 (click)="OnClick(i)"
+                [disabled]="true"
                 [class.active]="selectedIndex===i"
                 class="nav-link fw-bold py-3 text-uppercase">
                     {{step.label}}

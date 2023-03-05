@@ -5,8 +5,8 @@
             type="radio" 
             class="form-check-input"
             id="{{deliveryFm.id}}"
-            value="{{deliveryFm.id}}"
-            formControlName="delivery"
+            value = "{{deliveryFm.id}}"
+            name="delivery"
             (click)="setDeliveryPrice(deliveryFm)"/>
             
             <label for="{{deliveryFm.id}}" class="form-check-label ms-2 mb-3">
@@ -20,10 +20,10 @@
     </div>
 </div>
 <div class="d-flex justify-content-between flex-row mb-5">
-    <button class="btn btn-danger" cdkStepperPrevious>
+    <button  class="btn btn-danger" cdkStepperPrevious>
         <i class="fa fa-angle-left"></i> Address
     </button>
-    <button class="btn btn-danger" cdkStepperNext>
+    <button [disabled]="deliveryForm.get('deliveryForm')?.invalid" class="btn btn-danger" cdkStepperNext>
         Review <i class="fa fa-angle-right"></i>
     </button>
 
