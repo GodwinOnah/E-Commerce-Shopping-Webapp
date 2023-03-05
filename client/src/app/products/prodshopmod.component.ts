@@ -43,7 +43,6 @@ export class ProdshopmodComponent implements OnInit {
            this.shopParameters.pageNumber=response.pageIndex;
            this.shopParameters.pageSize=response.pageSize;
            this.totalPageNumber=response.count;
-            console.log(this.products)
           },
           error=>{console.log(error)
     
@@ -53,8 +52,7 @@ export class ProdshopmodComponent implements OnInit {
   GetProductBrands(){
   
         this.prodshopmodService.getBrands().subscribe(response=>{
-
-            this.brands=[{productId:0,name:'All'}, ...response];         
+        this.brands=[{productId:0,name:'All'}, ...response];         
           },
           error=>{console.log(error)         
   });
@@ -72,20 +70,17 @@ export class ProdshopmodComponent implements OnInit {
     this.shopParameters.brandId=brandId;
     this.shopParameters.pageNumber=1;
     this.GetProducts();
-
 }
 
   SelectedType(typeId:number){
     this.shopParameters.typeId=typeId;
     this.shopParameters.pageNumber=1;
     this.GetProducts();
-
 }
 
 SortedProducts(sort:string){
 this.shopParameters.sort=sort;
 this.GetProducts();
-
 }
 
 PageChange(event:any){
@@ -106,7 +101,4 @@ ResetSearch(){
   this.shopParameters=new ShopParameters();
   this.GetProducts();
   }
-  
-
-
 }

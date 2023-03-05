@@ -4,19 +4,22 @@
     <div class="d-flex flex-column align-items-center" style="width:150%;">
 
        
-            <div class="d-flex  w-auto" style="color: rgb(43, 67, 226); font-weight: bold; font-size: larger;">
+        <marquee  direction="left" ><div class="d-flex  w-auto" style="color: blue; font-weight: bold; font-size: larger;">
             <h5 *ngIf="quantityInBasket>1">
-                {{quantityInBasket}} of this items are in your basket
+                <strong>{{quantityInBasket}} of this item are already in your basket</strong>
                
             </h5>
 
             <h5> <ng-container *ngIf="quantityInBasket==1"
-                >{{quantityInBasket}} of this item is in your basket</ng-container>
+                ><strong>{{quantityInBasket}} of this item is already in your basket</strong></ng-container>
             </h5>
-            <h5> <ng-container *ngIf="quantityInBasket==0"
-                >Not in your basket</ng-container>
-            </h5>
+           
+                <h5> <ng-container *ngIf="quantityInBasket==0"
+                    ><strong>This item is not in your basket</strong></ng-container>
+                </h5>
+            
             </div>
+        </marquee>
        
 
         <div class="row">
@@ -26,35 +29,44 @@
                     width="150%" alt={{productDetails.prodName}}>
                 </div>
                 
-                <div class="col-3 ">
-                    <h5 style="font-weight: bold; color: yellowgreen;">Product Details</h5>
+                <div class="col-3 mt-5">
+                    <h5 style="font-weight: bold; color:blue;">DETAILS</h5>
                     <p>{{productDetails.prodDescription}}</p>
                    
                 </div>
         </div>
-
+<hr>
         <div class="d-flex flex-column align-items-center">
             <div class="btn-quantity-name">
-               Quantity:  <i (click)="ReduceQuantity()" 
-               class="fa fa-minus-circle text-warning m-2" 
-               style="cursor: pointer; font-size:2.5em;"></i> 
-        <strong  style="font-size:2.5em;"> {{quantity}}</strong>
-                <i (click)=" IncreaseQuantity()" 
-               class="fa fa-plus-circle text-warning m-2" 
-               style="cursor: pointer; font-size:2.5em;"></i>
-                
+                <table>
+                    <tr>
+                        <td class="ax"> Quantity:</td>
+                        <td class="ay"> <i (click)="ReduceQuantity()" 
+                            class="fa fa-minus-circle text-primary m-2" 
+                            style="cursor: pointer; font-size:2.5em;"></i> 
+                            <strong  style="font-size:2.5em; margin: 0 20px;"> {{quantity}}</strong>
+                            <i (click)=" IncreaseQuantity()" 
+                           class="fa fa-plus-circle text-primary m-2" 
+                           style="cursor: pointer; font-size:2.5em;"></i>
+                        </td>
+                    </tr>
+                    <tr class="btn-quantity-name">
+                        <td class="ax"> Price:</td>
+                        <td class="ay">  <strong>£{{productDetails.prodPrice}}</strong>
+                        </td>
+                    </tr>
+                    <tr class="btn-quantity-name">
+                        <td class="ax"> Total Price:</td>
+                        <td class="ay"> <strong>£{{productDetails.prodPrice*quantity}}</strong>
+                        </td>
+                    </tr>
+                </table>   
             </div>
-            <div class="btn-quantity-name">
-               Price:  <strong>£{{productDetails.prodPrice}}</strong>
-            </div>
-            <div class="btn-quantity-name">
-               Total Price:  <strong>£{{productDetails.prodPrice*quantity}}</strong>
-            </div>
-                
+                         
                 <div class="btn-order"> 
                 <button  
                 (click)="AddItem()"
-                [disabled]="quantity==quantityInBasket" 
+                [disabled]="quantity == quantityInBasket" 
                 class="btn btn-prodDetails fa fa-shoping-cart" 
                 style="color:black; font-size:120%; padding: 10px; border-color: black;">
                     <strong>{{ButtonTxt}}</strong>

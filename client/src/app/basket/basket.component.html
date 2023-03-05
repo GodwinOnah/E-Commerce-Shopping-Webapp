@@ -11,7 +11,7 @@
              Your feedback is important to us for improvement...
             </marquee>
             <div class="container">
-            <div class="row">
+            <div class="row col-12 mb-5" style="margin: 0 auto;">
                 <app-basket-summary
                 (addItem)="IncreaseQuantity($event)"
                 (removeItem)="ReduceQuantity($event)"
@@ -19,17 +19,18 @@
               </app-basket-summary>
             </div>
             <div class="row">
-                <div class="col-6 offset-6">
+                <div class="row col-12" style="width:60% ;">
                     <app-order-total></app-order-total>
-                    <div class="d-grid">
-                        <a routerLink="/Checkout" 
+                    </div>
+                    <div class="row col-12 align-items-center mt-4 mb-5" style="width: 500px;height: 100px;">
+                        <button routerLink="/Checkout" 
                         class="btn btn-outline-primary bg-success py-2">
-                            Checkout
-                        </a>
+                            <stron style="color: white; font-size:50px;">Checkout</stron>
+                    </button>
                     </div>
                 </div>
             </div>
-            </div>
+           
     </ng-container>
 </div>
 </div>

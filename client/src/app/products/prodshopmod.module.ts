@@ -5,6 +5,8 @@ import { ProdsharemodModule } from '../prodsharemod/prodsharemod.module';
 import { ProductItemChildComponent } from './product-item-child.component';
 import { ProductDetaialsComponent } from './product-detaials/product-detaials.component';
 import { ProdshopmodRoutingModule } from './prodshopmod-routing.module';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { ProductAdvertsComponent } from './product-adverts/product-adverts.component';
 
 
 
@@ -12,13 +14,15 @@ import { ProdshopmodRoutingModule } from './prodshopmod-routing.module';
   declarations: [
     ProdshopmodComponent,
     ProductItemChildComponent,
-    ProductDetaialsComponent
+    ProductDetaialsComponent,
+    ProductAdvertsComponent
   
   ],
   imports: [
     CommonModule,
     ProdsharemodModule,
-    ProdshopmodRoutingModule
+    ProdshopmodRoutingModule,
+    CarouselModule
   ],
   exports :[ProdshopmodComponent,
     ProductDetaialsComponent
