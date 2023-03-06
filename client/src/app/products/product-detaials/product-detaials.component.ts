@@ -17,14 +17,13 @@ export class ProductDetaialsComponent implements OnInit{
   quantity=1;
   quantityInBasket=0;
 
-  constructor(private prodshopService:ProdshopmodService, 
+  constructor(
+            private prodshopService:ProdshopmodService, 
             private activatedroute:ActivatedRoute,
             private breadcrumbService:BreadcrumbService,
             private basketService: BasketService)
             {
-
               this.breadcrumbService.set('@productName','')
-
           }
 
   ngOnInit(): void {
@@ -48,10 +47,8 @@ export class ProductDetaialsComponent implements OnInit{
                               if(item){
                                 this.quantity = item.quantity;
                                 this.quantityInBasket=item.quantity
-                                      }
-                               }
-
-                                                                  })
+}
+}})
               },
                 error:error=>console.log(error)
             })
@@ -62,51 +59,32 @@ export class ProductDetaialsComponent implements OnInit{
   AddItem(){
 
     if(this.productDetails){
-
       if(this.quantity>this.quantityInBasket){
-
         const itemToAdd=this.quantity-this.quantityInBasket;
         this.quantityInBasket+=itemToAdd;
         this.basketService.AddItemsToBasket(this.productDetails,itemToAdd)
 
       }
       else{
-
         if(this.quantity<this.quantityInBasket){
-
           const itemToReduce=this.quantityInBasket-this.quantity;
           this.quantityInBasket-=itemToReduce;
-          this.basketService.RemoveItemsFromBasket(this.productDetails.productId,itemToReduce)
-  
+          this.basketService.RemoveItemsFromBasket(this.productDetails.productId,itemToReduce) 
         }
-
-
       }
-
-    }
-   
-
-   
+    }  
   }
 
  get ButtonTxt(){
-  return this.quantityInBasket==0?"Add quantity":"Update"
-    
+  return this.quantityInBasket==0?"Add quantity":"Update"   
   }
 
   ReduceQuantity(){
-
     if(this.quantity<=1) return;
-
-    this.quantity--;
-   
+    this.quantity--;  
   }
 
   IncreaseQuantity(){
-
-    this.quantity++;
-   
+    this.quantity++;  
   }
-
-
 }

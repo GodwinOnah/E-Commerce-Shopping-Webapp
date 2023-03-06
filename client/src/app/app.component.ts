@@ -16,7 +16,7 @@ constructor(private basketService: BasketService,private accountService:UserAcco
   }
 
 ngOnInit(): void {
-  this.loadPreviousUser(); 
+  // this.loadPreviousUser(); 
    this.loadBasket()
      
 }

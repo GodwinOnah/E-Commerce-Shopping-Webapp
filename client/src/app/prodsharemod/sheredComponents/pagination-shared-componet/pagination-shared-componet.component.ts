@@ -12,8 +12,9 @@ export class PaginationSharedComponetComponent implements OnInit{
   ngOnInit(): void {
     
   }
-  @Input() pageSize:number;
-  @Input() totalPageNumber:number;
+  @Input() pageSize?:number;
+  @Input() pageNumber?:number;
+  @Input() totalPageNumber?:number;
   @Output() pageChange=new EventEmitter<number>();
 
   sharedPageChange(event:any){
