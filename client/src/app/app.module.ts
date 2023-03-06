@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule  } from './core/core.module';
 import { NgxSpinnerModule } from 'ngx-spinner';
-import { WhenLoadingPage } from './core/Interceptors/WhenLoadingPage';
+import { WhenLoadingPage } from './core/Interceptors/Spinner';
 import { ErrorInterceptor } from './core/Interceptors/error.interceptor';
 import { HomePageModule } from './home-page/home-page.module';
 import { ReactiveFormsModule } from '@angular/forms';

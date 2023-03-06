@@ -19,13 +19,9 @@ export class HomePageComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.prodshopmodService.getProducts(this.shopParameters).subscribe(response=>{
-           
-    this.products=response.data; 
-    
+    this.prodshopmodService.getProducts().subscribe({
+      next: response=>{          
+    this.products=response.data;   
   },
-  error=>{console.log(error)
-
-});
-
-}}
+  error:error=>console.log(error)
+});}}

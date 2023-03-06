@@ -5,7 +5,7 @@ import {CarouselModule} from 'ngx-bootstrap/carousel';
 import { PageAnalyserComponent } from './sheredComponents/page-analyser/page-analyser.component';
 import { PaginationSharedComponetComponent } from './sheredComponents/pagination-shared-componet/pagination-shared-componet.component';
 import { OrderTotalComponent } from './order-total/order-total.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TextInputsComponent } from '../Account/text-inputs/text-inputs.component';
 import { StepperComponent } from './components/stepper/stepper.component';
@@ -28,6 +28,7 @@ import { RouterModule } from '@angular/router';
     PaginationModule.forRoot(),
     CarouselModule.forRoot(),
     ReactiveFormsModule,
+    FormsModule,
     BsDropdownModule.forRoot(),
     CdkStepperModule,
     RouterModule

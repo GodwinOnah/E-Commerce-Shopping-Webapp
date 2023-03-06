@@ -1,38 +1,26 @@
 <div *ngIf="productDetails" class="d-flex justify-content-center background" 
-    style="width: 80%; height:100%; margin-left:10%; margin-top:15%">
-        
-    <div class="d-flex flex-column align-items-center" style="width:150%;">
-
-       
+    style="width: 80%; height:100%; margin-left:10%; margin-top:15%">       
+    <div class="d-flex flex-column align-items-center" style="width:150%;">      
         <marquee  direction="left" ><div class="d-flex  w-auto" style="color: blue; font-weight: bold; font-size: larger;">
             <h5 *ngIf="quantityInBasket>1">
-                <strong>{{quantityInBasket}} of this item are already in your basket</strong>
-               
+                <strong>{{quantityInBasket}} of this item are already in your basket</strong>             
             </h5>
-
             <h5> <ng-container *ngIf="quantityInBasket==1"
                 ><strong>{{quantityInBasket}} of this item is already in your basket</strong></ng-container>
-            </h5>
-           
+            </h5>        
                 <h5> <ng-container *ngIf="quantityInBasket==0"
                     ><strong>This item is not in your basket</strong></ng-container>
-                </h5>
-            
+                </h5>          
             </div>
         </marquee>
-       
-
         <div class="row">
-
-                <div class="col-9 align-items-center">
+                <div class="col-8 align-items-center" >
                     <img src={{productDetails.prodPicture}} class="card-img-top img-fluids" height="100%" 
-                    width="150%" alt={{productDetails.prodName}}>
-                </div>
-                
-                <div class="col-3 mt-5">
+                    width="150%" style="margin-left:5px ; border-radius: 20px;" alt={{productDetails.prodName}}>
+                </div>               
+                <div class="col-4 mt-5">
                     <h5 style="font-weight: bold; color:blue;">DETAILS</h5>
-                    <p>{{productDetails.prodDescription}}</p>
-                   
+                    <p>{{productDetails.prodDescription}}</p>                  
                 </div>
         </div>
 <hr>
@@ -61,8 +49,7 @@
                         </td>
                     </tr>
                 </table>   
-            </div>
-                         
+            </div>                        
                 <div class="btn-order"> 
                 <button  
                 (click)="AddItem()"
@@ -71,10 +58,8 @@
                 style="color:black; font-size:120%; padding: 10px; border-color: black;">
                     <strong>{{ButtonTxt}}</strong>
                 </button>
-
             </div>
          </div>
-
     </div>
 </div>
 
