@@ -9,6 +9,7 @@ import { CheckoutDeliveryComponent } from './checkouts/checkout-delivery/checkou
 import { CheckoutReviewComponent } from './checkouts/checkout-review/checkout-review.component';
 import { CheckoutPaymentComponent } from './checkouts/checkout-payment/checkout-payment.component';
 import { SuccessComponent } from './success/success.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -26,6 +27,7 @@ import { SuccessComponent } from './success/success.component';
     CommonModule,
     CheckoutRoutingModule,
     ProdsharemodModule,
+    RouterModule
     
 
 
