@@ -112,5 +112,12 @@ margin-top: 50%;
     text-decoration: none;
  }
 
+ .list-group-item{
+    &:not(.active):hover{
+        color: red;
+        background-color: yellow;
+    }
+ }
+
 
 

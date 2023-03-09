@@ -25,9 +25,9 @@ export class CheckoutPaymentComponent implements OnInit{
   cardNumber?:StripeCardNumberElement;
   cardExpiry?:StripeCardExpiryElement;
   cvc?:StripeCardCvcElement;
-  cardNumberComplet=false;
-  cardExpiryComplet=false;
-  cvcComplet=false;
+  cardNumberComplete=false;
+  cardExpiryComplete=false;
+  cvcComplete=false;
   cardErrors:any;
   loading=false;
 
@@ -47,7 +47,7 @@ export class CheckoutPaymentComponent implements OnInit{
       this.cardNumber = elements.create('cardNumber');
       this.cardNumber.mount(this.cardNumberElement?.nativeElement);
       this.cardNumber.on('change',event=>{
-        this.cardNumberComplet=event.complete;
+        this.cardNumberComplete=event.complete;
         if(event.error)
             this.cardErrors=event.error.message;
         else{this.cardErrors=null}
@@ -55,27 +55,27 @@ export class CheckoutPaymentComponent implements OnInit{
       this.cardExpiry = elements.create('cardExpiry');
       this.cardExpiry.mount(this.cardExpiryElement?.nativeElement);
       this.cardExpiry.on('change',event=>{
-        this.cardExpiryComplet=event.complete;
+        this.cardExpiryComplete=event.complete;
         if(event.error)
             this.cardErrors=event.error.message;
         else{this.cardErrors=null}
       })
-      this.cvc= elements.create('cardCvc');
+      this.cvc = elements.create('cardCvc');
       this.cvc.mount(this.cvcElement?.nativeElement);
       this.cvc.on('change',event=>{
-        this.cvcComplet=event.complete;
+        this.cvcComplete = event.complete;
         if(event.error)
-            this.cardErrors=event.error.message;
-        else{this.cardErrors=null}
+            this.cardErrors = event.error.message;
+        else{this.cardErrors = null}
       })
     }
    })
   }
 
-  paymentIsComplete(){
-    this.checkOutForm.get('paymentForm')?.valid
-    &&this.cardNumberComplet&&this.cardExpiryComplet
-    &&this.cvcComplet
+  get paymentIsComplete(){
+   return this.checkOutForm.get('paymentForm')?.valid
+    && this.cardNumberComplete && this.cardExpiryComplete
+    && this.cvcComplete
   }
 
   
