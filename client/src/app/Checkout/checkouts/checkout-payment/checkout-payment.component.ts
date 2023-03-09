@@ -47,7 +47,7 @@ export class CheckoutPaymentComponent implements OnInit{
       this.cardNumber = elements.create('cardNumber');
       this.cardNumber.mount(this.cardNumberElement?.nativeElement);
       this.cardNumber.on('change',event=>{
-        this.cardNumberComplete=event.complete;
+        this.cardNumberComplete = event.complete;
         if(event.error)
             this.cardErrors=event.error.message;
         else{this.cardErrors=null}
@@ -55,7 +55,7 @@ export class CheckoutPaymentComponent implements OnInit{
       this.cardExpiry = elements.create('cardExpiry');
       this.cardExpiry.mount(this.cardExpiryElement?.nativeElement);
       this.cardExpiry.on('change',event=>{
-        this.cardExpiryComplete=event.complete;
+        this.cardExpiryComplete = event.complete;
         if(event.error)
             this.cardErrors=event.error.message;
         else{this.cardErrors=null}
@@ -85,10 +85,9 @@ export class CheckoutPaymentComponent implements OnInit{
     const basket = this.basketService.CurrentBasket();
     try{
       const createdOrder = await this.CreateOrder(basket);
-       console.log(createdOrder);
       const paymentResult= await this.ConfirmPaymentUsingStripe(basket);
       if(paymentResult.paymentIntent){
-            this.basketService.RemoveAllItemsInBasket();
+            this.basketService.DeleteBasket(basket);
             const navigationExtras :NavigationExtras={state:createdOrder};
             this.router.navigate(['Checkout/success'],navigationExtras);
           }
@@ -109,7 +108,8 @@ export class CheckoutPaymentComponent implements OnInit{
    
   private async ConfirmPaymentUsingStripe(basket: IBasket | null) {
     if (!basket)throw new Error('basket is null');
-    const result =  this.stripe?.confirmCardPayment(basket.clientSecrete,{
+    console.log(basket.clientSecret);
+    const result =  this.stripe?.confirmCardPayment(basket.clientSecret,{
       payment_method:{
         card:this.cardNumber,
         billing_details:{

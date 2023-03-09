@@ -4,7 +4,7 @@ import { Address } from './User';
 export interface IBasket {
   id: string;
   items: IBasketItem[];
-  clientSecrete?: string;
+  clientSecret?: string;
   paymentItentId?: string;
   deliveryId?: number;
   deliveryPrice:number
