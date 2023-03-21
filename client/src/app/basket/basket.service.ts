@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { isNgTemplate } from '@angular/compiler';
-import {Injectable } from '@angular/core';
+import {Injectable, OnInit } from '@angular/core';
 import { BehaviorSubject, map } from 'rxjs';
 import { environment } from 'src/environment/environment';
+import { CheckoutServiceService } from '../Checkout/checkout-service.service';
 import { Basket, IBasket, IBasketItem, TotalBasketPrice } from '../prodsharemod/models/IBasket';
 import { IDelivery } from '../prodsharemod/models/IDelivery';
 import { IProduct } from '../prodsharemod/models/IProduct';
@@ -12,18 +13,18 @@ import { IProduct } from '../prodsharemod/models/IProduct';
 })
 
 
-export class BasketService {
+export class BasketService{
   baseUrl = environment.apiUrl;
   private basketSource = new BehaviorSubject<IBasket|null>(null);
   private totalBasketPriceSource = new BehaviorSubject<TotalBasketPrice|null>(null);
   basket$  = this.basketSource.asObservable();
   totalBasketPrice$  = this.totalBasketPriceSource.asObservable();
+  delivery:IDelivery[] =[];
  
 
   constructor(private http:HttpClient) {
    }
-
-
+  
   GetBasket(id:string){
     return this.http.get<IBasket>(this.baseUrl+'basket?id='+id).subscribe({
     next: basket =>{
@@ -99,6 +100,7 @@ private AddOrUpdate(items: IBasketItem[], itemToAdd: IBasketItem, quantity: numb
 
 private CreateBasket(): IBasket {
     const basket = new Basket();
+    basket.deliveryPrice = 1;
     localStorage.setItem('basket_id',basket.id);//computer local storage set this id for load after refereshing or return back  
     return basket;
   }

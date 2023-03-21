@@ -5,13 +5,13 @@ import { Address } from './User';
 
 
 export  interface IOrders 
-    {   id:number  
+    {   productId:number  
         Email : string
         delivery : string 
         shippingAddress :IOrderAddress
         itemOrdered : IItemOrdered[] 
         orderStatus : string 
-        oderDate : string  
+        orderDate : string  
         subTotal : number
         total : number 
         paymentIntentId : string   

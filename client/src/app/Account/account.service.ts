@@ -21,25 +21,27 @@ export class UserAccountService {
     private router : Router,
     private toastr : ToastrService) { }
 
-  LoadPreviousUser(token:string|null){
-
+  LoadPreviousUser(token:string){
+// console.log(token)
      if(token===null)
      {
       this.AppUserSource.next(null);
       return of(null); //return null observable
      }
-        let headers = new HttpHeaders();
-        headers = headers.set('Authorization', `Bearer ${token}`);
-        return this.http.post<User>(this.baseUrl+'user',{headers})
+        // let headers = new HttpHeaders({'Content-Type':'application/json; charset=utf-8'});
+        // console.log(token)
+        // headers = headers.set('Authorization', `Bearer ${token}`);
+        // console.log(headers)
+        return this.http.get<User>(this.baseUrl+'user',
+        {headers:new HttpHeaders({'Authorization': 'Bearer '+token})})
         .pipe(
           map(
             user=>{
-              if(user){
-                localStorage.setItem("token",user.Token)
+              // console.log(user)
+                localStorage.setItem("token",user.token)
                 this.AppUserSource.next(user);
-                return user;
-              }
-              else{return null}    
+                
+                
           }))
   }
 
@@ -49,8 +51,8 @@ export class UserAccountService {
           .pipe(
             map(
               user=>{
-                    localStorage.setItem('token',user.Token)
-                  this.AppUserSource.next(user);             
+                    localStorage.setItem('token',user.token)
+                    this.AppUserSource.next(user);             
             }))
       }
 
@@ -60,7 +62,7 @@ export class UserAccountService {
           .pipe(
             map(
               user=>{
-                    localStorage.setItem('token',user.Token)
+                    localStorage.setItem('token',user.token)
                    this.AppUserSource.next(user);          
             }))
   

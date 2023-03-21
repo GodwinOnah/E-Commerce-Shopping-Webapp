@@ -16,7 +16,7 @@ export class CheckoutComponent implements OnInit{
     private basketService : BasketService){}
 
   ngOnInit(): void {
-    // this.AttachAddress();   
+    this.AttachAddress();   
     this.AttachDelivery();
   
   }
@@ -34,7 +34,7 @@ checkOutForm = this.fb.group({
       }),
 
       deliveryForm :  this.fb.group({
-        delivery : ['',Validators.required]
+        delivery : ['']
       }),
 
       paymentForm :  this.fb.group({
@@ -45,7 +45,7 @@ checkOutForm = this.fb.group({
     AttachAddress(){
       this.accountService.GetAddress().subscribe({
         next: address => {
-          address && this.checkOutForm.get('addressForm')?.patchValue(address)
+         address && this.checkOutForm.get('addressForm')?.patchValue(address)
         }
       })
     }
