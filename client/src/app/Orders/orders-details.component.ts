@@ -33,7 +33,7 @@ export class OrdersDetailsComponent implements OnInit{
     id && this.orderService.  GetOrdersById(id).subscribe({
       next: order => {
         this.order = order;
-        this.breadcrumbService.set('@OrderDetailed', `Order# ${order.id} - ${order.orderStatus}`);
+        this.breadcrumbService.set('@OrderDetailed', `Order# ${order.productId} - ${order.orderStatus}`);
 } })
 }
   }

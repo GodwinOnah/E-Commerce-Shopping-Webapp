@@ -10,12 +10,13 @@ import { CheckoutServiceService } from '../../checkout-service.service';
   styleUrls: ['./checkout-delivery.component.scss']
 })
 export class CheckoutDeliveryComponent implements OnInit{
-  @Input() deliveryForm?: FormGroup;
-  deliverys : IDelivery[]=[];
+  @Input() deliveryForm? : FormGroup;
+  deliverys : IDelivery[] = [];
 
  
   
-  constructor(private checkoutService: CheckoutServiceService, private basketService : BasketService){}
+  constructor(private checkoutService : CheckoutServiceService, public basketService 
+    : BasketService){}
 
   ngOnInit(): void {
     this.checkoutService.GetDeliveryMethod().subscribe(
@@ -29,5 +30,5 @@ export class CheckoutDeliveryComponent implements OnInit{
   setDeliveryPrice(delivery:IDelivery){
       this.basketService.SetDelivery(delivery);
   }
-
+ 
 }

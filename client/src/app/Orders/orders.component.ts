@@ -20,8 +20,8 @@ export class OrdersComponent implements OnInit{
 
   GetOrders(){
     this.orderservice.GetOrders().subscribe({
-      next: oders=>{
-        this.orders=oders
+      next: orders=>{ console.log(orders)
+        this.orders=orders
       }
     })
   }
