@@ -1,5 +1,7 @@
 # BagShop-Client-App
 
+![alt text](file:///Users/godwinonah/Desktop/Screenshot%202023-02-26%20at%2012.15.12.png)
+
 ## About
 This project is about the build of a fronend client application that can search, display, order bag items.
 
