@@ -16,18 +16,10 @@ export class OrdersService {
   constructor(private http:HttpClient) { }
 
   GetOrders(){
-    return this.http.get<IOrders[]>(this.baseUrl+'order').pipe(map(
-     orders =>{
-    return orders;
-  }
-  ))
+    return this.http.get<IOrders[]>(this.baseUrl+'order')
   }
 
   GetOrdersById(id:number){
-    return this.http.get<IOrders>(this.baseUrl+'order/'+id).pipe(map(
-     order =>{
-      return order;
-    }
-    ))
+    return this.http.get<IOrders>(this.baseUrl+'order/'+id)
   }
 }

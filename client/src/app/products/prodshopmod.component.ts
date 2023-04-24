@@ -39,7 +39,7 @@ export class ProdshopmodComponent implements OnInit {
   GetProducts(){
 
   this.prodshopmodService.getProducts().subscribe({
-    next: response=>{  
+    next: response=>{ 
            this.products=response.data; 
            this.totalPageNumber=response.count;
           },

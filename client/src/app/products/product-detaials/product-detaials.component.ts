@@ -40,10 +40,7 @@ export class ProductDetaialsComponent implements OnInit{
               this.breadcrumbService.set('@productName',product.prodName);
               this.basketService.basket$.pipe(take(1)).subscribe({
                 next : basket=>{
-                  const item = basket?.items.find ( i=>i.productId === id )
-                  console.log(item)
-                  console.log(this.quantity)
-
+                  const item = basket?.items.find ( i=>i.productId === id )               
                               if(item){
                                 this.quantity = item.quantity;
                                 this.quantityInBasket=item.quantity

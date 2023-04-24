@@ -32,15 +32,23 @@ export class UserAccountService {
         // console.log(token)
         // headers = headers.set('Authorization', `Bearer ${token}`);
         // console.log(headers)
+        let headers = new HttpHeaders();
+        console.log(headers);
+      
+        headers = headers.set('Authorization', `Bearer ${token}`);
+        console.log(headers);
+        console.log(token);
         return this.http.get<User>(this.baseUrl+'user',
-        {headers:new HttpHeaders({'Authorization': 'Bearer '+token})})
+       {headers})
         .pipe(
           map(
-            user=>{
+            user=>{ 
+              if(user){
               // console.log(user)
                 localStorage.setItem("token",user.token)
                 this.AppUserSource.next(user);
-                
+                return user;
+            } else{return null}
                 
           }))
   }
@@ -51,9 +59,10 @@ export class UserAccountService {
           .pipe(
             map(
               user=>{
+                
                     localStorage.setItem('token',user.token)
                     this.AppUserSource.next(user);             
-            }))
+            } ))
       }
 
     Register(value:any){
@@ -63,7 +72,7 @@ export class UserAccountService {
             map(
               user=>{
                     localStorage.setItem('token',user.token)
-                   this.AppUserSource.next(user);          
+                    this.AppUserSource.next(user);          
             }))
   
 }
@@ -85,7 +94,7 @@ export class UserAccountService {
     }
 
     UpdateAddress(address:Address){
-      return this.http.put<Address>(this.baseUrl+'user/address',address)
+      return this.http.put(this.baseUrl+'user/address',address)
     }
 
 }
