@@ -23,14 +23,14 @@ export class CheckoutComponent implements OnInit{
 
 checkOutForm = this.fb.group({
       addressForm :  this.fb.group({
-          FirstName: ['',Validators.required],
-          MiddleName: [''],
-          LastName: ['',Validators.required],
-          Street: ['',Validators.required],
-          City: ['',Validators.required],
-          Country: ['',Validators.required],
-          Zipcode: ['',Validators.required],
-          Phone: ['',Validators.required],
+          firstName: ['',Validators.required],
+          middleName: [''],
+          lastName: ['',Validators.required],
+          street: ['',Validators.required],
+          city: ['',Validators.required],
+          country: ['',Validators.required],
+          zipcode: ['',Validators.required],
+          phone: ['',Validators.required],
       }),
 
       deliveryForm :  this.fb.group({
@@ -45,6 +45,7 @@ checkOutForm = this.fb.group({
     AttachAddress(){
       this.accountService.GetAddress().subscribe({
         next: address => {
+          console.log(address)
          address && this.checkOutForm.get('addressForm')?.patchValue(address)
         }
       })

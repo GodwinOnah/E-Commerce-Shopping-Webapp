@@ -125,7 +125,8 @@ SetDelivery(delivery:IDelivery){
   const basket = this.CurrentBasket();
   if(basket){
      basket.deliveryPrice = delivery.delPrice;
-     basket.deliveryId = delivery.productId;    
+     basket.deliveryId = delivery.productId; 
+  
      this.SetBasket(basket);
 }
 }

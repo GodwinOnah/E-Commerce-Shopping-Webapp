@@ -1,7 +1,7 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { NavigationExtras, Route, Router } from '@angular/router';
-import { loadStripe, Stripe, StripeCardCvcElement, StripeCardExpiryElement, StripeCardNumberElement } from '@stripe/stripe-js';
+import { loadStripe, ShippingAddress, Stripe, StripeCardCvcElement, StripeCardExpiryElement, StripeCardNumberElement } from '@stripe/stripe-js';
 import { ToastrService } from 'ngx-toastr';
 import { firstValueFrom } from 'rxjs';
 import { BasketService } from 'src/app/basket/basket.service';
@@ -123,11 +123,12 @@ export class CheckoutPaymentComponent implements OnInit{
   private async CreateOrder(basket: IBasket |null) {
     if (!basket)throw new Error('basket is null');
     const orderToCreate = this.GetOrderDetails(basket);
-    return firstValueFrom(this.checkOutService.CreateAnOrder(orderToCreate));
+    var x=firstValueFrom(this.checkOutService.CreateAnOrder(orderToCreate));
+    return x;
   }
   private GetOrderDetails(basket: IBasket):IOrderToCreate {
     const deliveryId = this.checkOutForm?.get('deliveryForm')?.get('delivery')?.value;
-    const shippingAddress = this.checkOutForm?.get('addressForm')?.value as Address;
+    const shippingAddress = this.checkOutForm?.get('addressForm')?.value as ShippingAddress;
     if(!deliveryId && !shippingAddress)throw new Error('problem with basket');;
     return{
       basketId:basket.id,

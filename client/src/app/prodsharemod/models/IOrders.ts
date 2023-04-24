@@ -1,6 +1,6 @@
 import {IDelivery}  from './IDelivery';
 import {IItemOrdered}  from './IItemOrdered';
-import { IOrderAddress } from './IOrderAddress';
+// import { IOrderAddress } from './IOrderAddress';
 import { Address } from './User';
 
 
@@ -8,7 +8,7 @@ export  interface IOrders
     {   productId:number  
         Email : string
         delivery : string 
-        shippingAddress :IOrderAddress
+        shippingAddress :Address
         itemOrdered : IItemOrdered[] 
         orderStatus : string 
         orderDate : string  
