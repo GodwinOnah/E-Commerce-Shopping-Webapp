@@ -31,7 +31,7 @@ export class RegisterComponent {
           Country: ['',Validators.required],
           Zipcode: ['',Validators.required],
           Phone: ['',Validators.required],
-          Email: ['',[Validators.required, Validators.email]],
+          Email: ['',[Validators.required, Validators.email],[this.validateEmail()]],
           Password: ['',[Validators.required,Validators.pattern(this.RegularExpression)]],
           // ConfirmPassword: ['',[Validators.required]]
   });
@@ -41,7 +41,7 @@ export class RegisterComponent {
     this.accountService.Register(this.registerForm.value).subscribe({
       next: ()=>{
          this.toastr.success("Registered succecssfully");
-         this.router.navigateByUrl('/products')},
+         this.router.navigateByUrl('/account/login')},
       error : error => { 
         this.toastr.success("Not Registered");
         this.errors = error.errors  } 
