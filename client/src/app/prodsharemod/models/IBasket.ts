@@ -29,7 +29,7 @@ export class Basket implements IBasket {
 
 
 export interface TotalBasketPrice {
-       deliveryPrice: number
+       shippingPrice: number
        subTotal: number
        total: number
      
