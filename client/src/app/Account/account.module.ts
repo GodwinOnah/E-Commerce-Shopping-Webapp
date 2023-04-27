@@ -5,17 +5,20 @@ import { ProdsharemodModule } from '../prodsharemod/prodsharemod.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './Register/register.component';
+import {  MatDialogModule } from '@angular/material/dialog';
 
 
 
 @NgModule({
   declarations: [LoginComponent,
-    RegisterComponent],
+    RegisterComponent,
+   ],
   imports: [
     CommonModule,
     UserAccountRoutingModule,
     ReactiveFormsModule,
-    ProdsharemodModule
+    ProdsharemodModule,
+    MatDialogModule
   ]
 })
 export class UserAccountModule { }

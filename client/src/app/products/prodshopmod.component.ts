@@ -13,12 +13,12 @@ import { UserAccountService } from '../Account/account.service';
   styleUrls: ['./prodshopmod.component.scss']
 })
 export class ProdshopmodComponent implements OnInit {
-  @ViewChild('search',{static:false}) searchText: ElementRef;
-  products:IProduct[];
-  brands:IBrands[];
-  productTypes:IBrands[];
+  @ViewChild('search') searchText?: ElementRef;
+  products:IProduct[]=[];
+  brands:IBrands[]=[];
+  productTypes:IBrands[]=[];
   shopParameters: ShopParameters;
-  totalPageNumber:number;
+  totalPageNumber=0;
   sortingOptions=[
     {name:'Alphabeltical', value:'name'},
     {name:'Price: High to Low', value:'priceDecrease'},
@@ -37,9 +37,9 @@ export class ProdshopmodComponent implements OnInit {
   }
 
   GetProducts(){
-
-  this.prodshopmodService.getProducts().subscribe({
-    next: response=>{ 
+      this.prodshopmodService.getProducts().subscribe({
+         next: response=>{ 
+          console.log(response)
            this.products=response.data; 
            this.totalPageNumber=response.count;
           },
@@ -85,9 +85,9 @@ export class ProdshopmodComponent implements OnInit {
     this.GetProducts();
 }
 
-SortedProducts(sort:string){
+SortedProducts(event:any){
   const params = this.prodshopmodService.getShopParams();
-  params.sort=sort;
+  params.sort=event.target.value;
   this.prodshopmodService.setShopParams(params);
   this.shopParameters=params;
 this.GetProducts();
@@ -95,7 +95,7 @@ this.GetProducts();
 
 PageChange(event:any){
   const params = this.prodshopmodService.getShopParams();
-if(params.pageNumber!=event){ 
+if(params.pageNumber!==event){ 
   params.pageNumber=event;
   this.prodshopmodService.setShopParams(params);
   this.shopParameters=params;
@@ -105,7 +105,8 @@ this.GetProducts();
 
 Search(){
   const params = this.prodshopmodService.getShopParams();
-  params.search=this.searchText.nativeElement.value;
+  console.log(22)
+  params.search=this.searchText?.nativeElement.value;
   params.pageNumber=1;
   this.prodshopmodService.setShopParams(params);
   this.shopParameters=params;
@@ -113,6 +114,7 @@ this.GetProducts();
 }
 
 ResetSearch(){
+  if (this.searchText)
   this.searchText.nativeElement.value='';
   this.shopParameters =new ShopParameters();
   this.prodshopmodService.setShopParams (this.shopParameters);

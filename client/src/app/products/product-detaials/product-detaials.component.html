@@ -32,7 +32,10 @@
                         <td class="ay"> <i (click)="ReduceQuantity()" 
                             class="fa fa-minus-circle text-primary m-2" 
                             style="cursor: pointer; font-size:2.5em;"></i> 
-                            <strong  style="font-size:2.5em; margin: 0 20px;"> {{quantity}}</strong>
+                            <strong  style="font-size:2.5em; margin: 0 20px;">
+                                <input type="number" [(ngModel)]="quantity" (keyup.enter)="AddItem()" 
+                                style="font-size:0.3em; margin: 0 20px;"/>
+                             </strong>
                             <i (click)=" IncreaseQuantity()" 
                            class="fa fa-plus-circle text-primary m-2" 
                            style="cursor: pointer; font-size:2.5em;"></i>
@@ -55,7 +58,7 @@
                 (click)="AddItem()"
                 [disabled]="quantity == quantityInBasket" 
                 class="btn btn-prodDetails fa fa-shoping-cart" 
-                style="color:black; font-size:120%; padding: 10px; border-color: black;">
+                style="color:black; font-size:120%; padding: 10px; ">
                     <strong>{{ButtonTxt}}</strong>
                 </button>
             </div>

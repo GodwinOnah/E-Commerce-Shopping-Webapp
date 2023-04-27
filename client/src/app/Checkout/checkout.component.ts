@@ -45,7 +45,6 @@ checkOutForm = this.fb.group({
     AttachAddress(){
       this.accountService.GetAddress().subscribe({
         next: address => {
-          console.log(address)
          address && this.checkOutForm.get('addressForm')?.patchValue(address)
         }
       })

@@ -19,20 +19,22 @@
           <li class="nav-item dropdown">
              </li>
          
-        </ul>
-        </div>
        
+            <li>
           <div class=" d-flex ">
             <ng-container *ngIf="(accountservice.AppUser$|async)==null" >
            <div class="log1">
-              <a routerLink="/account/register" class="nav-link" >Register</a>
-           </div>
-           
+            <a (click)="openRegDialog()" class="nav-link" >Register</a>
+            </div>
             <div class="log2">
-              <a routerLink="/account/login" class="nav-link" >Login</a>
+              <a (click)="openLoginDialog()" class="nav-link" >Login</a>
             </div>
 
           </ng-container  >
+        </div>
+        </li>
+        </ul>
+      </div>
 
         <ng-container *ngIf="(accountservice.AppUser$|async) as user">
           <div class="btn-group" dropdown>
@@ -63,7 +65,4 @@
             </div>
  
           </div>
-        
-        
-    </div>
   </nav>

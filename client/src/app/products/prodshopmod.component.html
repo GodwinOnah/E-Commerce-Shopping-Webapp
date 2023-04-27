@@ -95,7 +95,7 @@
     <section class="col-2 right-section-search">
       <ng-container *ngIf="products">
           <form class="d-flex ml-3 search" >
-            <input (keyup.enter)="Search()" class="form-control me-2 search-text" #search  placeholder="Products" >
+            <input (keyup.enter)="Search()" type="text" class="form-control me-2 search-text" #search  placeholder="Products" >
             <button (click)="Search()" class="btn btn-outline-success bg-primary text-light search-btn">Search</button>
             <button (click)="ResetSearch()" class="btn btn-outline-success bg-primary text-light search-btn" >Reset</button>
           </form>
@@ -103,9 +103,9 @@
 
        <!-- Sort-->
       <h6>Sort Products</h6>
-      <select class="form-select" (click)="SortedProducts($event.target.value)">
+      <select class="form-select" (change)="SortedProducts($event)">
         <option *ngFor="let item of sortingOptions"
-        [selected]="this.shopParameters.sort==item.value"
+        [selected]="shopParameters.sort==item.value"
         [value]="item.value"
         >{{item.name}}</option>
       </select>

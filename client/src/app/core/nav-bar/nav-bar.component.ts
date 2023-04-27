@@ -2,6 +2,11 @@ import { Component } from '@angular/core';
 import { UserAccountService } from 'src/app/Account/account.service';
 import { BasketService } from 'src/app/basket/basket.service';
 import { IBasketItem } from 'src/app/prodsharemod/models/IBasket';
+import {  MatDialog } from '@angular/material/dialog';
+import { LoginComponent } from 'src/app/Account/login/login.component';
+import { RegisterComponent } from 'src/app/Account/Register/register.component';
+
+
 
 @Component({
   selector: 'app-nav-bar',
@@ -11,8 +16,11 @@ import { IBasketItem } from 'src/app/prodsharemod/models/IBasket';
 export class NavBarComponent {
 
  start=0;
+ login: boolean = true
 
-  constructor(public basketService:BasketService, public accountservice:UserAccountService){
+  constructor(public basketService:BasketService,
+     public accountservice:UserAccountService,
+     private matdialog: MatDialog){
 
   }
 
@@ -24,6 +32,19 @@ export class NavBarComponent {
   Logout(){
 
     this.accountservice.Logout();
+  }
+
+  openLoginDialog(){
+    this.matdialog.open(LoginComponent,
+      {height: '50%',
+    width: '50%'});
+  }
+  openRegDialog(){
+    this.login = false;
+    this.matdialog.open(RegisterComponent,
+      {height: '80%',
+    width: '50%'});
+    
   }
 
 }

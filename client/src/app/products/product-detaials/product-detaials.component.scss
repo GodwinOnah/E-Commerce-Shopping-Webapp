@@ -8,10 +8,10 @@
     height: 100px;
     margin: 10px;
     border-radius: 40px ;
-    border: solid black;
-   
-  
+    border: solid black 10px;
+      
 }
+
 .btn-order{
     margin-top: 50px;
     font-size: 20px;
@@ -21,6 +21,7 @@
 .btn-quantity-name{
     font-weight: bolder;
     font-size: 30px;
+    margin-top: 10px;
 }
 .btn-quantity-number{
     font-weight: bolder;

@@ -15,19 +15,18 @@ export class ProdshopmodService {
   products : IProduct[]=[];
   brands : IBrands[] = [];
   types : IProductTypes[]=[];
-  pagination? :IProductPagination;
+  pagination? :IProductPagination<IProduct[]>;
   shopParams = new ShopParameters();
-  cashe = new Map<string,IProductPagination>;
+  cashe = new Map<string,IProductPagination<IProduct[]>>;
   
 
   constructor(private http: HttpClient) {
    }
 
-   getProducts(useCashe=true): Observable<IProductPagination>{
-
+  getProducts(useCashe=true): Observable<IProductPagination<IProduct[]>>{
+   
     if(!useCashe) this.cashe = new Map();
-
-    if(this.cashe.size>0&&useCashe){
+    if(this.cashe.size > 0 && useCashe){
       if(this.cashe.has(Object.values(this.shopParams).join('-'))){
         this.pagination = this.cashe.get(Object.values(this.shopParams).join('-'));
         if(this.pagination)return of(this.pagination);
@@ -36,29 +35,21 @@ export class ProdshopmodService {
 
     let params = new HttpParams();
 
-    if(this.shopParams.brandId!=0){
+      if(this.shopParams.brandId!== 0)
       params = params.append('brandId',this.shopParams.brandId.toString())
-    }
-
-    if(this.shopParams.typeId != 0){
+      if(this.shopParams.typeId !== 0)
       params = params.append('typeId',this.shopParams.typeId.toString())
-    }
-
-
-    if(this.shopParams.search){
+      if(this.shopParams.search)
       params = params.append('search',this.shopParams.search)
-    }
-
       params = params.append('sort',this.shopParams.sort)
       params = params.append('pageIndex',this.shopParams.pageNumber.toString())
-      params = params.append('pageIndex',this.shopParams.pageSize.toString())
-      
-    
-
-    return this.http.get<IProductPagination>
+      params = params.append('pageSize',this.shopParams.pageSize.toString())
+   
+      return this.http.get<IProductPagination<IProduct[]>>
     (this.url+'products',{params})
     .pipe(map(
       response =>{ 
+        // console.log(response)
         this.cashe.set(Object.values(this.shopParams).join('-'),response);
         this.pagination = response;
         return response;
@@ -81,13 +72,13 @@ export class ProdshopmodService {
       return { ...accumulator,...paginationResult.data
         .find(x=>x.productId==productId)
       }}, {} as IProduct)
-    if(Object.keys(product).length != 0) return of(product);
-    return this.http.get<IProduct>(this.url+"products/"+productId)
+    if(Object.keys(product).length !== 0) return of(product);
+    return this.http.get<IProduct>(this.url+'products/'+productId)
    }
 
    getBrands(){
     if(this.brands.length>0) return of(this.brands);
-    return this.http.get<IBrands[]>(this.url+"products/brands").pipe(map(
+    return this.http.get<IBrands[]>(this.url+'products/brands').pipe(map(
       brands =>
         this.brands=brands  
       ))
@@ -95,7 +86,7 @@ export class ProdshopmodService {
 
    getProductTypes(){
     if(this.types.length>0) return of(this.types);
-    return this.http.get<IProductTypes[]>(this.url+"products/types").pipe(map(
+    return this.http.get<IProductTypes[]>(this.url+'products/types').pipe(map(
       types =>
         this.types=types 
       ))
