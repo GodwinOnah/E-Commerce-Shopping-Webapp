@@ -4,7 +4,7 @@
 }
 .btn-prodDetails{
     background-color: yellow;
-    width: 120px;
+    width: 200px;
     height: 100px;
     margin: 10px;
     border-radius: 40px ;
@@ -12,17 +12,21 @@
       
 }
 
+.btn-prodDetails:hover{background-color: red;}
+.btn-pbasket:hover{background-color: green;}
+
 .btn-order{
     margin-top: 50px;
     font-size: 20px;
     font-weight: bolder;
     margin-bottom: 200px;
 }
-.btn-quantity-name{
-    font-weight: bolder;
-    font-size: 30px;
+.totalPrice{  
     margin-top: 10px;
 }
+
+.changeQntyBtn:hover{background-color: black; border-radius: 10px;}
+
 .btn-quantity-number{
     font-weight: bolder;
     margin: 20px;
@@ -43,3 +47,16 @@
     text-align: center;
     color:black;
 }
+
+tr{
+    line-height:40px;
+}
+
+table{
+    font-size: 30px;
+    font-weight: bolder;
+    margin: 10px;
+}
+
+.price{margin-bottom: 10px;
+    margin-top: 10px;}

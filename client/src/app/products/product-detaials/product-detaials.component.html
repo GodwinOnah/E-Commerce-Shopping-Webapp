@@ -19,7 +19,7 @@
                     width="150%" style="margin-left:5px ; border-radius: 20px;" alt={{productDetails.prodName}}>
                 </div>               
                 <div class="col-4 mt-5">
-                    <h5 style="font-weight: bold; color:blue;">DETAILS</h5>
+                    <h5 style="font-weight: bold; color:blue;">What you're buying</h5>
                     <p>{{productDetails.prodDescription}}</p>                  
                 </div>
         </div>
@@ -30,23 +30,27 @@
                     <tr>
                         <td class="ax"> Quantity:</td>
                         <td class="ay"> <i (click)="ReduceQuantity()" 
-                            class="fa fa-minus-circle text-primary m-2" 
+                            class="fa fa-minus-circle text-primary m-2 changeQntyBtn" 
                             style="cursor: pointer; font-size:2.5em;"></i> 
-                            <strong  style="font-size:2.5em; margin: 0 20px;">
+                        </td>
+                            <td><strong  style="font-size:2.5em; margin: 0 20px;">
                                 <input type="number" [(ngModel)]="quantity" (keyup.enter)="AddItem()" 
                                 style="font-size:0.3em; margin: 0 20px;"/>
                              </strong>
+                            </td>
+
+                        <td>
                             <i (click)=" IncreaseQuantity()" 
-                           class="fa fa-plus-circle text-primary m-2" 
+                           class="fa fa-plus-circle text-primary m-2 changeQntyBtn" 
                            style="cursor: pointer; font-size:2.5em;"></i>
                         </td>
                     </tr>
-                    <tr class="btn-quantity-name">
+                    <tr class="price">
                         <td class="ax"> Price:</td>
-                        <td class="ay">  <strong>£{{productDetails.prodPrice}}</strong>
+                        <td class="ay align-items-center">  <strong>£{{productDetails.prodPrice}}</strong>
                         </td>
                     </tr>
-                    <tr class="btn-quantity-name">
+                    <tr class="totalPrice">
                         <td class="ax"> Total Price:</td>
                         <td class="ay"> <strong>£{{productDetails.prodPrice*quantity}}</strong>
                         </td>
@@ -61,6 +65,13 @@
                 style="color:black; font-size:120%; padding: 10px; ">
                     <strong>{{ButtonTxt}}</strong>
                 </button>
+                <div class="btn-order"> 
+                    <button  routerLink="/basket"
+                    class="btn btn-prodDetails btn-pbasket fa fa-shoping-cart" 
+                    style="color:black; font-size:120%; padding: 10px; ">
+                        <strong>Basket</strong>
+                    </button>
+                </div>
             </div>
          </div>
     </div>
