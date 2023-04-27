@@ -9,6 +9,7 @@ import { ServerErrorComponent } from './ErrorHandlers/server-error/server-error.
 import {ToastrModule} from 'ngx-toastr'
 import { ProdshopmodModule } from '../products/prodshopmod.module';
 import { ProdsharemodModule } from '../prodsharemod/prodsharemod.module';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 
@@ -19,6 +20,7 @@ import { ProdsharemodModule } from '../prodsharemod/prodsharemod.module';
     RouterModule,
    ProdsharemodModule,
     BreadcrumbModule,
+    MatDialogModule,
     ToastrModule.forRoot({
                       positionClass:'toast-top',
                       preventDuplicates:true

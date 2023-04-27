@@ -3,6 +3,12 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { UserAccountService } from '../account.service';
+import {  MatDialog } from '@angular/material/dialog';
+import { RegisterComponent } from '../Register/register.component';
+
+
+
+
 
 @Component({
   selector: 'app-login',
@@ -21,7 +27,10 @@ export class LoginComponent {
     private router : Router,
     private accountService:UserAccountService,
     private activatedRoute:ActivatedRoute,
-    private toastr : ToastrService){
+    private toastr : ToastrService,
+    private matdialog:MatDialog
+    
+   ){
 
     this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl']||'/prodshopmod'
 
@@ -44,5 +53,14 @@ export class LoginComponent {
     });
     
   }
+
+  openRegDialog(){
+    this.matdialog.open(RegisterComponent,
+      {height: '80%',
+    width: '50%'});
+  }
+
+
+ 
 
 }

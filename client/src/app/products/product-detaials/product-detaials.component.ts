@@ -14,7 +14,7 @@ import { ProdshopmodService } from '../prodshopmod.service';
 export class ProductDetaialsComponent implements OnInit{
 
   productDetails?:IProduct;
-  quantity=1;
+  quantity:number=1;
   quantityInBasket=0;
 
   constructor(
@@ -77,7 +77,7 @@ export class ProductDetaialsComponent implements OnInit{
   }
 
   ReduceQuantity(){
-    if(this.quantity<=1) return;
+    if(this.quantity<1) return;
     this.quantity--;  
   }
 
