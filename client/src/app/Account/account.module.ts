@@ -6,12 +6,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './Register/register.component';
 import {  MatDialogModule } from '@angular/material/dialog';
+import { ForgotpasswrdComponent } from './forgot_password/forgotpasswrd/forgotpasswrd.component';
 
 
 
 @NgModule({
   declarations: [LoginComponent,
     RegisterComponent,
+    ForgotpasswrdComponent,
    ],
   imports: [
     CommonModule,

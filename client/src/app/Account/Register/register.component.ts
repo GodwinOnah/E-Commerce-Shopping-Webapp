@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { debounceTime, finalize, map, switchMap, take } from 'rxjs';
 import { UserAccountService } from '../account.service';
+import {  MatDialog } from '@angular/material/dialog';
+import { LoginComponent } from '../login/login.component';
 
 @Component({
   selector: 'app-register',
@@ -19,7 +21,8 @@ export class RegisterComponent {
   constructor(private formbuilder:FormBuilder, 
   private accountService:UserAccountService, 
   private router : Router,
-  private toastr : ToastrService){
+  private toastr : ToastrService,
+  private matDialog :MatDialog){
   }
   registerForm = this.formbuilder.group({
           NickName: ['',Validators.required],
@@ -41,7 +44,7 @@ export class RegisterComponent {
     this.accountService.Register(this.registerForm.value).subscribe({
       next: ()=>{
          this.toastr.success("Registered succecssfully");
-         this.router.navigateByUrl('/account/login')},
+         this.openLoginDialog()},
       error : error => { 
         this.toastr.success("Not Registered");
         this.errors = error.errors  } 
@@ -64,6 +67,11 @@ export class RegisterComponent {
           
         
     }
-  
+
+    openLoginDialog(){
+      this.matDialog.open(LoginComponent,
+        {height: '50%',
+      width: '50%'});
+      } 
 
 }

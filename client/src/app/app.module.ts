@@ -13,10 +13,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {  MatDialogModule } from '@angular/material/dialog';
 import { ToastrModule } from 'ngx-toastr';
 
-
 @NgModule({
   declarations: [
     AppComponent,
+   
    
       
   ],

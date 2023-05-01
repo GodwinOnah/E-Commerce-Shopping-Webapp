@@ -25,16 +25,11 @@
 
         <div *ngIf = "control.errors?.['pattern']" 
         class = "invalid-feedback" style = "font-weight:bolder;">
-        Use complex password
+        Try complex password. E.g Abc123@@
         </div>
 
         <div *ngIf = "control.errors?.['emailExists']" 
         class = "invalid-feedback" style = "font-weight:bolder;">
-        Sorry!! Email Already in use by someone
+        Sorry!! This email is already taken!
         </div>
-
-        <!-- <div *ngIf = "control.[].value!=" 
-        class = "invalid-feedback" style = "font-weight:bolder;">
-        Sorry!! Email Already in use by someone
-        </div> -->
 </div>
