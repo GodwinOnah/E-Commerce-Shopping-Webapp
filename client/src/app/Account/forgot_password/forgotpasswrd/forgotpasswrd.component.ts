@@ -2,23 +2,22 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { UserAccountService } from '../account.service';
 import {  MatDialog } from '@angular/material/dialog';
-import { RegisterComponent } from '../Register/register.component';
-
+import { LoginComponent } from '../../login/login.component';
+import { UserAccountService } from '../../account.service';
 
 
 
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-forgotpasswrd',
+  templateUrl: './forgotpasswrd.component.html',
+  styleUrls: ['./forgotpasswrd.component.scss']
 })
-export class LoginComponent {
+export class ForgotpasswrdComponent {
   errors : string[] | null = null;
-  view : boolean = true;
-  changetype : boolean = true;
+
+  password : string = "";
 
   RegularExpression="^(?=(.*[a-z]){1,})(?=(.*[\\d]){1,})(?=(.*[\\W]){1,})(?!.*\\s).{7,30}$";
 
@@ -38,33 +37,36 @@ export class LoginComponent {
 
   }
 
-  loginForm = this.formbuilder.group({
-        Email: ['',[Validators.required]],
-        Password: ['',[Validators.required]]
+  forgotpasswrdForm = this.formbuilder.group({
+        Password1: ['',[Validators.required]],
+        Password2: ['',[Validators.required]]
   });
 
-  onLoginSubmit(){
+  onForgotPassSubmit(){
     // console.log(5);
-    this.accountService.Login(this.loginForm.value).subscribe({
+    
+    var pass1 =this.forgotpasswrdForm.get('Password1')
+    var pass2 =this.forgotpasswrdForm.get('Password2')
+
+    if(pass1!=pass2){
+    this.toastr.success("Password missmatch") }
+    else{
+    
+    this.accountService.ForgotPasswrd(pass1).subscribe({
       next: ()=> {
-        this.toastr.success("Login succecssfully") 
-        this.router.navigateByUrl('/products')},
+        this.toastr.success("Password Changed succecssfully") 
         error : error => {
-          this.toastr.success("Wrong password") 
+          this.toastr.success("Password not changed") 
           this.errors = error.errors}
-    });
+    }});
     
   }
+}
 
   openRegDialog(){
-    this.matdialog.open(RegisterComponent,
+    this.matdialog.open(LoginComponent,
       {height: '80%',
     width: '50%'});
-  }
-
-  viewpass(){
-    this.view = !this.view;
-    this.changetype = !this.changetype;
   }
 
 

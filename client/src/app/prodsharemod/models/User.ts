@@ -2,9 +2,9 @@
 
    export interface User
     {
-        email:string;
-        nickName:string;
-        token:string
+        Email:string;
+        NickName:string;
+        Token:string
     }
 
 

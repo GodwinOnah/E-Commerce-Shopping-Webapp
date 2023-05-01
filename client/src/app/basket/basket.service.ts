@@ -52,8 +52,7 @@ private TotalBasketValue(){
   const basket = this.CurrentBasket();
   if(!basket)return;
   const subTotal = basket.items.reduce((sum,item) => item.prodPrice*item.quantity+sum,0);
-  const total = subTotal+basket.deliveryPrice;
-  console.log(total)
+  const total = subTotal+Number(basket.deliveryPrice);
   this.totalBasketPriceSource.next({shippingPrice:basket.deliveryPrice,subTotal,total})
 }
 
@@ -125,7 +124,7 @@ return (item as IProduct).productBrand != undefined;
 SetDelivery(delivery:IDelivery){
   const basket = this.CurrentBasket();
   if(basket){
-    console.log(basket)
+    console.log(delivery.delPrice)
      basket.deliveryPrice = delivery.delPrice;
      basket.deliveryId = delivery.productId;  
      this.SetBasket(basket);

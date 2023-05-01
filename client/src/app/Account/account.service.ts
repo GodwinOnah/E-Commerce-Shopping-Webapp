@@ -45,7 +45,7 @@ export class UserAccountService {
             user=>{ 
               if(user){
               // console.log(user)
-                localStorage.setItem("token",user.token)
+                localStorage.setItem("token",user.Token)
                 this.AppUserSource.next(user);
                 return user;
             } else{return null}
@@ -60,10 +60,22 @@ export class UserAccountService {
             map(
               user=>{
                 
-                    localStorage.setItem('token',user.token)
+                    localStorage.setItem('token',user.Token)
                     this.AppUserSource.next(user);             
             } ))
       }
+
+      ForgotPasswrd(pass:any){
+
+        return this.http.put<User>(this.baseUrl+'user/forgotpasswrd',pass)
+        .pipe(
+          map(
+            user=>{
+              
+                  localStorage.setItem('token',user.Token)
+                  this.AppUserSource.next(user);             
+          } ))
+    }
 
     Register(value:any){
       // console.log(value)
@@ -71,7 +83,7 @@ export class UserAccountService {
           .pipe(
             map(
               user=>{
-                    localStorage.setItem('token',user.token)
+                    localStorage.setItem('token',user.Token)
                     this.AppUserSource.next(user);          
             }))
   
