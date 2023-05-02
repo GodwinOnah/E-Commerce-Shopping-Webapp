@@ -1,12 +1,14 @@
+<div style="background-color: lightgray;padding-bottom: 20px;">
 <div class="align-content-left">
     <button style="margin-top: 15px;margin-left: 5px;"
     class=" btn btn-danger"  mat-dialog-close>
-        x
+        x    
     </button>
     </div>
 
-
-<div class="d-flex justify-content-center" style="width: auto;">
+    <div class="text-center" style="color:blue ;padding: 0;"> <h1>Signin</h1></div>
+   
+<div class="d-flex justify-content-center" style="width: auto;height: auto;">
 
     <div class="col-3">
 
@@ -29,9 +31,10 @@
                
             </div>
             <div class="d-flex justify-content-between mt-4" style="color: blue;  font-size: smaller; cursor: pointer;">
-                <a>Forgot Password</a> <a (click)="openRegDialog()">New User</a>
+                <a (click)="openConfirmEmailDialog()">Forgot Password</a> <a (click)="openRegDialog()">New User</a>
             </div>
            
         </form>
     </div>
+</div>
 </div>

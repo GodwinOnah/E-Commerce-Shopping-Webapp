@@ -36,13 +36,13 @@ export class NavBarComponent {
 
   openLoginDialog(){
     this.matdialog.open(LoginComponent,
-      {height: '50%',
+      {height: 'auto',
     width: '50%'});
   }
   openRegDialog(){
     this.login = false;
     this.matdialog.open(RegisterComponent,
-      {height: '80%',
+      {height: '70%',
     width: '50%'});
     
   }
