@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { UserAccountService } from '../account.service';
 import {  MatDialog } from '@angular/material/dialog';
 import { RegisterComponent } from '../Register/register.component';
+import { ForgotpasswrdComponent } from '../forgot_password/forgotpasswrd/forgotpasswrd.component';
 
 
 
@@ -19,6 +20,7 @@ export class LoginComponent {
   errors : string[] | null = null;
   view : boolean = true;
   changetype : boolean = true;
+  successful : boolean = false;
 
   RegularExpression="^(?=(.*[a-z]){1,})(?=(.*[\\d]){1,})(?=(.*[\\W]){1,})(?!.*\\s).{7,30}$";
 
@@ -27,15 +29,12 @@ export class LoginComponent {
   constructor(
     private formbuilder:FormBuilder,
     private router : Router,
-    private accountService:UserAccountService,
-    private activatedRoute:ActivatedRoute,
+    private accountService : UserAccountService,
+    private activatedRoute : ActivatedRoute,
     private toastr : ToastrService,
-    private matdialog:MatDialog
-    
+    private matdialog : MatDialog
    ){
-
     this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl']||'/prodshopmod'
-
   }
 
   loginForm = this.formbuilder.group({
@@ -44,7 +43,6 @@ export class LoginComponent {
   });
 
   onLoginSubmit(){
-    // console.log(5);
     this.accountService.Login(this.loginForm.value).subscribe({
       next: ()=> {
         this.toastr.success("Login succecssfully") 
@@ -58,13 +56,23 @@ export class LoginComponent {
 
   openRegDialog(){
     this.matdialog.open(RegisterComponent,
-      {height: '80%',
+      {height: '70%',
+    width: '50%'});
+  }
+
+  openConfirmEmailDialog(){
+    this.matdialog.open(ForgotpasswrdComponent,
+      {height: 'auto',
     width: '50%'});
   }
 
   viewpass(){
     this.view = !this.view;
     this.changetype = !this.changetype;
+  }
+
+  success(){
+    this.successful = !this.successful;
   }
 
 

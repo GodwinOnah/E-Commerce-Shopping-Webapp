@@ -18,6 +18,10 @@ export class ForgotpasswrdComponent {
   errors : string[] | null = null;
 
   password : string = "";
+  view1 : boolean = true;
+  view2 : boolean = true;
+  changetype1 : boolean = true;
+  changetype2 : boolean = true;
 
   RegularExpression="^(?=(.*[a-z]){1,})(?=(.*[\\d]){1,})(?=(.*[\\W]){1,})(?!.*\\s).{7,30}$";
 
@@ -38,37 +42,56 @@ export class ForgotpasswrdComponent {
   }
 
   forgotpasswrdForm = this.formbuilder.group({
-        Password1: ['',[Validators.required]],
-        Password2: ['',[Validators.required]]
+        Email: ['',[Validators.required]],
+        Password1: ['',[Validators.required,Validators.pattern(this.RegularExpression)]],
+        Password2: ['',[Validators.required,Validators.pattern(this.RegularExpression)]]
   });
 
   onForgotPassSubmit(){
-    // console.log(5);
-    
-    var pass1 =this.forgotpasswrdForm.get('Password1')
-    var pass2 =this.forgotpasswrdForm.get('Password2')
 
-    if(pass1!=pass2){
-    this.toastr.success("Password missmatch") }
-    else{
-    
-    this.accountService.ForgotPasswrd(pass1).subscribe({
-      next: ()=> {
-        this.toastr.success("Password Changed succecssfully") 
+    const email = this.forgotpasswrdForm?.get('Email')?.value;
+    this.accountService.CheckEmail(email).subscribe({
+      next: yes => {
+        if(yes)
+        this.accountService.ForgotPasswrd(this.forgotpasswrdForm.value).subscribe({
+          next: ()=> {
+            this.toastr.success("Password Changed succecssfully") },
+            error : error => {
+              this.toastr.success("Password mismatch") 
+              this.errors = error.errors}
+        });
+
+       else{
+        this.toastr.success("Not a registered user") 
+       }
+      },
         error : error => {
-          this.toastr.success("Password not changed") 
+          this.toastr.success("Check your server") 
           this.errors = error.errors}
-    }});
+    });
     
-  }
+   
 }
 
-  openRegDialog(){
+  openLoginDialog(){
     this.matdialog.open(LoginComponent,
-      {height: '80%',
+      {height: 'auto',
     width: '50%'});
   }
 
+  viewpass1(){
+    this.view1 = !this.view1;
+    this.changetype1 = !this.changetype1;
+  }
+
+  viewpass2(){
+    this.view2 = !this.view2;
+    this.changetype2 = !this.changetype2;
+  }
+
+
+
+ 
 
  
 

@@ -44,7 +44,6 @@ export class UserAccountService {
           map(
             user=>{ 
               if(user){
-              // console.log(user)
                 localStorage.setItem("token",user.Token)
                 this.AppUserSource.next(user);
                 return user;
@@ -65,20 +64,19 @@ export class UserAccountService {
             } ))
       }
 
-      ForgotPasswrd(pass:any){
+  ForgotPasswrd(forgotpasswrdDetails:any){
 
-        return this.http.put<User>(this.baseUrl+'user/forgotpasswrd',pass)
+        return this.http.put<User>(this.baseUrl+'user/forgotpasswrd',forgotpasswrdDetails)
         .pipe(
           map(
             user=>{
               
-                  localStorage.setItem('token',user.Token)
-                  this.AppUserSource.next(user);             
+                  // localStorage.setItem('token',user.Token)
+                  // this.AppUserSource.next(user);             
           } ))
     }
 
     Register(value:any){
-      // console.log(value)
           return this.http.post<User>(this.baseUrl+'user/register',value)
           .pipe(
             map(
