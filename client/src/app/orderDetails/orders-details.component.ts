@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { take } from 'rxjs';
 import { IOrders } from 'src/app/prodsharemod/models/IOrders';
 import { BreadcrumbService } from 'xng-breadcrumb';
-import { OrdersService } from '../orders.service';
+import { OrdersService } from '../orders/orders.service';
 
 @Component({
   selector: 'app-orders-details',
@@ -27,7 +27,7 @@ export class OrdersDetailsComponent implements OnInit{
 
   ViewOrder(){
     const id = this.activatedroute.snapshot.paramMap.get('id');
-    // console.log(id)
+    console.log(id)
     id && this.orderService.GetOrdersById(+id).subscribe({
       next: order => {
         console.log(order)

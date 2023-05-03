@@ -5,7 +5,7 @@ export  interface IItemOrdered
     {   productId:number
         prodName:string
         prodPicture:string
-        prodPrice : number
+        itemPrice : number
         quantity : number
 
     }

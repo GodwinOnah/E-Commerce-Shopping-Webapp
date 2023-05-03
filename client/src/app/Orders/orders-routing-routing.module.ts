@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { OrdersDetailsComponent } from './orderDetails/orders-details.component';
+import { OrdersDetailsComponent } from '../orderDetails/orders-details.component';
 import { OrdersComponent } from './orders.component';
 
 
