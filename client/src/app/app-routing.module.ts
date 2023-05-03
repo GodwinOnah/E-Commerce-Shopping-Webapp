@@ -13,7 +13,7 @@ const routes: Routes = [
       {path:'not-found', component:NotFoundComponent},
       {path:'server-error', component:ServerErrorComponent},
       {path:'Checkout', canActivate:[GuardsGuard], loadChildren: ()=>import('./Checkout/Checkout.module').then(mod=>mod.CheckoutModule),data:{breadcrumb:'Checkout'}},
-      {path:'orders', canActivate:[GuardsGuard], loadChildren: ()=>import('./Orders/orders.module').then(mod=>mod.OrdersModule),data:{breadcrumb:'Orders'}},
+      {path:'orders', canActivate:[GuardsGuard], loadChildren: ()=>import('./orders/orders.module').then(mod=>mod.OrdersModule),data:{breadcrumb:'Orders'}},
       {path:'account', loadChildren: ()=>import('./Account/account.module').then(mod=>mod.UserAccountModule),data:{breadcrumb:'User Account'}},
       {path:'basket', loadChildren: ()=>import('./basket/basket.module').then(mod=>mod.BasketModule),data:{breadcrumb:'Basket'}},
   ];

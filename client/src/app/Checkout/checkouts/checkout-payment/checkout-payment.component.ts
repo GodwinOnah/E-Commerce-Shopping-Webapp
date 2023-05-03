@@ -115,7 +115,7 @@ export class CheckoutPaymentComponent implements OnInit{
           name :this.checkOutForm?.get('paymentForm')?.get('nameOnCard')?.value
         }
       }});
-      if(!result)throw new Error('problem confirming problem with stripe');;
+      if(!result)throw new Error('problem confirming problem with stripe');
     return result;
   }
 
@@ -123,13 +123,15 @@ export class CheckoutPaymentComponent implements OnInit{
   private async CreateOrder(basket: IBasket |null) {
     if (!basket)throw new Error('basket is null');
     const orderToCreate = this.GetOrderDetails(basket);
-    var x=firstValueFrom(this.checkOutService.CreateAnOrder(orderToCreate));
-    return x;
+    return firstValueFrom(this.checkOutService.CreateAnOrder(orderToCreate));
+   ;
   }
   private GetOrderDetails(basket: IBasket):IOrderToCreate {
     const deliveryId = this.checkOutForm?.get('deliveryForm')?.get('delivery')?.value;
     const shippingAddress = this.checkOutForm?.get('addressForm')?.value as ShippingAddress;
-    if(!deliveryId && !shippingAddress)throw new Error('problem with basket');;
+    if(!shippingAddress)throw new Error('No Address added');
+    if(!deliveryId && !shippingAddress)throw new Error('problem with basket');
+    if(!deliveryId )throw new Error('Delivery not added');
     return{
       basketId:basket.id,
       deliveryId:deliveryId,
