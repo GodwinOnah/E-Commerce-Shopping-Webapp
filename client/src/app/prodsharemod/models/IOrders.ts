@@ -5,7 +5,7 @@ import { Address } from './User';
 
 
 export  interface IOrders 
-    {   productId:number  
+    {   id:number  
         Email : string
         delivery : string 
         shippingAddress :Address

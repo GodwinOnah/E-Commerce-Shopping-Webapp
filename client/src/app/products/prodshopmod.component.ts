@@ -52,7 +52,7 @@ export class ProdshopmodComponent implements OnInit {
   
         this.prodshopmodService.getBrands().subscribe({
           next: response=>{ 
-                this.brands=[{productId:0,name:'All'}, ...response];         
+                this.brands=[{id:0,name:'All'}, ...response];         
           },
           error:error=>console.log(error)         
   });
@@ -61,7 +61,7 @@ export class ProdshopmodComponent implements OnInit {
   GetProductTypes(){
         this.prodshopmodService.getProductTypes().subscribe({
           next: response=>{ 
-              this.productTypes=[{productId:0,name:'All'}, ...response];;
+              this.productTypes=[{id:0,name:'All'}, ...response];;
             },
             error:error=>console.log(error)   
   });

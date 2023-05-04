@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
-import { environment } from 'src/environment/environment';
+import { environment } from 'src/environments/environment';
 import { IDelivery } from '../prodsharemod/models/IDelivery';
 import { IOrders } from '../prodsharemod/models/IOrders';
 import { IOrderToCreate } from '../prodsharemod/models/IOrderToCreate';

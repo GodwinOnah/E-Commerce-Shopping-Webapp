@@ -40,7 +40,7 @@ export class ProductDetaialsComponent implements OnInit{
               this.breadcrumbService.set('@productName',product.prodName);
               this.basketService.basket$.pipe(take(1)).subscribe({
                 next : basket=>{
-                  const item = basket?.items.find ( i=>i.productId === id )               
+                  const item = basket?.items.find ( i=>i.id === id )               
                               if(item){
                                 this.quantity = item.quantity;
                                 this.quantityInBasket=item.quantity
@@ -66,7 +66,7 @@ export class ProductDetaialsComponent implements OnInit{
         if(this.quantity<this.quantityInBasket){
           const itemToReduce=this.quantityInBasket-this.quantity;
           this.quantityInBasket-=itemToReduce;
-          this.basketService.RemoveItemsFromBasket(this.productDetails.productId,itemToReduce) 
+          this.basketService.RemoveItemsFromBasket(this.productDetails.id,itemToReduce) 
         }
       }
     }  

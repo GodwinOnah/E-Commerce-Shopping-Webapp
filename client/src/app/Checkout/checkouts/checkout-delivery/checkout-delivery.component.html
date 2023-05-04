@@ -6,11 +6,11 @@
             <input 
             class="form-check-input"
             id = "{{deliveryFm.id}}"
-            value = "{{deliveryFm.id}}"
-            name="deliveryname"
+            value = "{{deliveryFm.deliveryPrice}}"
+            name="delivery"
             (click)="setDeliveryPrice(deliveryFm)"
             type="radio"
-            [checked]="deliveryFm.delPrice==basket.deliveryPrice">
+            [checked]="deliveryFm.delPrice == basket.deliveryPrice">
             
             <label for="{{deliveryFm.id}}" class="form-check-label ms-2 mb-3">
                 <table>     

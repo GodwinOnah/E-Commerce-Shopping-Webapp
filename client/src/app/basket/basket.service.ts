@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { isNgTemplate } from '@angular/compiler';
 import {Injectable, OnInit } from '@angular/core';
 import { BehaviorSubject, map } from 'rxjs';
-import { environment } from 'src/environment/environment';
+import { environment } from 'src/environments/environment';
 import { CheckoutServiceService } from '../Checkout/checkout-service.service';
 import { Basket, IBasket, IBasketItem, TotalBasketPrice } from '../prodsharemod/models/IBasket';
 import { IDelivery } from '../prodsharemod/models/IDelivery';
@@ -66,12 +66,12 @@ AddItemsToBasket(item:IProduct|IBasketItem,quantity = 1){
 RemoveItemsFromBasket(id:number,quantity?:number){
         const basket=this.CurrentBasket();
         if(!basket) return;
-        const item = basket.items.find(index => index.productId === id);//finding item 
+        const item = basket.items.find(index => index.id === id);//finding item 
         if(item.quantity<0)return;
         if(item){
             item.quantity -= quantity;
             if(item.quantity === 0)
-            basket.items = basket.items.filter(index => index.productId != id);
+            basket.items = basket.items.filter(index => index.id != id);
             if(basket.items.length>0) this.SetBasket(basket);
             else{this.DeleteBasket(basket)}
         }
@@ -90,7 +90,7 @@ RemoveAllItemsInBasket(){
 }
 
 private AddOrUpdate(items: IBasketItem[], itemToAdd: IBasketItem, quantity: number): IBasketItem[] {    
-  const item = items.find(index=>index.productId === itemToAdd.productId);//finding item index
+  const item = items.find(index=>index.id === itemToAdd.id);//finding item index
     if(item)item.quantity += quantity;
      else{ itemToAdd.quantity = quantity;
       items.push(itemToAdd);
@@ -107,7 +107,7 @@ private CreateBasket(): IBasket {
 
 private MapBasketToBasketItem(item: IProduct): IBasketItem {  
   return {
-    productId: item.productId,
+    id: item.id,
     prodName: item.prodName,
     prodPrice: item.prodPrice,
     quantity:0,
@@ -124,7 +124,6 @@ return (item as IProduct).productBrand != undefined;
 SetDelivery(delivery:IDelivery){
   const basket = this.CurrentBasket();
   if(basket){
-    console.log(delivery.delPrice)
      basket.deliveryPrice = delivery.delPrice;
      basket.deliveryId = delivery.productId;  
      this.SetBasket(basket);

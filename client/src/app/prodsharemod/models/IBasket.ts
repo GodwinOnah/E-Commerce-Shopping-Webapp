@@ -11,7 +11,7 @@ export interface IBasket {
 }
 
 export interface IBasketItem {
-  productId: number;
+  id: number;
   prodName: string;
   prodPrice: number;
   quantity:number;
@@ -21,9 +21,9 @@ export interface IBasketItem {
 }
 
 export class Basket implements IBasket {
-   id= uuidv4();
-    items=[];
-    deliveryPrice: number=0;
+  id= uuidv4();
+  items=[];
+  deliveryPrice: number=0;
 
 }
 

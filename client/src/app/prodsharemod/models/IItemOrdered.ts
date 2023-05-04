@@ -2,7 +2,7 @@ import { IProduct } from './IProduct';
 
 
 export  interface IItemOrdered
-    {   productId:number
+    {   id:number
         prodName:string
         prodPicture:string
         itemPrice : number
