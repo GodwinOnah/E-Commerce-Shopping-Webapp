@@ -6,7 +6,7 @@ import { IProductTypes } from '../prodsharemod/models/IProductTypes';
 import { map, Observable, of } from 'rxjs';
 import { ShopParameters } from '../prodsharemod/models/shopParameters';
 import { IProduct } from '../prodsharemod/models/IProduct';
-import { environment } from 'src/environment/environment';
+import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
@@ -70,7 +70,7 @@ export class ProdshopmodService {
    getProduct(productId:number){
     const product = [...this.cashe.values()].reduce((accumulator,paginationResult)=>{
       return { ...accumulator,...paginationResult.data
-        .find(x=>x.productId==productId)
+        .find(x=>x.id==productId)
       }}, {} as IProduct)
     if(Object.keys(product).length !== 0) return of(product);
     return this.http.get<IProduct>(this.url+'products/'+productId)

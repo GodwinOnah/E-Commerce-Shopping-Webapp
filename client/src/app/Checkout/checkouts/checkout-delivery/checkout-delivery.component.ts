@@ -21,15 +21,13 @@ export class CheckoutDeliveryComponent implements OnInit{
   ngOnInit(): void {
     this.checkoutService.GetDeliveryMethod().subscribe(
       {
-        next: delivery => {  
-          console.log(delivery)  
+        next: delivery => {    
           this.deliverys = delivery}     
       }
     )
   }
 
   setDeliveryPrice(delivery:IDelivery){
-    //console.log(delivery) 
       this.basketService.SetDelivery(delivery);
   }
  

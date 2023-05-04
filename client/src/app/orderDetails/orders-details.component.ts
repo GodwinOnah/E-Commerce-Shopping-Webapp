@@ -26,13 +26,13 @@ export class OrdersDetailsComponent implements OnInit{
   }
 
   ViewOrder(){
-    const id = this.activatedroute.snapshot.paramMap.get('id');
+    const id = +this.activatedroute.snapshot.paramMap.get('id');
     console.log(id)
-    id && this.orderService.GetOrdersById(+id).subscribe({
+    id && this.orderService.GetOrdersById(id).subscribe({
       next: order => {
         console.log(order)
         this.order = order;
-        this.breadcrumbService.set('@OrderDetailed', `Order# ${order.productId} - ${order.orderStatus}`);
+        this.breadcrumbService.set('@OrderDetailed', `Order# ${order.id} - ${order.orderStatus}`);
 } })
 }
   }
