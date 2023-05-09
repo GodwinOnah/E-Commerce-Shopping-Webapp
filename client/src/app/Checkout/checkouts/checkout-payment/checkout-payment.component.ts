@@ -78,34 +78,6 @@ export class CheckoutPaymentComponent implements OnInit{
     && this.cvcComplete
   }
 
-  
-
-  async OrderSubmission(){
-    this.loading=true;
-    const basket = this.basketService.CurrentBasket();
-    try{
-      const createdOrder = await this.CreateOrder(basket);
-      const paymentResult= await this.ConfirmPaymentUsingStripe(basket);
-      if(paymentResult.paymentIntent){
-            this.basketService.DeleteBasket(basket);
-            const navigationExtras :NavigationExtras={state:createdOrder};
-            this.router.navigate(['Checkout/success'],navigationExtras);
-          }
-          else{
-            this.toastr.error(paymentResult.error.message);
-       
-    }
-  }
-    catch(error){
-      this.toastr.error(error.message);
-    }
-
-    finally{
-      this.loading=false;
-    }
-  }
-   
-   
   private async ConfirmPaymentUsingStripe(basket: IBasket | null) {
     if (!basket)throw new Error('basket is null');
     const result =  this.stripe?.confirmCardPayment(basket.clientSecret,{
@@ -118,14 +90,7 @@ export class CheckoutPaymentComponent implements OnInit{
       if(!result)throw new Error('problem confirming problem with stripe');
     return result;
   }
-
-
-  private async CreateOrder(basket: IBasket |null) {
-    if (!basket)throw new Error('basket is null');
-    const orderToCreate = this.GetOrderDetails(basket);
-    return firstValueFrom(this.checkOutService.CreateAnOrder(orderToCreate));
-   ;
-  }
+  
   private GetOrderDetails(basket: IBasket):IOrderToCreate {
     // const deliveryId = this.checkOutForm?.get('deliveryForm')?.get('delivery')?.value;
     const shippingAddress = this.checkOutForm?.get('addressForm')?.value as ShippingAddress;
@@ -140,4 +105,38 @@ export class CheckoutPaymentComponent implements OnInit{
     }
   }
 
+  private async CreateOrder(basket: IBasket |null) {
+
+    if (!basket)throw new Error('basket is null');
+    console.log(basket)
+    const orderToCreate = this.GetOrderDetails(basket);
+    console.log(orderToCreate)
+    return firstValueFrom(this.checkOutService.CreateAnOrder(orderToCreate));
+   ;
+  }
+
+  async OrderSubmission(){
+    this.loading=true;
+    const basket = this.basketService.CurrentBasket();
+    if (!basket) throw new Error("Cannot get basket");
+    try{
+      const createdOrder = await this.CreateOrder(basket);
+      const paymentResult= await this.ConfirmPaymentUsingStripe(basket);
+      if(paymentResult.paymentIntent){
+            this.basketService.DeleteBasket(basket);
+            const navigationExtras :NavigationExtras={state:createdOrder};
+            this.router.navigate(['Checkout/success'],navigationExtras);
+          }
+          else{
+            this.toastr.error(paymentResult.error.message);     
+    }
+  }
+    catch(error){
+      this.toastr.error(error.message);
+    }
+
+    finally{
+      this.loading=false;
+    }
+  }
 }

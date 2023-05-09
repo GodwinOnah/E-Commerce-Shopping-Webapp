@@ -32,7 +32,7 @@ export class ProductDetaialsComponent implements OnInit{
 
   ViewProduct(){
     const id = +this.activatedroute.snapshot.paramMap.get('productId');
-    // console.log(id)
+    console.log(id)
     if(id)this.prodshopService.getProduct(id).subscribe(
           { next : product=>
               {
@@ -57,8 +57,8 @@ export class ProductDetaialsComponent implements OnInit{
 
     if(this.productDetails){
       if(this.quantity>this.quantityInBasket){
-        const itemToAdd=this.quantity-this.quantityInBasket;
-        this.quantityInBasket+=itemToAdd;
+        const itemToAdd = this.quantity-this.quantityInBasket;
+        this.quantityInBasket += itemToAdd;
         this.basketService.AddItemsToBasket(this.productDetails,itemToAdd)
 
       }

@@ -1,19 +1,20 @@
-<ng-container *ngIf="(breadcrumb$|async) as breadcrumbs">
-    
-<section *ngIf="breadcrumbs.length>0&&breadcrumbs[breadcrumbs.length-1].label!==
-    'Home'" class="d-flex" style="margin-top:90px; background-color: skyblue;height:
-     50px;">
+<ng-container *ngIf="$any(breadcrumb$|async) as breadcrumbs">
+ <section *ngIf="breadcrumbs[breadcrumbs.length-1].label !=='Home'" 
+class="container  mb-3" style="margin-top:105px; background-color: skyblue; height:50px; width: 120%;">
 
-    <div class="container">
-        <div class="row d-flex justify-content-center align-items-center">
-            <div class="col-9 align-items-center">
-                <h2>{{breadcrumbs.length>0&&breadcrumbs[breadcrumbs.length-1].label}}</h2>
+        <div class="row d-flex align-items-center">
+            <div class="col-9">
+                <h1>{{breadcrumbs[breadcrumbs.length-1].label | titlecase}}</h1>
             </div>   
             <div class="col-3 ">    
-                    <xng-breadcrumb ></xng-breadcrumb>
+                    <xng-breadcrumb >
+                        <ng-container *xngBreadcrumbItem="let breadcrumb">
+                            {{breadcrumb | titlecase}}
+                        </ng-container>
+                    </xng-breadcrumb>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+
 <hr>
 </ng-container>

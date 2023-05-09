@@ -1,6 +1,6 @@
 export  interface IDelivery
     {      
-        productId: number
+        id: number
         delName: string
         delTime: string
         delDescription: string
