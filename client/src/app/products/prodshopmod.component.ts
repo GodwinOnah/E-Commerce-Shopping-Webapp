@@ -49,9 +49,11 @@ export class ProdshopmodComponent implements OnInit {
 }
 
   GetProductBrands(){
+
   
         this.prodshopmodService.getBrands().subscribe({
           next: response=>{ 
+            console.log(response)
                 this.brands=[{id:0,name:'All'}, ...response];         
           },
           error:error=>console.log(error)         
@@ -68,6 +70,7 @@ export class ProdshopmodComponent implements OnInit {
 } 
   
   SelectedBrand(brandId:number){
+    console.log(brandId)
     const params = this.prodshopmodService.getShopParams();
     params.brandId=brandId;
     params.pageNumber=1;
@@ -105,7 +108,6 @@ this.GetProducts();
 
 Search(){
   const params = this.prodshopmodService.getShopParams();
-  console.log(22)
   params.search=this.searchText?.nativeElement.value;
   params.pageNumber=1;
   this.prodshopmodService.setShopParams(params);
@@ -116,7 +118,7 @@ this.GetProducts();
 ResetSearch(){
   if (this.searchText)
   this.searchText.nativeElement.value='';
-  this.shopParameters =new ShopParameters();
+  this.shopParameters = new ShopParameters();
   this.prodshopmodService.setShopParams (this.shopParameters);
   this.GetProducts();
   }

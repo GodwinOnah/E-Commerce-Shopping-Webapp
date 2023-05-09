@@ -67,13 +67,13 @@ export class ProdshopmodService {
 
    }
 
-   getProduct(productId:number){
+   getProduct(id:number){
     const product = [...this.cashe.values()].reduce((accumulator,paginationResult)=>{
       return { ...accumulator,...paginationResult.data
-        .find(x=>x.id==productId)
+        .find(x=>x.id==id)
       }}, {} as IProduct)
     if(Object.keys(product).length !== 0) return of(product);
-    return this.http.get<IProduct>(this.url+'products/'+productId)
+    return this.http.get<IProduct>(this.url+'products/'+id)
    }
 
    getBrands(){

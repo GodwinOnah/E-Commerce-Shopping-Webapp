@@ -64,7 +64,7 @@ AddItemsToBasket(item:IProduct|IBasketItem,quantity = 1){
 }
 
 RemoveItemsFromBasket(id:number,quantity?:number){
-        const basket=this.CurrentBasket();
+        const basket = this.CurrentBasket();
         if(!basket) return;
         const item = basket.items.find(index => index.id === id);//finding item 
         if(item.quantity<0)return;
@@ -72,7 +72,8 @@ RemoveItemsFromBasket(id:number,quantity?:number){
             item.quantity -= quantity;
             if(item.quantity === 0)
             basket.items = basket.items.filter(index => index.id != id);
-            if(basket.items.length>0) this.SetBasket(basket);
+            if(basket.items.length>0) 
+            this.SetBasket(basket);
             else{this.DeleteBasket(basket)}
         }
 }
@@ -125,7 +126,7 @@ SetDelivery(delivery:IDelivery){
   const basket = this.CurrentBasket();
   if(basket){
      basket.deliveryPrice = delivery.delPrice;
-     basket.deliveryId = delivery.productId;  
+     basket.deliveryId = delivery.id;  
      this.SetBasket(basket);
 }
 }

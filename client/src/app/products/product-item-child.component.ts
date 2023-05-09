@@ -10,7 +10,7 @@ import { ProductDetaialsComponent } from './product-detaials/product-detaials.co
 })
 export class ProductItemChildComponent implements OnInit{
   
-  @Input() product: IProduct;
+  @Input() product?: IProduct;
 
   constructor(private basketService: BasketService){
   }
@@ -19,8 +19,9 @@ export class ProductItemChildComponent implements OnInit{
    
   }
   
-  AddItem(){
-    this.basketService.AddItemsToBasket(this.product,1)
+  AddItem(){ 
+    console.log(this.product)
+    this.product && this.basketService.AddItemsToBasket(this.product,1)
   }
  
 }

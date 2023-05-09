@@ -31,7 +31,7 @@
                 <th>
                      <!-- image -->
                     <div class="p-2 d-inline-block">
-                      <a routerLink="/products/{{item.productId}}"> 
+                      <a routerLink="/products/{{item.id}}"> 
                         <img  src="{{item.prodPicture}}" 
                        alt="{{item.prodName}}" 
                        class="img-fluid"
@@ -40,7 +40,7 @@
                          <!-- product Name -->
                        <div class="ms-3 d-inline-block align-middle">
                         <h5 class="mb-0">
-                            <a routerLink="/products/{{item.productId}}" class="text-dark text-decoration-none">
+                            <a routerLink="/products/{{item.id}}" class="text-dark text-decoration-none">
                                 {{item.prodName}}
                             </a>
                         </h5>
@@ -54,7 +54,7 @@
                  <!-- Quantity -->
                 <td class="align-middle">
                     <div class="d-flex align-items-center">
-                        <i *ngIf="isBasket" (click)="RemoveItem(item.productId,1)" 
+                        <i *ngIf="isBasket" (click)="RemoveItem(item.id,1)" 
                         class="fa fa-minus-circle text-warning m-2" 
                         style="cursor: pointer; font-size:1.5em;"></i>
                         <strong [class.justify-content-center]="!isBasket" style="font-size:1.2em;">
@@ -76,7 +76,7 @@
                     </strong>
                 </td>
                 <td class="text-danger" *ngIf="isBasket">
-                    <i (click)="RemoveItem(item.productId,item.quantity)" class="fa fa-trash  mt-4" 
+                    <i (click)="RemoveItem(item.id,item.quantity)" class="fa fa-trash  mt-4" 
                     style="cursor: pointer ;font-size:1.5em; margin-left: 20px;"></i>
                     
                 </td>
