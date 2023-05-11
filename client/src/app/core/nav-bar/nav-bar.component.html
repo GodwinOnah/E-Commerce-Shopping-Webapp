@@ -51,18 +51,18 @@
             </ul>
           </div>
       </ng-container >
-           
+          
             <div class="basket" routerLink="/basket">
                 <div  *ngIf="(basketService.basket$|async) as basket" 
-              class="cartQuantity" class=" cartQuantity">
+                 class="cartQuantity" class=" cartQuantity">
                   {{TotalQuantity(basket.items)}}
-            </div>
-              <div class="cartLabel fa fa-shoping-cart">
+                </div>
+                 <div class="cartLabel fa fa-shoping-cart">
                   <i class=" fa-cart-plus fa-2x"></i>
-              </div>
+                  </div>
               
-        
             </div>
+           
  
           </div>
   </nav>

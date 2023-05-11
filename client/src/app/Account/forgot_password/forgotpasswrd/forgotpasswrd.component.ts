@@ -25,20 +25,16 @@ export class ForgotpasswrdComponent {
 
   RegularExpression="^(?=(.*[a-z]){1,})(?=(.*[\\d]){1,})(?=(.*[\\W]){1,})(?!.*\\s).{7,30}$";
 
-  returnUrl:string;
-
   constructor(
     private formbuilder:FormBuilder,
     private router : Router,
     private accountService:UserAccountService,
-    private activatedRoute:ActivatedRoute,
     private toastr : ToastrService,
     private matdialog:MatDialog
     
    ){
 
-    this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl']||'/prodshopmod'
-
+   
   }
 
   forgotpasswrdForm = this.formbuilder.group({
@@ -68,9 +64,7 @@ export class ForgotpasswrdComponent {
         error : error => {
           this.toastr.success("Check your server") 
           this.errors = error.errors}
-    });
-    
-   
+    });   
 }
 
   openLoginDialog(){

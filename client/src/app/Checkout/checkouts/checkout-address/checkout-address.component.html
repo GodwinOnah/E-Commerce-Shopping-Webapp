@@ -1,7 +1,9 @@
 <div class="mt-4" *ngIf="checkOutForm" [formGroup]="checkOutForm">
     <div class="d-flex justify-content-between align-items-cetnter">
         <h4>Address</h4>
-        <button class="btn bg-primary">Make default address</button>
+        <button (click)="UpdateAddress()" [disabled]="!checkOutForm.get('addressForm')?.valid || 
+        !checkOutForm.get('addressForm')?.dirty"
+       class="btn bg-primary">Make default address</button>
     </div>
     <div class="row mt-3" formGroupName = "addressForm" >
         <div class="form-group col-6">
@@ -34,7 +36,8 @@
     <button class="btn btn-danger" routerLink="/basket">
         <i class="fa fa-angle-left"></i>  Go to basket
     </button>
-    <button [disabled]="checkOutForm.get('addressForm')?.invalid" class="btn btn-danger" cdkStepperNext>
+    <button [disabled]="checkOutForm.get('addressForm')?.invalid" 
+    class="btn btn-danger" cdkStepperNext>
         Delivery <i class="fa fa-angle-right"></i>
     </button>
 

@@ -14,13 +14,13 @@
         <form [formGroup] = "forgotpasswrdForm" (ngSubmit)="onForgotPassSubmit()">
             <div class="text-center mt-5">
                 <app-text-inputs [formControl]="forgotpasswrdForm.controls['Email']" [type]="'email'"  [label]="'Email Address'"></app-text-inputs>
-                <div >    
-                <app-text-inputs [formControl]="forgotpasswrdForm.controls['Password1']" [type]="'password'"  [label]="'Choose password'"></app-text-inputs>
-                <!-- <span class="eyeicon1" (click)="viewpass1()"><i [ngClass]="view1?'fa fa-eye':'fa fa-eye-slash'"></i></span> -->
+                <div class="form-group">    
+                <app-text-inputs [formControl]="forgotpasswrdForm.controls['Password1']" [type]="changetype1?'password':'text'"   [label]="'Choose password'"></app-text-inputs>
+                <span class="eyeicon1" (click)="viewpass1()"><i [ngClass]="view1?'fa fa-eye':'fa fa-eye-slash'"></i></span>
                 </div>
-                <div >   
-                    <app-text-inputs [formControl]="forgotpasswrdForm.controls['Password2']" [type]="'password'" [label]="'Confirm Password'"></app-text-inputs>
-                    <!-- <span class="eyeicon2" (click)="viewpass2()"><i [ngClass]="view2?'fa fa-eye':'fa fa-eye-slash'"></i></span> -->
+                <div class="form-group">   
+                    <app-text-inputs [formControl]="forgotpasswrdForm.controls['Password2']" [type]="changetype2?'password':'text'"  [label]="'Confirm Password'"></app-text-inputs>
+                    <span class="eyeicon2" (click)="viewpass2()"><i [ngClass]="view2?'fa fa-eye':'fa fa-eye-slash'"></i></span>
                 </div>
             </div>
             

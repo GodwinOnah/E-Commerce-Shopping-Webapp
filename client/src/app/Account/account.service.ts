@@ -104,7 +104,7 @@ export class UserAccountService {
     }
 
     UpdateAddress(address:Address){
-      return this.http.put(this.baseUrl+'user/address',address)
-    }
+      return this.http.put(this.baseUrl+'user/address',address);
+   }
 
 }
