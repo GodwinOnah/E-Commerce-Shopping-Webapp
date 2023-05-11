@@ -10,6 +10,7 @@ import { CheckoutReviewComponent } from './checkouts/checkout-review/checkout-re
 import { CheckoutPaymentComponent } from './checkouts/checkout-payment/checkout-payment.component';
 import { SuccessComponent } from './success/success.component';
 import { RouterModule } from '@angular/router';
+import { CheckoutServiceService } from './checkout-service.service';
 
 
 
@@ -21,7 +22,7 @@ import { RouterModule } from '@angular/router';
     CheckoutDeliveryComponent,
     CheckoutReviewComponent,
     CheckoutPaymentComponent,
-    SuccessComponent
+    SuccessComponent,
   ],
   imports: [
     CommonModule,
