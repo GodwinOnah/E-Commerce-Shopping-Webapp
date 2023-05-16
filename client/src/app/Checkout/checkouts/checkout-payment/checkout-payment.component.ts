@@ -92,11 +92,10 @@ export class CheckoutPaymentComponent implements OnInit{
   }
   
   private GetOrderDetails(basket: IBasket):IOrderToCreate {
-    // const deliveryId = this.checkOutForm?.get('deliveryForm')?.get('delivery')?.value;
+  
     const shippingAddress = this.checkOutForm?.get('addressForm')?.value as ShippingAddress;
     if(!shippingAddress)throw new Error('No Address added');
-    // if(!deliveryId && !shippingAddress)throw new Error('problem with basket');
-    // if(!deliveryId )throw new Error('Delivery not added');
+    
     return{
       basketId:basket.id,
       deliveryId:basket.deliveryId,

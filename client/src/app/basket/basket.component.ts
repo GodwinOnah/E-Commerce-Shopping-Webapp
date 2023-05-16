@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { LoginComponent } from '../Account/login/login.component';
 import { IBasket, IBasketItem } from '../prodsharemod/models/IBasket';
 import { BasketService } from './basket.service';
 @Component({
@@ -7,7 +9,9 @@ import { BasketService } from './basket.service';
   styleUrls: ['./basket.component.scss']
 })
 export class BasketComponent {
-  constructor(public basketService: BasketService){
+  loginStatus = false;
+
+  constructor(public basketService: BasketService, private matdialog:MatDialog){
   }
   IncreaseQuantity(items:IBasketItem){
     this.basketService.AddItemsToBasket(items);
@@ -15,6 +19,17 @@ export class BasketComponent {
   ReduceQuantity(event:{id:number,quantity:number}){
    this.basketService.RemoveItemsFromBasket(event.id,event.quantity);
 
+  }
+
+  checkLogin(){
+        if(localStorage.getItem("login")=="true")
+        return true;
+  }
+
+  openLoginDialog(){
+    this.matdialog.open(LoginComponent,
+      {height: 'auto',
+    width: '50%'});
   }
 
 }

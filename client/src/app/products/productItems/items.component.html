@@ -1,0 +1,47 @@
+<div style="background-color: lightgray; padding-bottom: 40px;">
+    <div class="align-content-left">
+        <button style="margin-top: 15px;margin-left: 5px;" class=" btn btn-danger" mat-dialog-close>
+            x
+        </button>
+        </div>
+        <div class="text-center" style="color:blue ;"> <h1>Product Upload Page</h1></div>
+       
+    <div class="d-flex justify-content-center">
+    
+        <div class="col-3">
+    
+            <form [formGroup] = "productForm" (ngSubmit)="onSubmit()">
+    
+                <div class="text-center mt-5">
+                  
+                  <app-text-inputs [formControl]="productForm.controls['prodName']"  [label]="'Product Name'"></app-text-inputs>
+    
+                  <app-text-inputs [formControl]=" productForm.controls['prodPicture']"  [label]="'Product Picture'"></app-text-inputs>
+    
+                  <app-text-inputs [formControl]=" productForm.controls['prodDescription']"  [label]="'Product Description'"></app-text-inputs>
+    
+                  <app-text-inputs [formControl]=" productForm.controls['prodPrice']"  [label]="'Price'"></app-text-inputs>
+    
+                  <app-text-inputs [formControl]=" productForm.controls['productBrand']"  [label]="'Brand'"></app-text-inputs>
+             
+                  <app-text-inputs [formControl]=" productForm.controls['productTypes']"  [label]="'Type'"></app-text-inputs>
+                
+    
+                </div>
+                <div>
+                <ul class="text-danger list-unstyled" *ngIf="errors">
+                        <li *ngIf="let error of errors">
+                                {{error}}
+                        </li>
+                </ul>
+            </div>
+                <div class="d-grid" >
+                    <button mat-dialog-close [disabled]="productForm.invalid" class="btn btn-lg btn-success" type="submit" style="margin-top:10px ;">
+                      Upload Product
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+    

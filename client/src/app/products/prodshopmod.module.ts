@@ -7,7 +7,8 @@ import { ProductDetaialsComponent } from './product-detaials/product-detaials.co
 import { ProdshopmodRoutingModule } from './prodshopmod-routing.module';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { ProductAdvertsComponent } from './product-adverts/product-adverts.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ItemsComponent } from './productItems/items.component';
 
 
 
@@ -16,7 +17,8 @@ import { FormsModule } from '@angular/forms';
     ProdshopmodComponent,
     ProductItemChildComponent,
     ProductDetaialsComponent,
-    ProductAdvertsComponent
+    ProductAdvertsComponent,
+    ItemsComponent
   
   ],
   imports: [
@@ -24,6 +26,7 @@ import { FormsModule } from '@angular/forms';
     ProdsharemodModule,
     ProdshopmodRoutingModule,
     CarouselModule,
+    ReactiveFormsModule,
     FormsModule
   ],
   exports :[ProdshopmodComponent,

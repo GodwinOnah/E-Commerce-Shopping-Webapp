@@ -45,8 +45,11 @@ export class LoginComponent {
   onLoginSubmit(){
     this.accountService.Login(this.loginForm.value).subscribe({
       next: ()=> {
-        this.toastr.success("Login succecssfully") 
-        this.router.navigateByUrl('/products')},
+        this.successful=true;
+        this.toastr.success("Login succecssfully") ;
+        this.router.navigateByUrl('/products');
+        this.accountService.autoLogout();
+      },
         error : error => {
           this.toastr.success("Wrong password") 
           this.errors = error.errors}
@@ -72,7 +75,7 @@ export class LoginComponent {
   }
 
   success(){
-    this.successful = !this.successful;
+    if(this.successful = true) return true;
   }
 
 

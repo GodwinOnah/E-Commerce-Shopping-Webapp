@@ -91,5 +91,10 @@ export class ProdshopmodService {
         this.types=types 
       ))
    }
+
+   UploadProduct(value:any){
+    return this.http.post<IProduct[]>(this.url+'products/upload',value);
+   
+}
    }
 

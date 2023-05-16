@@ -12,10 +12,14 @@ import { HomePageModule } from './home-page/home-page.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import {  MatDialogModule } from '@angular/material/dialog';
 import { ToastrModule } from 'ngx-toastr';
+import { JwtInterceptor } from './core/Interceptors/jwt.interceptor';
+import { AdminModule } from './Admin/admin.module';
+import { BnNgIdleService } from 'bn-ng-idle';
 
 @NgModule({
   declarations: [
     AppComponent,
+  
    
    
       
@@ -37,8 +41,9 @@ import { ToastrModule } from 'ngx-toastr';
       closeButton: true
    })
   ],
-  providers: [
+  providers: [BnNgIdleService,
     {provide: HTTP_INTERCEPTORS,useClass: WhenLoadingPage,multi:true},
+    {provide: HTTP_INTERCEPTORS,useClass: JwtInterceptor,multi:true},
     {provide: HTTP_INTERCEPTORS,useClass: ErrorInterceptor,multi:true}],
   bootstrap: [AppComponent]
 })
