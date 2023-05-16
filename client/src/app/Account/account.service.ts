@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject, map, of, ReplaySubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { BnNgIdleService } from 'bn-ng-idle';
 import { Address, User } from '../prodsharemod/models/User';
 
 @Injectable({
@@ -14,12 +15,13 @@ export class UserAccountService {
   baseUrl = environment.apiUrl;
   private AppUserSource = new ReplaySubject<User|null>(1);
   AppUser$  = this.AppUserSource.asObservable();
-   loginStatus = true;
+  loginStatus = false;
 
   constructor(
     private http : HttpClient, 
     private router : Router,
-    private toastr : ToastrService) { }
+    private toastr : ToastrService,
+    private logoutOutService : BnNgIdleService) { }
 
   LoadPreviousUser(token:string){
 // console.log(token)
@@ -36,15 +38,15 @@ export class UserAccountService {
         console.log(headers);
       
         headers = headers.set('Authorization', `Bearer ${token}`);
-        console.log(headers);
-        console.log(token);
+      
         return this.http.get<User>(this.baseUrl+'user',
        {headers})
         .pipe(
           map(
             user=>{ 
               if(user){
-                localStorage.setItem("token",user.Token)
+                localStorage.setItem("token",user.token)
+                
                 this.AppUserSource.next(user);
                 return user;
             } else{return null}
@@ -58,9 +60,12 @@ export class UserAccountService {
           .pipe(
             map(
               user=>{
+                console.log(user)
                 
-                    localStorage.setItem('token',user.Token)
-                    this.AppUserSource.next(user);             
+                    localStorage.setItem('token',user.token)
+                    localStorage.setItem("login",this.loginStatus.toString())
+                    this.AppUserSource.next(user);  
+                    // this.autoLogout.autoLogout();           
             } ))
       }
 
@@ -81,7 +86,7 @@ export class UserAccountService {
           .pipe(
             map(
               user=>{
-                    localStorage.setItem('token',user.Token)
+                    localStorage.setItem('token',user.token)
                     this.AppUserSource.next(user);          
             }))
   
@@ -95,8 +100,17 @@ export class UserAccountService {
       this.toastr.success("Logged Out") 
       localStorage.removeItem('token');
       this.AppUserSource.next(null);
-      this.router.navigateByUrl('/');
+      // this.router.navigateByUrl('/');
       // localStorage.setItem('login_status', JSON.stringify(!this.loginStatus))
+    }
+
+    autoLogout(){
+      this.logoutOutService.startWatching(5).subscribe((isTimeOut: Boolean) => {
+     if(isTimeOut){
+              this.Logout();
+              this.logoutOutService.stopTimer();
+     }
+      })
     }
 
     GetAddress(){

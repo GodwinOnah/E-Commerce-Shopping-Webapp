@@ -9,14 +9,15 @@ import { HomePageComponent } from './home-page/home-page.component';
 const routes: Routes = [
       {path:'', component:HomePageComponent,data:{breadcrumb:'Home'}},
       {path:'products', loadChildren: ()=>import('./products/prodshopmod.module').then(mod=>mod.ProdshopmodModule),data:{breadcrumb:'Products'}},
-      // {path:'**', redirectTo: '',pathMatch:'full'},
       {path:'not-found', component:NotFoundComponent},
       {path:'server-error', component:ServerErrorComponent},
       {path:'Checkout', canActivate:[GuardsGuard], loadChildren: ()=>import('./Checkout/Checkout.module').then(mod=>mod.CheckoutModule),data:{breadcrumb:'Checkout'}},
       {path:'orders', canActivate:[GuardsGuard], loadChildren: ()=>import('./orders/orders.module').then(mod=>mod.OrdersModule),data:{breadcrumb:'Orders'}},
       {path:'account', loadChildren: ()=>import('./Account/account.module').then(mod=>mod.UserAccountModule),data:{breadcrumb:'User Account'}},
+      {path:'Admin', loadChildren: ()=>import('./Admin/admin.module').then(mod=>mod.AdminModule),data:{breadcrumb:'Admin Page'}},
       {path:'basket', loadChildren: ()=>import('./basket/basket.module').then(mod=>mod.BasketModule),data:{breadcrumb:'Basket'}},
-  ];
+      {path:'**', redirectTo: '',pathMatch:'full'}
+    ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

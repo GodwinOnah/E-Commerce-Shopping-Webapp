@@ -12,7 +12,8 @@ import { ForgotpasswrdComponent } from './forgot_password/forgotpasswrd/forgotpa
 
 
 @NgModule({
-  declarations: [LoginComponent,
+  declarations: [
+    LoginComponent,
     RegisterComponent,
     ForgotpasswrdComponent,
    

@@ -14,10 +14,16 @@
 
         <form [formGroup] = "loginForm" (ngSubmit)="onLoginSubmit()">
             <div class="text-center mt-5">
-                    <app-text-inputs [formControl]="loginForm.controls['Email']" [type]="'email'"  [label]="'Email Address'"></app-text-inputs>
+                    <app-text-inputs [formControl]="loginForm.controls['Email']" 
+                    [type]="'email'"  [label]="'Email Address'"></app-text-inputs>
                     <div class="form-group">
-                        <app-text-inputs [formControl]="loginForm.controls['Password']" [type]="changetype?'password':'text'" [label]="'Password'"></app-text-inputs>
-                        <span class="eyeicon" (click)="viewpass()"><i [ngClass]="view?'fa fa-eye':'fa fa-eye-slash'"></i></span>
+                        <app-text-inputs [formControl]="loginForm.controls['Password']" 
+                        [type]="changetype?'password':'text'" [label]="'Password'">
+                    </app-text-inputs>
+                        <span class="eyeicon" (click)="viewpass()">
+                            <i [ngClass]="view?'fa fa-eye':'fa fa-eye-slash'">
+
+                            </i></span>
                     </div>
                     
                 </div>
@@ -30,8 +36,10 @@
                 </button>
                
             </div>
-            <div class="d-flex justify-content-between mt-4" style="color: blue;  font-size: smaller; cursor: pointer;">
-                <a (click)="openConfirmEmailDialog()">Forgot Password</a> <a (click)="openRegDialog()">New User</a>
+            <div class="d-flex justify-content-between mt-4" 
+            style="color: blue;  font-size: smaller; cursor: pointer;">
+                <a (click)="openConfirmEmailDialog()">Forgot Password</a> 
+                <a (click)="openRegDialog()">New User</a>
             </div>
            
         </form>
