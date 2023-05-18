@@ -55,12 +55,7 @@ checkOutForm = this.fb.group({
         }
       })
     }
-
-   
-     
     
-
-
     AttachDelivery(){  
       const basket = this.basketService.CurrentBasket();    
       if(basket && basket.deliveryId){    

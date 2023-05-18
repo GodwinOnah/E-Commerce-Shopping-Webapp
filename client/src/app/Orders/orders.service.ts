@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, map } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -16,10 +16,16 @@ export class OrdersService {
   constructor(private http:HttpClient) { }
 
   GetOrders(){
-    return this.http.get<IOrders[]>(this.baseUrl+'order')
+    const token = localStorage.getItem('token');
+    let headers = new HttpHeaders();
+    headers = headers.set('Authorization', `Bearer ${token}`);
+    return this.http.get<IOrders[]>(this.baseUrl+'order',{headers})
   }
 
   GetOrdersById(id:number){
-    return this.http.get<IOrders>(this.baseUrl+'order/'+id)
+    const token = localStorage.getItem('token');
+    let headers = new HttpHeaders();
+    headers = headers.set('Authorization', `Bearer ${token}`);
+    return this.http.get<IOrders>(this.baseUrl+'order/'+id,{headers})
   }
 }

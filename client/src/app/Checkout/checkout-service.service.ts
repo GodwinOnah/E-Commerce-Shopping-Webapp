@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Address } from '@stripe/stripe-js';
 import { map } from 'rxjs';
@@ -16,7 +16,10 @@ export class CheckoutServiceService {
   constructor(private http:HttpClient) { }
 
   CreateAnOrder(order:IOrderToCreate){
-     return this.http.post<IOrders>(this.baseUrl+'order',order);
+    const token = localStorage.getItem('token');
+    let headers = new HttpHeaders();
+    headers = headers.set('Authorization', `Bearer ${token}`);
+     return this.http.post<IOrders>(this.baseUrl+'order',order,{headers});
   }
 
   GetDelivery(){
