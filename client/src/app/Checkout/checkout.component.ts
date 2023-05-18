@@ -48,9 +48,9 @@ checkOutForm = this.fb.group({
     })
 
     AttachAddress(){
-      this.accountService.GetAddress().subscribe({
+      const token = localStorage.getItem('token');
+      this.accountService.GetAddress(token).subscribe({
         next: address => {
-          console.log(address)
          address && this.checkOutForm?.get('addressForm')?.patchValue(address)
         }
       })

@@ -30,25 +30,19 @@ export class UserAccountService {
       this.AppUserSource.next(null);
       return of(null); //return null observable
      }
-        // let headers = new HttpHeaders({'Content-Type':'application/json; charset=utf-8'});
-        // console.log(token)
-        // headers = headers.set('Authorization', `Bearer ${token}`);
-        // console.log(headers)
+  
         let headers = new HttpHeaders();
-        console.log(headers);
-      
         headers = headers.set('Authorization', `Bearer ${token}`);
       
         return this.http.get<User>(this.baseUrl+'user',
-       {headers})
-        .pipe(
-          map(
-            user=>{ 
-              if(user){
-                localStorage.setItem("token",user.token)
-                
-                this.AppUserSource.next(user);
-                return user;
+              {headers})
+                .pipe(
+                  map(
+                    user=>{ 
+                      if(user){
+                        localStorage.setItem("token",user.token);
+                        this.AppUserSource.next(user);
+                        return user;
             } else{return null}
                 
           }))
@@ -60,12 +54,9 @@ export class UserAccountService {
           .pipe(
             map(
               user=>{
-                console.log(user)
-                
                     localStorage.setItem('token',user.token)
                     localStorage.setItem("login",this.loginStatus.toString())
-                    this.AppUserSource.next(user);  
-                    // this.autoLogout.autoLogout();           
+                    this.AppUserSource.next(user);           
             } ))
       }
 
@@ -75,9 +66,6 @@ export class UserAccountService {
         .pipe(
           map(
             user=>{
-              
-                  // localStorage.setItem('token',user.Token)
-                  // this.AppUserSource.next(user);             
           } ))
     }
 
@@ -97,15 +85,14 @@ export class UserAccountService {
     }
 
     Logout(){
-      this.toastr.success("Logged Out") 
+      
       localStorage.removeItem('token');
       this.AppUserSource.next(null);
-      // this.router.navigateByUrl('/');
-      // localStorage.setItem('login_status', JSON.stringify(!this.loginStatus))
+      this.toastr.success("Logged Out") 
     }
 
     autoLogout(){
-      this.logoutOutService.startWatching(5).subscribe((isTimeOut: Boolean) => {
+      this.logoutOutService.startWatching(180).subscribe((isTimeOut: Boolean) => {
      if(isTimeOut){
               this.Logout();
               this.logoutOutService.stopTimer();
@@ -113,8 +100,10 @@ export class UserAccountService {
       })
     }
 
-    GetAddress(){
-      return this.http.get<Address>(this.baseUrl+'user/address')
+    GetAddress(token:string){
+      let headers = new HttpHeaders();
+      headers = headers.set('Authorization', `Bearer ${token}`);
+      return this.http.get<Address>(this.baseUrl+'user/address',{headers})
     }
 
     UpdateAddress(address:Address){

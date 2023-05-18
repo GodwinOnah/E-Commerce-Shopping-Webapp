@@ -15,18 +15,24 @@ export class CheckoutDeliveryComponent implements OnInit{
 
  
   
-  constructor(private checkoutService : CheckoutServiceService, public basketService 
-    : BasketService){}
+  constructor(
+    private checkoutService : CheckoutServiceService, 
+    public basketService : BasketService){}
 
   ngOnInit(): void {
-    this.checkoutService.GetDeliveryMethod().subscribe(
+   this.getDelivery();
+  }
+
+
+  getDelivery(){
+    this.checkoutService.GetDelivery().subscribe(
       {
         next: delivery => {    
-          this.deliverys = delivery}     
+          this.deliverys = delivery
+        }     
       }
     )
   }
-
   setDeliveryPrice(delivery:IDelivery){
       this.basketService.SetDelivery(delivery);
   }
