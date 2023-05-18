@@ -19,7 +19,7 @@ export class CheckoutServiceService {
      return this.http.post<IOrders>(this.baseUrl+'order',order);
   }
 
-  GetDeliveryMethod(){
+  GetDelivery(){
     return this.http.get<IDelivery[]>(this.baseUrl+'order/delivery').pipe(map(
       delivery =>{
         return delivery.sort((a,b)=>b.delPrice-a.delPrice)   

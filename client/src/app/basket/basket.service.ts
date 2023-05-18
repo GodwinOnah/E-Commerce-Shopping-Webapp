@@ -22,7 +22,7 @@ export class BasketService{
   delivery:IDelivery[] =[];
  
 
-  constructor(private http:HttpClient) {
+  constructor(private http : HttpClient) {
    }
   
   GetBasket(id:string){
@@ -77,6 +77,7 @@ RemoveItemsFromBasket(id:number,quantity?:number){
             else{this.DeleteBasket(basket)}
         }
 }
+
 DeleteBasket(basket: IBasket) {
     return this.http.delete(this.baseUrl+'basket?id='+basket.id).subscribe({
       next:() =>{
@@ -132,6 +133,7 @@ SetDelivery(delivery:IDelivery){
 }
 
 CreatePaymentIntent(){
+  // console.log(this.CurrentBasket()?.id);
   return this.http.post<IBasket>(this.baseUrl+'payment/'+this.CurrentBasket()?.id,{}).pipe(map(
      basket =>{
       this.basketSource.next(basket);    

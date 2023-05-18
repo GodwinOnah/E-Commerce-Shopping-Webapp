@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { take } from 'rxjs';
 import { BasketService } from 'src/app/basket/basket.service';
 import { IProduct } from 'src/app/prodsharemod/models/IProduct';
@@ -21,7 +22,8 @@ export class ProductDetaialsComponent implements OnInit{
             private prodshopService:ProdshopmodService, 
             private activatedroute:ActivatedRoute,
             private breadcrumbService:BreadcrumbService,
-            private basketService: BasketService)
+            private basketService: BasketService,
+            private toastr : ToastrService)
             {
               this.breadcrumbService.set('@productName','')
           }
@@ -32,7 +34,7 @@ export class ProductDetaialsComponent implements OnInit{
 
   ViewProduct(){
     const id = +this.activatedroute.snapshot.paramMap.get('productId');
-    console.log(id)
+
     if(id)this.prodshopService.getProduct(id).subscribe(
           { next : product=>
               {
@@ -44,25 +46,23 @@ export class ProductDetaialsComponent implements OnInit{
                               if(item){
                                 this.quantity = item.quantity;
                                 this.quantityInBasket=item.quantity
-}
-}})
-              },
+}}})},
                 error:error=>console.log(error)
-            })
-  }
-
-
+            })}
 
   AddItem(){
 
     if(this.productDetails){
+      if (this.quantity<1) 
+       return this.toastr.success("Item(s) cannot be 0 or negative");
       if(this.quantity>this.quantityInBasket){
         const itemToAdd = this.quantity-this.quantityInBasket;
         this.quantityInBasket += itemToAdd;
         this.basketService.AddItemsToBasket(this.productDetails,itemToAdd)
-
       }
       else{
+        if (this.quantity<1) 
+         return this.toastr.success("Item(s) cannot be 0 or negative");
         if(this.quantity<this.quantityInBasket){
           const itemToReduce=this.quantityInBasket-this.quantity;
           this.quantityInBasket-=itemToReduce;

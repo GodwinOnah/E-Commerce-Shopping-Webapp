@@ -20,7 +20,6 @@ export class ProductItemChildComponent implements OnInit{
   }
   
   AddItem(){ 
-    console.log(this.product)
     this.product && this.basketService.AddItemsToBasket(this.product,1)
   }
  

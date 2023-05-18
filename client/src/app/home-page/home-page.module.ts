@@ -13,7 +13,6 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
   imports: [
     CommonModule,
     CarouselModule
-
   ],
   exports: [HomePageComponent]
 })
