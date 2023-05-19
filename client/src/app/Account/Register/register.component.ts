@@ -43,6 +43,7 @@ export class RegisterComponent {
     // console.log(this.registerForm.value)
     this.accountService.Register(this.registerForm.value).subscribe({
       next: ()=>{
+        this. closeDialog();
          this.toastr.success("Registered succecssfully");
          this.openLoginDialog()},
       error : error => { 
@@ -73,5 +74,9 @@ export class RegisterComponent {
         {height: '50%',
       width: '50%'});
       } 
+
+      closeDialog(){
+        this.accountService.closeDialog(); // <- Close the mat dialog
+      }
 
 }

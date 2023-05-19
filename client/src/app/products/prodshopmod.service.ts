@@ -93,7 +93,7 @@ export class ProdshopmodService {
    }
 
    UploadProduct(value:any){
-    return this.http.post<IProduct[]>(this.url+'products/upload',value);
+    return this.http.post<string>(this.url+'products',value);
    
 }
    }
