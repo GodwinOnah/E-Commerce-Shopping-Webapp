@@ -30,20 +30,14 @@ export class NavBarComponent {
   }
 
   Logout(){
-
     this.accountservice.Logout();
   }
 
   openLoginDialog(){
-    this.matdialog.open(LoginComponent,
-      {height: 'auto',
-    width: '50%'});
+    this.accountservice.openLoginDialog();
   }
   openRegDialog(){
-    this.login = false;
-    this.matdialog.open(RegisterComponent,
-      {height: '70%',
-    width: '50%'});
+    this.accountservice.openRegDialog();
     
   }
 

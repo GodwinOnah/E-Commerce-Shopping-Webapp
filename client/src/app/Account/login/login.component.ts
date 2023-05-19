@@ -3,9 +3,6 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { UserAccountService } from '../account.service';
-import {  MatDialog } from '@angular/material/dialog';
-import { RegisterComponent } from '../Register/register.component';
-import { ForgotpasswrdComponent } from '../forgot_password/forgotpasswrd/forgotpasswrd.component';
 
 
 
@@ -32,7 +29,7 @@ export class LoginComponent {
     private accountService : UserAccountService,
     private activatedRoute : ActivatedRoute,
     private toastr : ToastrService,
-    private matdialog : MatDialog
+   
    ){
     this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl']||'/prodshopmod'
   }
@@ -46,6 +43,7 @@ export class LoginComponent {
     this.accountService.Login(this.loginForm.value).subscribe({
       next: ()=> {
         this.successful=true;
+       this.closeDialog();
         this.toastr.success("Login succecssfully") ;
         this.router.navigateByUrl('/products');
         this.accountService.autoLogout();
@@ -58,15 +56,15 @@ export class LoginComponent {
   }
 
   openRegDialog(){
-    this.matdialog.open(RegisterComponent,
-      {height: '70%',
-    width: '50%'});
+    this.accountService.openRegDialog();
+  }
+
+  closeDialog(){
+    this.accountService.closeDialog(); // <- Close the mat dialog
   }
 
   openConfirmEmailDialog(){
-    this.matdialog.open(ForgotpasswrdComponent,
-      {height: 'auto',
-    width: '50%'});
+    this.accountService.openConfirmEmailDialog();
   }
 
   viewpass(){

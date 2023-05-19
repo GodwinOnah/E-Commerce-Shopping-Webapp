@@ -6,6 +6,11 @@ import { BehaviorSubject, map, of, ReplaySubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { BnNgIdleService } from 'bn-ng-idle';
 import { Address, User } from '../prodsharemod/models/User';
+import { MatDialog } from '@angular/material/dialog';
+import { RegisterComponent } from './Register/register.component';
+import { ForgotpasswrdComponent } from './forgot_password/forgotpasswrd/forgotpasswrd.component';
+import { LoginComponent } from './login/login.component';
+
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +26,7 @@ export class UserAccountService {
     private http : HttpClient, 
     private router : Router,
     private toastr : ToastrService,
+    private matdialog : MatDialog,
     private logoutOutService : BnNgIdleService) { }
 
   LoadPreviousUser(token:string){
@@ -80,6 +86,31 @@ export class UserAccountService {
   
 }
 
+openLoginDialog(){
+  this.closeDialog();
+  this.matdialog.open(LoginComponent,
+    {height: 'auto',
+    width: '50%'});
+}
+
+openRegDialog(){
+  this.closeDialog();
+  this.matdialog.open(RegisterComponent,
+    {height: '70%',
+  width: '50%'});
+}
+
+closeDialog(){
+  this.matdialog.closeAll(); // <- Close the mat dialog
+}
+
+openConfirmEmailDialog(){
+  this.closeDialog();
+  this.matdialog.open(ForgotpasswrdComponent,
+    {height: 'auto',
+  width: '50%'});
+}
+
     CheckEmail(email:string){
       return this.http.get<boolean>(this.baseUrl+'user/emailexist?email='+email)
     }
@@ -107,7 +138,10 @@ export class UserAccountService {
     }
 
     UpdateAddress(address:Address){
-      return this.http.put(this.baseUrl+'user/address',address);
+      const token = localStorage.getItem('token');
+      let headers = new HttpHeaders();
+      headers = headers.set('Authorization', `Bearer ${token}`);
+      return this.http.put(this.baseUrl+'user/address',address,{headers});
    }
 
 }
