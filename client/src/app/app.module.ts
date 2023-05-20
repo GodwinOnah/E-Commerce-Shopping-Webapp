@@ -15,10 +15,14 @@ import { ToastrModule } from 'ngx-toastr';
 import { JwtInterceptor } from './core/Interceptors/jwt.interceptor';
 import { AdminModule } from './Admin/admin.module';
 import { BnNgIdleService } from 'bn-ng-idle';
+import { OrderDetailsPaidComponent } from './order-details-paid/order-details-paid.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
+    OrderDetailsPaidComponent,
+  
   
    
    

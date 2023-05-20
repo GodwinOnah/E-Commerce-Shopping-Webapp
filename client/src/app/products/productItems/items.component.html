@@ -1,6 +1,7 @@
 <div style="background-color: lightgray; padding-bottom: 40px;">
     <div class="align-content-left">
-        <button style="margin-top: 15px;margin-left: 5px;" class=" btn btn-danger" mat-dialog-close>
+        <button  style="margin-top: 15px;margin-left: 5px;" 
+        class=" btn btn-danger" mat-dialog-close >
             x
         </button>
         </div>
@@ -36,7 +37,7 @@
                 </ul>
             </div>
                 <div class="d-grid" >
-                    <button mat-dialog-close [disabled]="productForm.invalid" class="btn btn-lg btn-success" type="submit" style="margin-top:10px ;">
+                    <button [disabled]="productForm.invalid" class="btn btn-lg btn-success" type="submit" style="margin-top:10px ;">
                       Upload Product
                     </button>
                 </div>

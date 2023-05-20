@@ -1,16 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { take } from 'rxjs';
-import { IOrders } from 'src/app/prodsharemod/models/IOrders';
 import { BreadcrumbService } from 'xng-breadcrumb';
 import { OrdersService } from '../orders/orders.service';
+import { IOrders } from '../prodsharemod/models/IOrders';
 
 @Component({
-  selector: 'app-orders-details',
-  templateUrl: './orders-details.component.html',
-  styleUrls: ['./orders-details.component.scss']
+  selector: 'app-order-details-paid',
+  templateUrl: './order-details-paid.component.html',
+  styleUrls: ['./order-details-paid.component.scss']
 })
-export class OrdersDetailsComponent implements OnInit{
+export class OrderDetailsPaidComponent {
 
   order?: IOrders;
  
@@ -22,18 +21,16 @@ export class OrdersDetailsComponent implements OnInit{
       this.breadcrumbService.set('@OrderDetailed', ' ');
   }
   ngOnInit(): void {
-    this.ViewOrder();
+    this.ViewPaidOrder();
   }
 
-  ViewOrder(){
+  ViewPaidOrder(){
     const id = +this.activatedroute.snapshot.paramMap.get('id');
-    id && this.orderService.GetOrdersById(id).subscribe({
+    id && this.orderService.GetPaidOrdersById(id).subscribe({
       next: order => {
         this.order = order;
         this.breadcrumbService.set('@OrderDetailed', `Order# ${order.id} - ${order.orderStatus}`);
 } })
 }
-  }
 
-
-
+}

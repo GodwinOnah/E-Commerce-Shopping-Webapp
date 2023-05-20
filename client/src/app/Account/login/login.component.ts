@@ -41,11 +41,13 @@ export class LoginComponent {
 
   onLoginSubmit(){
     this.accountService.Login(this.loginForm.value).subscribe({
-      next: ()=> {
-        this.successful=true;
-       this.closeDialog();
+      next : user => {
+        this.closeDialog();
+        if(user.email === "gut@gmail.com")
+        this.router.navigateByUrl('/Admin');
+        else{ this.router.navigateByUrl('/products');}
+        this.successful = true;
         this.toastr.success("Login succecssfully") ;
-        this.router.navigateByUrl('/products');
         this.accountService.autoLogout();
       },
         error : error => {

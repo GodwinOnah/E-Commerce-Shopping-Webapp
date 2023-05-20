@@ -34,7 +34,7 @@
                     </div>
 
                   <div *ngIf="(accountService.AppUser$|async) as user" >
-                  <div class="marquee2 " *ngIf="totalPageNumber!=0"><Marquee >Hi {{user.nickName}}. Thank you for viewing our items. 
+                  <div class="marquee2 " *ngIf="totalPageNumber!=0"><Marquee >Hi {{user.nickName}}!!. Thank you for viewing our items. 
                     There are lot more of these items you can ever imagined. 
                     If you cannot find the item you want in the list below, 
                     quickly contact us for a quick action. Your commitment is the 
@@ -52,9 +52,6 @@
                     </div>
 
                     <ng-container *ngIf="products">
-
-                      
-                    
                       <div class=" item-container container" >
                         <div class="card-container mb-4 " *ngFor="let item of products">
                               <app-product-item-child [product]="item"></app-product-item-child>

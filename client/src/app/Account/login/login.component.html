@@ -15,15 +15,16 @@
         <form [formGroup] = "loginForm" (ngSubmit)="onLoginSubmit()">
             <div class="text-center mt-5">
                     <app-text-inputs [formControl]="loginForm.controls['Email']" 
-                    [type]="'email'"  [label]="'Email Address'"></app-text-inputs>
-                    <div class="form-group">
-                        <app-text-inputs [formControl]="loginForm.controls['Password']" 
-                        [type]="changetype?'password':'text'" [label]="'Password'">
+                    [type]="'email'"  [label]="'Email Address'">
                     </app-text-inputs>
-                        <span class="eyeicon" (click)="viewpass()">
-                            <i [ngClass]="view?'fa fa-eye':'fa fa-eye-slash'">
-
-                            </i></span>
+                    <div class="form-group">
+                   <app-text-inputs [formControl]="loginForm.controls['Password']" 
+                    [type]="changetype?'password':'text'" [label]="'Password'">
+                    </app-text-inputs>
+                    <span class="eyeicon" (click)="viewpass()">
+                    <i [ngClass]="view?'fa fa-eye':'fa fa-eye-slash'">
+                     </i>
+                    </span>
                     </div>
                     
                 </div>
@@ -45,4 +46,9 @@
         </form>
     </div>
 </div>
+</div>
+<div>
+    <Marquee><strong style="font-weight: bolder ;"> For testing purpose, you can login as the admin to have access to the admin page as to view paid order(s), upload new product(s), etc: <strong style="color:red ;">email:</strong>  goodboyandpikin@gmail.com; <strong style="color:red ;">password:</strong>  Great4me@@</strong></Marquee>
+
+
 </div>

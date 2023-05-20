@@ -15,6 +15,10 @@ import { LoginComponent } from '../login/login.component';
 export class RegisterComponent {
 
   errors : string[] | null = null;
+  view1 : boolean = true;
+  changetype1 : boolean = true;
+  view2: boolean = true;
+  changetype2 : boolean = true;
 
   RegularExpression="^(?=(.*[a-z]){1,})(?=(.*[\\d]){1,})(?=(.*[\\W]){1,})(?!.*\\s).{7,30}$";
 
@@ -35,7 +39,8 @@ export class RegisterComponent {
           Zipcode: ['',Validators.required],
           Phone: ['',Validators.required],
           Email: ['',[Validators.required, Validators.email],[this.validateEmail()]],
-          Password: ['',[Validators.required,Validators.pattern(this.RegularExpression)]],
+          Password1: ['',[Validators.required,Validators.pattern(this.RegularExpression)]],
+          Password2: ['',[Validators.required,Validators.pattern(this.RegularExpression)]],
           // ConfirmPassword: ['',[Validators.required]]
   });
 
@@ -47,7 +52,7 @@ export class RegisterComponent {
          this.toastr.success("Registered succecssfully");
          this.openLoginDialog()},
       error : error => { 
-        this.toastr.success("Not Registered");
+        this.toastr.success("Not Registered; Check if password are matched");
         this.errors = error.errors  } 
       
     });
@@ -77,6 +82,16 @@ export class RegisterComponent {
 
       closeDialog(){
         this.accountService.closeDialog(); // <- Close the mat dialog
+      }
+
+      viewpass1(){
+        this.view1 = !this.view1;
+        this.changetype1 = !this.changetype1;
+      }
+
+      viewpass2(){
+        this.view2 = !this.view2;
+        this.changetype2 = !this.changetype2;
       }
 
 }

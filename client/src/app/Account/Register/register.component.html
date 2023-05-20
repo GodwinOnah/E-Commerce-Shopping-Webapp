@@ -33,9 +33,20 @@
               <app-text-inputs [formControl]=" registerForm.controls['Phone']"  [label]="'Phone'"></app-text-inputs>
 
               <app-text-inputs [formControl]=" registerForm.controls['Email']"  [label]="'Email Address'" [type]="'email'"></app-text-inputs>
-
-              <app-text-inputs [formControl]=" registerForm.controls['Password']"  [label]="'Password'" [type]="'password'"></app-text-inputs>
-
+                <div class="form-group">
+              <app-text-inputs [formControl]=" registerForm.controls['Password1']"  [label]="'Password'" [type]="changetype1?'password':'text'"></app-text-inputs>
+              <span class="eyeicon" (click)="viewpass1()">
+                <i [ngClass]="view1?'fa fa-eye':'fa fa-eye-slash'">
+                 </i>
+                </span>
+                </div>
+                <div class="form-group">
+                    <app-text-inputs [formControl]=" registerForm.controls['Password2']"  [label]="'Confirm Password'" [type]="changetype2?'password':'text'"></app-text-inputs>
+                    <span class="eyeicon" (click)="viewpass2()">
+                      <i [ngClass]="view2?'fa fa-eye':'fa fa-eye-slash'">
+                       </i>
+                      </span>
+                      </div>
               <!-- <app-text-inputs [formControl]=" registerForm.controls['ConfirmPassword']"  [label]="'Confirm Password'" [type]="'password'"></app-text-inputs> -->
 
             </div>
