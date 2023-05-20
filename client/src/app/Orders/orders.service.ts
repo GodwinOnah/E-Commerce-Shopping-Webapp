@@ -22,10 +22,18 @@ export class OrdersService {
     return this.http.get<IOrders[]>(this.baseUrl+'order',{headers})
   }
 
+  GetPaidOrders(){
+    return this.http.get<IOrders[]>(this.baseUrl+'admin')
+  }
+
   GetOrdersById(id:number){
     const token = localStorage.getItem('token');
     let headers = new HttpHeaders();
     headers = headers.set('Authorization', `Bearer ${token}`);
     return this.http.get<IOrders>(this.baseUrl+'order/'+id,{headers})
+  }
+
+  GetPaidOrdersById(id:number){
+    return this.http.get<IOrders>(this.baseUrl+'admin/'+id)
   }
 }

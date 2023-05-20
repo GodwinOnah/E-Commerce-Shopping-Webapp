@@ -1,8 +1,40 @@
 <div class="admin">
-    <h1>Welcome {{admin}}</h1>
-    <div class="align-items-center">
+    <h1 class="text-center"><strong style="color: purple;font-weight:bolder;">
+        You are the Admin</strong></h1>
+        
+    <div  class="container mt-5 " style="margin-top: 200px;">
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-hover" style="cursor: pointer;">
+                <thead class="thead-light">
+                    <tr>
+                        <th>ORDER</th>
+                        <th>CUSTOMER EMAIL</th>
+                        <th>DATE</th>
+                        <th>TOTAL</th>
+                        <th>STATUS</th>
+                        <th>CUSTOMER ADDRESS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let order of orders" routerLink="/Admin/{{order.id}}">
+                        <th>{{order.id}}</th>
+                        <th>{{order.email}}</th>
+                        <td>{{order.orderDate | date: 'medium'}}</td>
+                        <td>£{{order.total}}</td>
+                        <td>{{order.orderStatus}}</td>
+                        <td>{{order.Address}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+    <div class="text-center" style="margin-bottom:300px ;">
         <button (click)="openUploadProduct()"  class="btn btn-primary mt-5">
-            Upload Product
+            Upload new product here
         </button>
     </div>
 </div>
+

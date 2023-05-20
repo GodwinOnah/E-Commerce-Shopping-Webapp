@@ -60,9 +60,11 @@ export class UserAccountService {
           .pipe(
             map(
               user=>{
+                
                     localStorage.setItem('token',user.token)
                     localStorage.setItem("login",this.loginStatus.toString())
-                    this.AppUserSource.next(user);           
+                    this.AppUserSource.next(user); 
+                    return user;          
             } ))
       }
 
@@ -111,14 +113,15 @@ openConfirmEmailDialog(){
   width: '50%'});
 }
 
-    CheckEmail(email:string){
+  CheckEmail(email:string){
       return this.http.get<boolean>(this.baseUrl+'user/emailexist?email='+email)
     }
 
-    Logout(){
+  Logout(){
       
       localStorage.removeItem('token');
       this.AppUserSource.next(null);
+      this.router.navigateByUrl('/products');
       this.toastr.success("Logged Out") 
     }
 
