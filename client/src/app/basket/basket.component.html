@@ -18,20 +18,24 @@
                 >
               </app-basket-summary>
             </div>
-            <div class="row">
+            
+            <div class="row align-items-center">
                 <div class="row col-12" style="width:60% ;">
                     <app-order-total></app-order-total>
                     </div>
-                    <div  class="row col-12 align-items-center mt-4 mb-5" style="width: 500px;height: 100px;">
-                        <button 
-                         routerLink="/Checkout" 
-                        class="
-                        justify-content-centery-2 checkout" style="width: 150px; height: 60px; border-radius: 10px;">
-                            <strong style="color: black; font-size:auto;">Proceed to checkout</strong>
+                    <div class="d-flex mt-5 mb-5" >
+                   
+                        <button class="checkout" (click)="deleteBasket(basket)" 
+                        style="background-color: red;">
+                            <strong style="color: white; font-size:auto;">Clear basket</strong> 
+                        </button>
+                        <button routerLink="/Checkout" class="checkout"  style="background-color: green;">
+                            <strong style="color:white; font-size:auto;">Proceed to checkout</strong>
                          </button>
                     </div>
                 </div>
-            </div>
+                </div>
+           
            
     </ng-container>
 </div>

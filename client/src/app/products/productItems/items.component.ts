@@ -33,6 +33,7 @@ onSubmit(){
   // console.log(this.registerForm.value)
   this.productsService.UploadProduct(this.productForm.value).subscribe({
     next: ()=>{
+      window.location.reload();
        this.toastr.success("Product uploaded");
     },
     error : error => { 

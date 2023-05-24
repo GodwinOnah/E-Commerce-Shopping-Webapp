@@ -3,7 +3,6 @@ import { IProduct } from '../prodsharemod/models/IProduct';
 import { IBrands} from '../prodsharemod/models/IBrands';
 import { ProdshopmodService } from './prodshopmod.service';
 import { ShopParameters } from '../prodsharemod/models/shopParameters';
-import { delay } from 'rxjs';
 import { UserAccountService } from '../Account/account.service';
 
 

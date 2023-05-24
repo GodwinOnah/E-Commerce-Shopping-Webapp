@@ -14,17 +14,28 @@
                         <th>TOTAL</th>
                         <th>STATUS</th>
                         <th>CUSTOMER ADDRESS</th>
+                        <th>CONFIRMATION</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let order of orders" routerLink="/Admin/{{order.id}}">
+                    <div class="text-center"><ng-container *ngIf="adminOrders.length==0"><strong style="color: red;">No order(s)</strong></ng-container>
+                    <tr *ngFor="let order of adminOrders" routerLink="/Admin/{{order.id}}">
                         <th>{{order.id}}</th>
                         <th>{{order.email}}</th>
                         <td>{{order.orderDate | date: 'medium'}}</td>
                         <td>£{{order.total}}</td>
                         <td>{{order.orderStatus}}</td>
-                        <td>{{order.Address}}</td>
+                        <td>{{order.shippingAddress}}</td>
+                        <td><input [checked]="confirmer()" type="checkbox" id="check" name="check" >
+                            <label for="check"> Confirm</label></td>
+                        <td class="text-danger" *ngIf="isBasket">
+                                <i (click)="deleteAdminOrder(id)" class="fa fa-trash  mt-4" 
+                                style="cursor: pointer ;font-size:1.5em; margin-left: 20px;"></i>
+                                
+                        </td>
+                        
                     </tr>
+                </div>
                 </tbody>
             </table>
         </div>
@@ -34,6 +45,11 @@
     <div class="text-center" style="margin-bottom:300px ;">
         <button (click)="openUploadProduct()"  class="btn btn-primary mt-5">
             Upload new product here
+        </button>
+    </div>
+    <div class="text-center" style="margin-bottom:300px ;">
+        <button (click)="openDeleteProduct()"  class="btn btn-primary mt-5">
+            Delete Product
         </button>
     </div>
 </div>

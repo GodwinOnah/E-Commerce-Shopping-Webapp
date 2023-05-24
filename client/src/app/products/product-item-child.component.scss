@@ -27,6 +27,11 @@ color: red;
     font-size: x-large;
 }
 
+button:hover{
+    background-color: green;
+    border-radius: 10px;
+  }
+
 // .image:hover{
 //     opacity: 1;
 //     & button{

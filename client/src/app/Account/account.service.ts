@@ -19,6 +19,8 @@ export class UserAccountService {
 
   baseUrl = environment.apiUrl;
   private AppUserSource = new ReplaySubject<User|null>(1);
+  private WhoSource = new ReplaySubject<Boolean>(1);
+  WhoSource$ = this.WhoSource.asObservable();
   AppUser$  = this.AppUserSource.asObservable();
   loginStatus = false;
 
@@ -30,7 +32,6 @@ export class UserAccountService {
     private logoutOutService : BnNgIdleService) { }
 
   LoadPreviousUser(token:string){
-// console.log(token)
      if(token===null)
      {
       this.AppUserSource.next(null);
@@ -147,4 +148,5 @@ openConfirmEmailDialog(){
       return this.http.put(this.baseUrl+'user/address',address,{headers});
    }
 
+  
 }

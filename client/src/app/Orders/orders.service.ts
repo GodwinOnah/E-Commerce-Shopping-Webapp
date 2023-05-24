@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, map } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { IAdminOrder } from '../prodsharemod/models/IAdminOrder';
 import { IOrders } from '../prodsharemod/models/IOrders';
 
 @Injectable({
@@ -22,8 +23,8 @@ export class OrdersService {
     return this.http.get<IOrders[]>(this.baseUrl+'order',{headers})
   }
 
-  GetPaidOrders(){
-    return this.http.get<IOrders[]>(this.baseUrl+'admin')
+  GetAdminOrders(){
+    return this.http.get<IAdminOrder[]>(this.baseUrl+'admin')
   }
 
   GetOrdersById(id:number){
@@ -33,7 +34,18 @@ export class OrdersService {
     return this.http.get<IOrders>(this.baseUrl+'order/'+id,{headers})
   }
 
-  GetPaidOrdersById(id:number){
-    return this.http.get<IOrders>(this.baseUrl+'admin/'+id)
+  GetAdminOrdersById(id:number){
+    return this.http.get<IAdminOrder>(this.baseUrl+'admin/'+id)
   }
+
+  DeleteAdminOrder(id){
+    return this.http.delete(this.baseUrl+'admin/'+id)
+  }
+
+  // DeletPaidOrder(id: number) {
+  //   return this.http.delete(this.baseUrl+'admin?id='+basket.id).subscribe({
+  //     next:() =>{
+  //       this.RemoveAllItemsInBasket();
+  // }});
+  // }
 }
