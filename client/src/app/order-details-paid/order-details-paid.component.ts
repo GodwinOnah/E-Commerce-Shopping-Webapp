@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BreadcrumbService } from 'xng-breadcrumb';
 import { OrdersService } from '../orders/orders.service';
+import { IAdminOrder } from '../prodsharemod/models/IAdminOrder';
 import { IOrders } from '../prodsharemod/models/IOrders';
 
 @Component({
@@ -11,7 +12,7 @@ import { IOrders } from '../prodsharemod/models/IOrders';
 })
 export class OrderDetailsPaidComponent {
 
-  order?: IOrders;
+  order?: IAdminOrder;
  
   constructor(
     private activatedroute:ActivatedRoute,
@@ -26,7 +27,7 @@ export class OrderDetailsPaidComponent {
 
   ViewPaidOrder(){
     const id = +this.activatedroute.snapshot.paramMap.get('id');
-    id && this.orderService.GetPaidOrdersById(id).subscribe({
+    id && this.orderService.GetAdminOrdersById(id).subscribe({
       next: order => {
         this.order = order;
         this.breadcrumbService.set('@OrderDetailed', `Order# ${order.id} - ${order.orderStatus}`);

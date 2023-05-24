@@ -96,5 +96,10 @@ export class ProdshopmodService {
     return this.http.post<string>(this.url+'products',value);
    
 }
+
+DeleteProduct(id:number){
+  return this.http.delete(this.url+'products/'+id);
+ 
+}
    }
 

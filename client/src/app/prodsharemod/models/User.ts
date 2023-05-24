@@ -7,6 +7,14 @@
         token:string
     }
 
+    // export class User implements User{
+      
+    //     email:string="";
+    //     nickName:string="";
+    //     token:string="";
+      
+    //   }
+
 
     export interface Address
     {      

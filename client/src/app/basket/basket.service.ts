@@ -133,11 +133,9 @@ SetDelivery(delivery:IDelivery){
 }
 
 CreatePaymentIntent(){
-  // console.log(this.CurrentBasket()?.id);
   return this.http.post<IBasket>(this.baseUrl+'payment/'+this.CurrentBasket()?.id,{}).pipe(map(
      basket =>{
       this.basketSource.next(basket);    
     } 
-  )); 
-}
+  ));}
 }

@@ -8,12 +8,19 @@
       <h5 class="pricing">£{{product.prodPrice}}</h5>
 
       <div class="d-flex">
+       
       <button (click)="AddItem()" class="btnOrder" style="width:80px ;height: 25px; 
       padding-bottom: 25px;"><strong class="ak">Add</strong></button>
    
         <button routerLink="/products/{{product.id}}" class="btnOrder" 
          style="width:100px ;height: 25px; padding-bottom: 25px;"><strong class="ak">
-          View</strong></button>
+          View</strong>
+        </button>
+       
+        <ng-container *ngIf="(accountService.AppUser$|async) as user" >
+          <button *ngIf="user.email=='gut@gmail.com'" (click)="DeletItem(product.id)" class="btnOrder" style="width:80px ;height: 25px; color: red; 
+          padding-bottom: 25px;"><strong class="ak">Delete</strong></button>
+           </ng-container>
         </div>
     </div>
   </div>
