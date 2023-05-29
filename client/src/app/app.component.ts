@@ -15,8 +15,7 @@ export class AppComponent
 
 constructor(
   private basketService: BasketService,
-  private accountService:UserAccountService,
-  private logoutOutService : BnNgIdleService){
+  private accountService:UserAccountService,){
   }
 
 ngOnInit(): void {

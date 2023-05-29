@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { OrdersService } from '../orders/orders.service';
 import { IAdminOrder } from '../prodsharemod/models/IAdminOrder';
 import { IOrders } from '../prodsharemod/models/IOrders';
-import { ItemsComponent } from '../products/productItems/items.component';
+import { ItemsComponent } from '../products/productItems/items/items.component';
 
 
 @Component({
@@ -26,11 +26,6 @@ export class AdminComponent {
     }
     
   openUploadProduct(){
-    this.matdialog.open(ItemsComponent,
-      {height: '70%',
-    width: '50%'});
-  }
-  openDeleteProduct(){
     this.matdialog.open(ItemsComponent,
       {height: '70%',
     width: '50%'});

@@ -1,69 +1,56 @@
 
 .item-container {
-
-    width: 100%;
-    height: 600px;
+   width: 100%;
+   height: 600px;
    overflow: scroll;
-   margin-left: 10px;
-   
+   margin-left: 10px; 
    border: 2px solid black ;
    border-radius: 10px;
-
    background-color:mintcream;
-
    position: relative;
-
    display:grid;
-
    grid-template-columns: repeat(auto-fill,minmax(250px,1fr));
-
-   grid-template-rows: repeat(auto-fill,minmax(300px,1fr));
-
-   
+   grid-template-rows: repeat(auto-fill,minmax(300px,1fr)); 
 }
 
 li{list-style-type: none;
     display: inline;
 
 }
-.left-section-1{
-
-    margin-top: 20px;
-    font-size: 0.8em; 
+.right-section{
+    font-size: 0.75em; 
     font-weight: bolder;
-   
+    overflow: scroll;
+    height: 200px;  
 }
-.left-section-2{
 
+.right{
     margin-top: 10px;
-    margin-right: 20px;
-    font-size: 0.8em; 
-    font-weight: bolder;
-  
-   
 }
-.right-section-search{
 
-    margin-top: 160px;
+
+.right-section-search{
+  
     font-size: small; 
    
 }
 
 .left-section{
-    margin-top: 160px;
-   
     font-size: small; 
     margin-left: 0;
     margin-right: 50pix;
     padding: 0;
 }
 
-h6{color:purple;}
+h5{
+    color:purple; 
+    font-weight: bolder;
+}
 
 .marquee{
     direction: left; 
-    width: 100%;
-    font-size: medium;
+    width: 98%;
+    font-size: small;
     font-weight: bold;
     color: blue;
    
@@ -71,10 +58,10 @@ h6{color:purple;}
 
 .marquee2{
     direction: left; 
-    width: 100%;
+    width: 98%;
     color: purple;
-    font-size: large;
-    font-weight: bolder;
+    font-size: small;
+    font-weight: bold;
    
 }
 .content{
@@ -82,7 +69,6 @@ h6{color:purple;}
     position: relative;
 }
 .search{
-
     width:  80%;
     height: 30px;
     margin-bottom: 30px;
@@ -111,9 +97,6 @@ margin-top: 50%;
     list-style: none;
     text-decoration: none;
  }
-
- 
-  
 
  .list-group-item{
     &:not(.active):hover{

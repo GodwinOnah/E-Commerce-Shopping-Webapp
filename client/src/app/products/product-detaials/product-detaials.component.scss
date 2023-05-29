@@ -1,19 +1,26 @@
 .row{
-
     width: auto;
 }
+
 .btn-prodDetails{
     background-color: yellow;
     width: 200px;
     height: 100px;
     margin: 10px;
+    margin-right: 20px;
     border-radius: 40px ;
-    border: solid black 10px;
+    border: solid black 5px;
       
 }
 
-.btn-prodDetails:hover{background-color: red;}
-.btn-pbasket:hover{background-color: green;}
+.btn-prodDetails:hover{
+    background-color:green;
+    color:black; 
+    padding: 10px;
+}
+.btn-pbasket:hover{
+    background-color: pink;
+}
 
 .btn-order{
     margin-top: 50px;
@@ -25,7 +32,9 @@
     margin-top: 10px;
 }
 
-.changeQntyBtn:hover{background-color: black; border-radius: 10px;}
+.changeQntyBtn:hover{
+    background-color: black; 
+    border-radius: 10px;}
 
 .btn-quantity-number{
     font-weight: bolder;
@@ -34,9 +43,11 @@
 }
 
 .background{
-    background-color: pink;
-    border-radius: 20px;
-    
+    background-color: lightgrey;
+    border-radius: 10px;
+    width: 80%; 
+    height:auto; 
+    margin-left:10%  
 }
 .ax{
     text-align: right;
@@ -58,5 +69,6 @@ table{
     margin: 10px;
 }
 
-.price{margin-bottom: 10px;
+.price{
+    margin-bottom: 10px;
     margin-top: 10px;}

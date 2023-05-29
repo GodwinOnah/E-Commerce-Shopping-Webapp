@@ -1,15 +1,19 @@
-<div *ngIf="productDetails" class="d-flex justify-content-center background" 
-    style="width: 80%; height:100%; margin-left:10%; margin-top:15%">       
+<div *ngIf="productDetails" class="d-flex justify-content-center background" >       
     <div class="d-flex flex-column align-items-center" style="width:150%;">      
-        <marquee  direction="left" ><div class="d-flex  w-auto" style="color: blue; font-weight: bold; font-size: larger;">
+        <marquee  direction="left" >
+            <div class="d-flex  w-auto" style="color: blue; font-weight: bold; font-size: larger;">
             <h5 *ngIf="quantityInBasket>1">
-                <strong>{{quantityInBasket}} of this item are already in your basket</strong>             
+                <strong>{{quantityInBasket}} of this item are in your basket</strong>             
             </h5>
-            <h5> <ng-container *ngIf="quantityInBasket==1"
-                ><strong>{{quantityInBasket}} of this item is already in your basket</strong></ng-container>
+            <h5> 
+                <ng-container *ngIf="quantityInBasket==1">
+                    <strong>{{quantityInBasket}} of this item is in your basket</strong>
+                </ng-container>
             </h5>        
-                <h5> <ng-container *ngIf="quantityInBasket==0"
-                    ><strong>This item is not in your basket</strong></ng-container>
+                <h5> 
+                    <ng-container *ngIf="quantityInBasket==0">
+                        <strong>This item is not in your basket</strong>
+                    </ng-container>
                 </h5>          
             </div>
         </marquee>
@@ -19,11 +23,11 @@
                     width="150%" style="margin-left:5px ; border-radius: 20px;" alt={{productDetails.prodName}}>
                 </div>               
                 <div class="col-4 mt-5">
-                    <h5 style="font-weight: bold; color:blue;">What you're buying</h5>
+                    <h5 style="font-weight: bolder; color:blue;">What you're buying</h5>
                     <p>{{productDetails.prodDescription}}</p>                  
                 </div>
         </div>
-<hr>
+        <hr>
         <div class="d-flex flex-column align-items-center">
             <div class="btn-quantity-name">
                 <table>
@@ -61,17 +65,15 @@
                 <button  
                 (click)="AddItem()"
                 [disabled]="quantity == quantityInBasket" 
-                class="btn btn-prodDetails fa fa-shoping-cart" 
-                style="color:black; font-size:120%; padding: 10px; ">
+                class="btn btn-prodDetails fa fa-shoping-cart">
                     <strong>{{ButtonTxt}}</strong>
                 </button>
-                <div class="btn-order"> 
+              
                     <button  routerLink="/basket"
-                    class="btn btn-prodDetails btn-pbasket fa fa-shoping-cart" 
-                    style="color:black; font-size:120%; padding: 10px; ">
-                        <strong>Basket</strong>
+                    class="btn btn-prodDetails btn-pbasket fa fa-shoping-cart" >
+                        <strong>Go to basket</strong>
                     </button>
-                </div>
+               
             </div>
          </div>
     </div>
