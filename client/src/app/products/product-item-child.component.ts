@@ -45,5 +45,6 @@ export class ProductItemChildComponent implements OnInit{
         }
     );
   }
+  
  
 }

@@ -16,6 +16,7 @@ import { JwtInterceptor } from './core/Interceptors/jwt.interceptor';
 import { AdminModule } from './Admin/admin.module';
 import { BnNgIdleService } from 'bn-ng-idle';
 import { OrderDetailsPaidComponent } from './order-details-paid/order-details-paid.component';
+import {ConfirmBoxConfigModule, NgxAwesomePopupModule} from '@costlydeveloper/ngx-awesome-popup';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { OrderDetailsPaidComponent } from './order-details-paid/order-details-pa
     NgxSpinnerModule,
     HomePageModule ,
     ReactiveFormsModule,
+    
     ToastrModule.forRoot({
       timeOut: 3000,
       positionClass: 'toast-bottom-right',
