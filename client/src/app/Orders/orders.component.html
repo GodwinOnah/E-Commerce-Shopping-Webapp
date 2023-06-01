@@ -8,6 +8,7 @@
                         <th>Date</th>
                         <th>Total</th>
                         <th>Status</th>
+                        <th>Confirmation</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -15,7 +16,8 @@
                         <th>{{order.id}}</th>
                         <td>{{order.orderDate | date: 'medium'}}</td>
                         <td>£{{order.total}}</td>
-                        <td>{{order.orderStatus}}</td>
+                        <td>{{order.orderStatus}} by seller</td>
+                        <td>{{order.confirmation}}</td>
                     </tr>
                 </tbody>
             </table>

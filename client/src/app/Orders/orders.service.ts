@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, map } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { IAdminOrder } from '../prodsharemod/models/IAdminOrder';
+import { IOrderConfirmation } from '../prodsharemod/models/IOrderConfirmation';
 import { IOrders } from '../prodsharemod/models/IOrders';
 
 @Injectable({
@@ -38,14 +39,16 @@ export class OrdersService {
     return this.http.get<IAdminOrder>(this.baseUrl+'admin/'+id)
   }
 
-  DeleteAdminOrder(id){
-    return this.http.delete(this.baseUrl+'admin/'+id)
+  DeleteAdminOrder(id:number){
+    return this.http.delete<boolean>(this.baseUrl+'admin/'+id)
+  }
+  UpdateOrderConfirmation(details: IOrderConfirmation ){
+    return this.http.put<boolean>(this.baseUrl+'order',details)
   }
 
-  // DeletPaidOrder(id: number) {
-  //   return this.http.delete(this.baseUrl+'admin?id='+basket.id).subscribe({
-  //     next:() =>{
-  //       this.RemoveAllItemsInBasket();
-  // }});
-  // }
+  UpdateAdminOrderConfirmation(details: IOrderConfirmation){
+    return this.http.put<boolean>(this.baseUrl+'admin',details)
+  }
+
+  
 }

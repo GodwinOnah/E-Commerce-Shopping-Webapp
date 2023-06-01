@@ -1,14 +1,10 @@
 <div class="container body" >
-
-      
-
            <div class="row content">
-
                <!-- Section1 -->
                 <section class="col-1  left-section">
                       <h5><strong style="color:black ; font-weight:bold;">Mission</strong> </h5>
                       <p>Our mission is to make sure we statify our customer
-                        needs by putting smiles on faces after business 
+                        needs by putting smiles on their faces after business 
                         transctions with us.
                       </p>
                       <hr>
@@ -18,7 +14,7 @@
                       <hr>
                       <h5><strong style="color:black ; font-weight:bold;">Policy</strong></h5>
                       <p>Our policy is unique and is geared towards making you 
-                        happy when you patrozize us
+                        happy for the rest of your life..
                       </p>   
                 </section>
 
@@ -26,19 +22,25 @@
              <!-- Section2 -->
                 <section class=" pb-1 col-9 text-center">
                   <div *ngIf="(accountService.AppUser$|async) ==null" >
-                    <div class="marquee"><Marquee >Welcome to Obande Bag Collections. 
-                      Make your choice from the best collections 
-                      you can find in the world below</Marquee></div>
+                    <div class="marquee">
+                      <Marquee scrollamount="3">Welcome to Obande unique bag collections. 
+                      We are delighted that you chose us. You can make your choice from the best collections 
+                      you can find around the world....
+                      <strong style="color: red;">*IMPORTANT: </strong>{{advertsString}}
+                    </Marquee></div>
                     </div>
                   <div *ngIf="(accountService.AppUser$|async) as user" >
-                  <div class="marquee2" *ngIf="totalPageNumber!=0"><Marquee >Hi {{user.nickName}}!!. Thank you for viewing our items. 
-                    There are lot more of these items you can ever imagined. 
-                    If you cannot find the item you want in the list below, 
-                    quickly contact us for a quick action. Your commitment is the 
-                    reason we have upgraded to serve you better</Marquee></div>
+                  <div class="marquee2" *ngIf="totalPageNumber!=0">
+                    <Marquee scrollamount="3">Hi {{user.nickName}}!!. Thank you for viewing our items. 
+                    There are loads of these items you can ever imagined instore you might not find here. 
+                   Give us a call today. Your commitment is the 
+                    reason we have upgraded to serve you better.
+                    <strong style="color: red;">*IMPORTANT: </strong>{{advertsString}}</Marquee>
+                  </div>
                   </div>
                   <div *ngIf="(accountService.AppUser$|async) as user" >
-                    <div class="marquee2" *ngIf="totalPageNumber==0"><Marquee >
+                    <div class="marquee2" *ngIf="totalPageNumber==0">
+                      <Marquee scrollamount="3">
                       Sorry {{user.nickName}}. We are really sorry for any incovieniences 
                       not finding your product right now might have cost. We might be 
                       short in supply but will still take your orders and deliver it to 
@@ -52,7 +54,7 @@
                         <div class="card-container mb-4 " *ngFor="let item of products">
                               <app-product-item-child [product]="item"></app-product-item-child>
                       </div>
-                      <div class=" noResult" *ngIf="totalPageNumber==0">
+                      <div class="noResult" *ngIf="totalPageNumber==0">
                             <strong><p style="color:red">Sorry!!!.. </p>
                             <p>No result for this search can be found.</p>
                             <p>You can reload page to bring back products items.</p> 
@@ -136,5 +138,3 @@
  </section>
  </div>
 </div>
-
-

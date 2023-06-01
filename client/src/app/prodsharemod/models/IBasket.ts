@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
+import { IDelivery } from './IDelivery';
 import { Address } from './User';
 
 export interface IBasket {
@@ -8,6 +9,9 @@ export interface IBasket {
   paymentItentId?: string;
   deliveryId?: number;
   deliveryPrice?:number;
+  deliveryName?:string;
+  deliveryTime?:string;
+  deliveryDescription?:string;
 }
 
 export interface IBasketItem {
@@ -24,6 +28,9 @@ export class Basket implements IBasket {
   id = uuidv4();
   items = [];
   deliveryPrice: number=2.5;
+  deliveryName: string= "";
+  deliveryTime: string= "";
+  deliveryDescription: string= "";
 
 }
 

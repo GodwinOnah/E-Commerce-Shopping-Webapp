@@ -47,11 +47,12 @@ export class LoginComponent {
         this.router.navigateByUrl('/Admin');
         else{ this.router.navigateByUrl('/products');}
         this.successful = true;
-        this.toastr.success("Login succecssfully") ;
+        this.toastr.success("Login succecssfully");
         this.accountService.autoLogout();
       },
         error : error => {
-          this.toastr.success("Wrong password") 
+          this.toastr.success("Wrong password")
+          this.toastr.success("Also check connection to server")  
           this.errors = error.errors}
     });
     

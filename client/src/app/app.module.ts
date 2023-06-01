@@ -17,18 +17,14 @@ import { AdminModule } from './Admin/admin.module';
 import { BnNgIdleService } from 'bn-ng-idle';
 import { OrderDetailsPaidComponent } from './order-details-paid/order-details-paid.component';
 import {ConfirmBoxConfigModule, NgxAwesomePopupModule} from '@costlydeveloper/ngx-awesome-popup';
+import { AdvertsComponent } from './Adverts/adverts/adverts.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     OrderDetailsPaidComponent,
-  
-  
-  
-   
-   
-      
+       
   ],
   imports: [
     BrowserModule,

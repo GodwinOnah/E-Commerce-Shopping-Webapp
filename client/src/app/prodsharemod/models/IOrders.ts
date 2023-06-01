@@ -1,9 +1,6 @@
 import {IDelivery}  from './IDelivery';
 import {IItemOrdered}  from './IItemOrdered';
 import { IShippingAddress } from './IShippingAddress';
-// import { IOrderAddress } from './IOrderAddress';
-import { Address } from './User';
-
 
 export  interface IOrders 
     {   id:number  
@@ -15,6 +12,7 @@ export  interface IOrders
         orderDate : string  
         subTotal : number
         total : number 
-        paymentIntentId : string   
+        paymentIntentId : string 
+        confirmation : string  
   
 }

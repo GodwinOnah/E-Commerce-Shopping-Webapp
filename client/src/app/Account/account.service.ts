@@ -93,14 +93,14 @@ openLoginDialog(){
   this.closeDialog();
   this.matdialog.open(LoginComponent,
     {height: 'auto',
-    width: '50%'});
+    width: '40%'});
 }
 
 openRegDialog(){
   this.closeDialog();
   this.matdialog.open(RegisterComponent,
     {height: '70%',
-  width: '50%'});
+  width: '40%'});
 }
 
 closeDialog(){
@@ -111,7 +111,7 @@ openConfirmEmailDialog(){
   this.closeDialog();
   this.matdialog.open(ForgotpasswrdComponent,
     {height: 'auto',
-  width: '50%'});
+  width: '40%'});
 }
 
   CheckEmail(email:string){
