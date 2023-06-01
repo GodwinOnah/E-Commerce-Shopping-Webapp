@@ -1,8 +1,15 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
+import { UserAccountService } from '../Account/account.service';
+import { AdvertsComponent } from '../Adverts/adverts/adverts.component';
+import { AdvertsService } from '../Adverts/adverts/adverts.service';
 import { OrdersService } from '../orders/orders.service';
 import { IAdminOrder } from '../prodsharemod/models/IAdminOrder';
+import { IAdverts } from '../prodsharemod/models/IAdverts';
 import { IOrders } from '../prodsharemod/models/IOrders';
+import { ProductBrandComponent } from '../products/product-brand/product-brand.component';
+import { ProductTypeComponent } from '../products/product-type/product-type.component';
 import { ItemsComponent } from '../products/productItems/items/items.component';
 
 
@@ -12,42 +19,96 @@ import { ItemsComponent } from '../products/productItems/items/items.component';
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent {
-
+  
   admin: string ="";
-  adminOrders: IAdminOrder[];
+  customerName: string ="";
+  adminOrders: IAdminOrder[]=[];
   confirm: boolean =  false;
+  advertsString : IAdverts[] = [];
+  errors : string[] | null = null;
 
   constructor(
     private matdialog : MatDialog,
-    private orderservice: OrdersService){}
+    private orderservice: OrdersService,
+    private toastr : ToastrService,
+    public accountService : UserAccountService,
+    private advert : AdvertsService)
+    {
+
+    }
 
     ngOnInit(): void {
       this.GetPaidOrders();
+      this.GetAdverts();
     }
     
   openUploadProduct(){
+    this.closeDialog();
     this.matdialog.open(ItemsComponent,
-      {height: '70%',
-    width: '50%'});
+      {height: 'auto',
+    width: '80%'});
+  }
+
+  openUploadType(){
+    this.closeDialog();
+    this.matdialog.open(ProductTypeComponent,
+      {height: 'auto',
+    width: '40%'});
+  }
+
+  closeDialog(){
+    this.matdialog.closeAll(); // <- Close the mat dialog
+  }
+
+  openUploadBrand(){
+    this.closeDialog();
+    this.matdialog.open(ProductBrandComponent,
+      {height: 'auto',
+    width: '40%'});
+  }
+
+  openAdvertDialog(){
+    this.closeDialog();
+    this.matdialog.open(AdvertsComponent,
+      {height: 'auto',
+    width: '40%'});
   }
 
   GetPaidOrders(){
     this.orderservice.GetAdminOrders().subscribe({
-      next: adminOrders=>{
-        console.log(adminOrders.map(x=>x.shippingAddress))
-        this.adminOrders=adminOrders
+      next: adminOrders => {
+        this.adminOrders = adminOrders;
       }
     })
   }
 
   confirmer(){
       this.confirm =true;
-  }
+  } 
 
-  deleteAdminOrder(){
-    this.orderservice.GetAdminOrders().subscribe()
-  }
+  GetAdverts(){
+      this.advert.getAdverts().subscribe({
+        next : advert => {
+              this.advertsString = advert  
+        },
+          error : error => { 
+            this.errors = error.errors
+            this.toastr.success("Can't get advert Ids");
+          }
+      });
+      }
 
-  
- 
+      deleteAdvert(id:number){
+
+        this.advert.deleteAdverts(id).subscribe({
+          next : yes => {
+               if(yes) window.location.reload();  
+          },
+            error : error => { 
+              this.errors = error.errors
+              this.toastr.success("Can't get advert Ids");
+            }
+        });
+
+      }
 }

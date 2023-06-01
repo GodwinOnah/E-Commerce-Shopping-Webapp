@@ -4,6 +4,8 @@ import { IBrands} from '../prodsharemod/models/IBrands';
 import { ProdshopmodService } from './prodshopmod.service';
 import { ShopParameters } from '../prodsharemod/models/shopParameters';
 import { UserAccountService } from '../Account/account.service';
+import { AdvertsService } from '../Adverts/adverts/adverts.service';
+import { IAdverts } from '../prodsharemod/models/IAdverts';
 
 
 @Component({
@@ -18,13 +20,18 @@ export class ProdshopmodComponent implements OnInit {
   productTypes:IBrands[]=[];
   shopParameters: ShopParameters;
   totalPageNumber=0;
+  errors : string[] | null = null;
+  advertsString : string="";
   sortingOptions=[
     {name:'Alphabeltical', value:'name'},
     {name:'Price: High to Low', value:'priceDecrease'},
     {name:'Price: Low to High', value:'priceIncrease'}
   ];
 
-  constructor(private prodshopmodService: ProdshopmodService, public accountService:UserAccountService) {
+  constructor(
+    private prodshopmodService: ProdshopmodService, 
+    public accountService:UserAccountService) 
+    {
     this.shopParameters = prodshopmodService.getShopParams();
   }
 
@@ -32,6 +39,7 @@ export class ProdshopmodComponent implements OnInit {
     this.GetProductTypes();
     this.GetProductBrands();
     this.GetProducts();
+    this.GetAdverts();
 
   }
 
@@ -120,5 +128,20 @@ ResetSearch(){
   this.shopParameters = new ShopParameters();
   this.prodshopmodService.setShopParams (this.shopParameters);
   this.GetProducts();
+  }
+
+  GetAdverts(){
+      this.prodshopmodService.GetAdverts().subscribe({
+        next : adverts => {
+
+          for(let x of adverts){
+          this.advertsString += x.advert+" | ";
+          }
+     },
+       error : error => { 
+         this.errors = error.errors
+       }
+
+      });
   }
 }

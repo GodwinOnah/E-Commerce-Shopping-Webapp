@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './Register/register.component';
 import {  MatDialogModule } from '@angular/material/dialog';
 import { ForgotpasswrdComponent } from './forgot_password/forgotpasswrd/forgotpasswrd.component';
+import { AdvertsComponent } from '../Adverts/adverts/adverts.component';
 
 
 
@@ -16,6 +17,7 @@ import { ForgotpasswrdComponent } from './forgot_password/forgotpasswrd/forgotpa
     LoginComponent,
     RegisterComponent,
     ForgotpasswrdComponent,
+    AdvertsComponent
    
    ],
   imports: [
@@ -24,6 +26,7 @@ import { ForgotpasswrdComponent } from './forgot_password/forgotpasswrd/forgotpa
     ReactiveFormsModule,
     ProdsharemodModule,
     MatDialogModule
-  ]
+  ],
+  exports :[]
 })
 export class UserAccountModule { }

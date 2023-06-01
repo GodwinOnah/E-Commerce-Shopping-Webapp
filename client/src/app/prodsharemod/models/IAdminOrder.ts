@@ -3,11 +3,10 @@ import { Address } from "./User"
 
 export  interface IAdminOrder 
     {   id:number  
-        Email : string
-        shippingAddress :Address
+        email : string
+        shippingAddress : Address
         itemOrdered : IItemOrdered[] 
         orderStatus : string 
-        orderDate : string  
-        total : number 
-  
+        orderDate : string 
+        confirmation : string  
 }

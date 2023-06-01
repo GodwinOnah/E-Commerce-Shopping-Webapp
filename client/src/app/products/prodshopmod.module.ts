@@ -10,6 +10,8 @@ import { ProductAdvertsComponent } from './product-adverts/product-adverts.compo
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ItemsComponent } from './productItems/items/items.component';
 import {ConfirmBoxConfigModule, NgxAwesomePopupModule} from '@costlydeveloper/ngx-awesome-popup';
+import { ProductBrandComponent } from './product-brand/product-brand.component';
+import { ProductTypeComponent } from './product-type/product-type.component';
 
 
 
@@ -19,7 +21,9 @@ import {ConfirmBoxConfigModule, NgxAwesomePopupModule} from '@costlydeveloper/ng
     ProductItemChildComponent,
     ProductDetaialsComponent,
     ProductAdvertsComponent,
-    ItemsComponent
+    ItemsComponent,
+    ProductBrandComponent,
+    ProductTypeComponent
   
   ],
   imports: [
