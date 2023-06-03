@@ -20,6 +20,7 @@ export class ProdshopmodComponent implements OnInit {
   productTypes:IBrands[]=[];
   shopParameters: ShopParameters;
   totalPageNumber=0;
+  notice : boolean = false;
   errors : string[] | null = null;
   advertsString : string="";
   sortingOptions=[
@@ -77,7 +78,6 @@ export class ProdshopmodComponent implements OnInit {
 } 
   
   SelectedBrand(brandId:number){
-    console.log(brandId)
     const params = this.prodshopmodService.getShopParams();
     params.brandId=brandId;
     params.pageNumber=1;
@@ -133,7 +133,7 @@ ResetSearch(){
   GetAdverts(){
       this.prodshopmodService.GetAdverts().subscribe({
         next : adverts => {
-
+          if(adverts.length>0) this.notice = true;
           for(let x of adverts){
           this.advertsString += x.advert+" | ";
           }

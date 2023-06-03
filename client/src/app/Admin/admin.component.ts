@@ -11,6 +11,7 @@ import { IOrders } from '../prodsharemod/models/IOrders';
 import { ProductBrandComponent } from '../products/product-brand/product-brand.component';
 import { ProductTypeComponent } from '../products/product-type/product-type.component';
 import { ItemsComponent } from '../products/productItems/items/items.component';
+// import { setInterval,clearInterval} from 'timers';
 
 
 @Component({
@@ -26,6 +27,8 @@ export class AdminComponent {
   confirm: boolean =  false;
   advertsString : IAdverts[] = [];
   errors : string[] | null = null;
+  exit : number ;
+  notice : boolean = false;
 
   constructor(
     private matdialog : MatDialog,
@@ -89,7 +92,20 @@ export class AdminComponent {
   GetAdverts(){
       this.advert.getAdverts().subscribe({
         next : advert => {
-              this.advertsString = advert  
+              this.advertsString = advert ;
+
+              if(advert.length == 0){
+                this.exit = 0; 
+                this.notice = true;
+              } 
+              
+
+              for(let x of advert) {  
+                this.exit = x.time; 
+                setInterval(()=>{      
+                this.deleteAdvert(x.id);
+                       },x.time*1000);
+            }
         },
           error : error => { 
             this.errors = error.errors
@@ -102,7 +118,10 @@ export class AdminComponent {
 
         this.advert.deleteAdverts(id).subscribe({
           next : yes => {
-               if(yes) window.location.reload();  
+               if(yes){
+                this.toastr.success("Advert deleted");
+                window.location.reload();  
+               } 
           },
             error : error => { 
               this.errors = error.errors

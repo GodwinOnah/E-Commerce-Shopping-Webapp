@@ -43,7 +43,7 @@ export class LoginComponent {
     this.accountService.Login(this.loginForm.value).subscribe({
       next : user => {
         this.closeDialog();
-        if(user.email === "gut@gmail.com")
+        if(user.email === "godwinbillions@gmail.com")
         this.router.navigateByUrl('/Admin');
         else{ this.router.navigateByUrl('/products');}
         this.successful = true;
