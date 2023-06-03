@@ -3,9 +3,9 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { ProdshopmodService } from '../../prodshopmod.service';
 import { MatDialog } from '@angular/material/dialog';
+import { IBrands } from 'src/app/prodsharemod/models/IBrands';
+import { IProductTypes } from 'src/app/prodsharemod/models/IProductTypes';
 import { HttpClient } from '@angular/common/http';
-import { IBrands } from '../../../prodsharemod/models/IBrands';
-import { IProductTypes } from '../../../prodsharemod/models/IProductTypes';
 
 
 @Component({
@@ -23,7 +23,7 @@ export class ItemsComponent {
   prodBrand: string[]=[];
   prodType: string[]=[];
   prodPictureUrl : string = "";
-  formdata : FormData ;
+  formdata : FormData = null;
 
   constructor(private formbuilder:FormBuilder,
     private productsService : ProdshopmodService,

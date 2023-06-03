@@ -1,17 +1,17 @@
 <ng-container *ngIf="(accountService.AppUser$|async) as user">
-    <div class="text-center" *ngIf="user.email!='gut@gmail.com'">
+    <div class="text-center" *ngIf="user.email!='godwinbillions@gmail.com'">
        <strong style="color: red; font-weight: bolder; font-size: xx-large;">
         Sorry!!! Only the admin can access this page
         <p>Why not continue by clicking products and making orders..</p>
     </strong> 
     </div>
-<div class="admin" *ngIf="user.email=='gut@gmail.com'">
+<div class="admin" *ngIf="user.email=='godwinbillions@gmail.com'">
     <h1 class="text-center"><strong style="color: purple;font-weight:bolder;">
         You are the Admin</strong></h1>
 
-        <marquee scrollamount="4">As the admin, only you can delete any 
-            product because you are provided with the delete button on each product 
-            when login as admin. You can view the products to see by yourself. 
+        <marquee scrollamount="4">Now that you've login as the admin, you can delete any 
+            product on the product page; add advert(s) to the end of the display strings on the product page; 
+            add and remove brands and types; confirm or delete order, etc. Thanks.
             Thanks</marquee>
         
     <div  class="container mt-5 " style="margin-top: 200px;">
@@ -52,7 +52,7 @@
     </div>
 </div>
 
-    <div class="justify-content-center d-flex" style="padding-bottom:300px;">
+    <div class="justify-content-center d-flex" style="padding-bottom:50px;">
         <button (click)="openUploadProduct()"  class="btn btn-primary m-5">
             Upload new product here
         </button>
@@ -65,19 +65,23 @@
     </div>
     <div class="text-center">
         <h2>Current Adverts</h2>
-        <div>
-           
+        <div  style="background-color: grey; max-height: 100px;width: 
+        80%;margin: 0 auto;border-radius: 20px;overflow: scroll;">
+        <div *ngIf="notice==true">
+            <strong style="color: white;">No advert available</strong> 
+        </div>
+            <ng-container *ngIf="notice==false">
             <div *ngFor="let item of advertsString">
                 <marquee  scrollAmount="2" onmouseover="this.stop();" onmouseout="this.start();">
-                <strong >{{item.advert}}<button (click)="deleteAdvert(item.id)">delete</button></strong>  
+                <strong ><strong  style="color:gold ;">{{item.advert}}</strong><button (click)="deleteAdvert(item.id)">delete</button></strong>  
                 </marquee>
-            </div>
-        </div>
-        <div class="d-flex">
+            </div> 
+        </ng-container>
+    </div>
         <button (click)="openAdvertDialog()"  class="btn btn-primary m-5">
             Add new adverts
         </button>
-    </div>
+
     </div>
     
 </div>

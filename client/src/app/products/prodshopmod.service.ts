@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
 import { IProductPagination } from '../prodsharemod/models/IProductPagination';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { IBrands } from '../prodsharemod/models/IBrands';
 import { IProductTypes } from '../prodsharemod/models/IProductTypes';
 import { map, Observable, of } from 'rxjs';
 import { ShopParameters } from '../prodsharemod/models/shopParameters';
 import { IProduct } from '../prodsharemod/models/IProduct';
-
 import { IAdverts } from '../prodsharemod/models/IAdverts';
 import { environment } from 'src/environments/environment';
 @Injectable({
@@ -19,7 +18,7 @@ export class ProdshopmodService {
   types : IProductTypes[]=[];
   pagination? :IProductPagination<IProduct[]>;
   shopParams = new ShopParameters();
-  cashe = new Map<string,IProductPagination<IProduct[]>>;
+  cashe = new Map<string,IProductPagination<IProduct[]>>();
   
 
   constructor(private http: HttpClient) {
@@ -97,7 +96,7 @@ export class ProdshopmodService {
     return this.http.post<string>(this.url+'prod',value);   
 }
 
-saveProductPicture(formData:any){
+  saveProductPicture(formData:any){
     return this.http.post(this.url+'prod/savePicture',formData);
 }
 
@@ -121,7 +120,7 @@ saveProductPicture(formData:any){
   return this.http.delete(this.url+'prod/'+id); 
 }
 
-GetAdverts(){
+ GetAdverts(){
   return this.http.get<IAdverts[]>(this.url+'advert'); 
 }
 }

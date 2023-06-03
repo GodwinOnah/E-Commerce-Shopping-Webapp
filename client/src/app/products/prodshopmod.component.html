@@ -31,11 +31,16 @@
                     </div>
                   <div *ngIf="(accountService.AppUser$|async) as user" >
                   <div class="marquee2" *ngIf="totalPageNumber!=0">
-                    <Marquee scrollamount="3">Hi {{user.nickName}}!!. Thank you for viewing our items. 
+                    <Marquee scrollamount="3">
+                    <strong>Hi {{user.nickName}}!!.</strong> 
+                    <strong *ngIf="notice == false">
+                    Thank you for viewing our items. 
                     There are loads of these items you can ever imagined instore you might not find here. 
                    Give us a call today. Your commitment is the 
                     reason we have upgraded to serve you better.
-                    <strong style="color: red;">*IMPORTANT: </strong>{{advertsString}}</Marquee>
+                    </strong >
+                      <strong *ngIf="notice == true" style="color: red;"> *NOTICE/ADVERT(S): </strong>{{advertsString}}
+                     </Marquee>
                   </div>
                   </div>
                   <div *ngIf="(accountService.AppUser$|async) as user" >
@@ -66,16 +71,16 @@
 
             <div class="d-grid justify-content-center mt-3" *ngIf="totalPageNumber&&totalPageNumber>0">
                   <app-pagination-shared-componet
-                  [totalPageNumber]="this.totalPageNumber"
-                  [pageSize]="this.shopParameters.pageSize"
-                  [pageNumber]="this.shopParameters.pageNumber"
+                  [totalPageNumber]="totalPageNumber"
+                  [pageSize]="shopParameters.pageSize"
+                  [pageNumber]="shopParameters.pageNumber"
                   (pageChange)="PageChange($event)">
                   ></app-pagination-shared-componet>
                 <div style="color:blue ; font-weight:bolder">
                   <app-page-analyser 
-                  [totalPageNumber]="this.totalPageNumber"
-                  [pageNumber]="this.shopParameters.pageNumber"
-                  [pageSize]="this.shopParameters.pageSize">
+                  [totalPageNumber]="totalPageNumber"
+                  [pageNumber]="shopParameters.pageNumber"
+                  [pageSize]="shopParameters.pageSize">
                   </app-page-analyser>
                 </div>  
                 </div>
@@ -117,8 +122,7 @@
                   </li>
               </ul>
            </div>
-          </div>
-       
+          </div> 
        <!-- Types -->
        <div class="right">
        <h5>Types</h5>
