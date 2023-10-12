@@ -34,7 +34,7 @@
                    <tr><div class="text-center"><ng-container *ngIf="adminOrders.length==0">
                         <strong style="color: red;">No order(s) fron a customer by this time.</strong></ng-container></div></tr> 
                     <tr *ngFor="let order of adminOrders" routerLink="/Admin/{{order.id}}">
-                        <th>{{order.id}}</th>
+                        <th>{{order.adminOrderId}}</th>
                         <td>{{order.shippingAddress.firstName +" "+order.shippingAddress.middleName 
                             +" "+order.shippingAddress.lastName}}
                         </td>  
@@ -52,10 +52,11 @@
     </div>
 </div>
 
-    <div class="justify-content-center d-flex" style="padding-bottom:50px;">
+    <div class="justify-content-center " style="padding-bottom:50px;">
         <button (click)="openUploadProduct()"  class="btn btn-primary m-5">
             Upload new product here
         </button>
+       
         <button (click)="openUploadType()"  class="btn btn-primary m-5">
             Add product type here
         </button>
@@ -63,7 +64,31 @@
             Add product brand here
         </button>
     </div>
-    <div class="text-center">
+    <div style="border:black 3px solid; border-radius: 7px; padding: 20px; margin: 10px;">
+    <div class="text-center" style="background-color: grey; max-height: 200px;width: 
+    80%;margin: 0 auto;border-radius: 20px;overflow: scroll;">
+    <div *ngIf="delNotice==false">
+        <strong style="color: white;">No delivery available</strong> 
+    </div>
+    <ng-container *ngIf="delNotice==true">
+        <h2 style="color: Blue;">List of deliveries available</h2> 
+        <div *ngFor="let item of deliveries">
+            <Strong>
+                Name: <strong style="color: white;">{{item.delName}}</strong> , 
+                Time: <strong style="color: white;">{{item.delTime}}</strong>,
+                Price: <strong style="color:white;">£{{item.delPrice}}</strong>
+     <button (click)="deleteDelivery(item.id)">Delete</button> </Strong>
+        </div> 
+    </ng-container>
+    </div>
+    <div class="text-center" >
+    <button (click)="openAddDelivery()"  class="btn btn-primary m-5">
+        Add new delivery
+    </button>
+    </div>      
+    </div>
+
+    <div class="text-center" style="border:black 3px solid; border-radius: 7px; padding: 20px; margin: 10px;">
         <h2>Current Adverts</h2>
         <div  style="background-color: grey; max-height: 100px;width: 
         80%;margin: 0 auto;border-radius: 20px;overflow: scroll;">

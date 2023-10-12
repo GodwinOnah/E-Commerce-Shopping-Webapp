@@ -8,6 +8,7 @@ import { RegisterComponent } from './Register/register.component';
 import {  MatDialogModule } from '@angular/material/dialog';
 import { ForgotpasswrdComponent } from './forgot_password/forgotpasswrd/forgotpasswrd.component';
 import { AdvertsComponent } from '../Adverts/adverts/adverts.component';
+import { TextInputsComponent } from './text-inputs/text-inputs.component';
 
 
 
@@ -27,6 +28,6 @@ import { AdvertsComponent } from '../Adverts/adverts/adverts.component';
     ProdsharemodModule,
     MatDialogModule
   ],
-  exports :[]
+  exports :[TextInputsComponent]
 })
-export class UserAccountModule { }
+export class UserAccountModule {}

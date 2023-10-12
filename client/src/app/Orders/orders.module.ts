@@ -3,18 +3,22 @@ import { CommonModule } from '@angular/common';
 import { OrdersComponent } from './orders.component';
 import { OrdersRoutingRoutingModule } from './orders-routing-routing.module';
 import { OrdersDetailsComponent } from '../orderDetails/orders-details.component';
-
-
+import { AddDeliveryComponent } from './add-delivery/add-delivery.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UserAccountModule } from '../Account/account.module';
 
 @NgModule({
   declarations: [
     OrdersComponent,
-    OrdersDetailsComponent
-   
+    OrdersDetailsComponent,
+    AddDeliveryComponent 
   ],
   imports: [
     CommonModule,
-    OrdersRoutingRoutingModule
+    OrdersRoutingRoutingModule,
+    ReactiveFormsModule,
+    UserAccountModule,
+    FormsModule
   ]
   
 })

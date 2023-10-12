@@ -22,7 +22,7 @@ export class OrdersComponent implements OnInit{
     this.orderservice.GetOrders().subscribe({
       next: orders=>{
         console.log(orders)
-        this.orders=orders
+        this.orders = orders
       }
     })
   }

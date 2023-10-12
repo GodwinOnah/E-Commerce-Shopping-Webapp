@@ -1,8 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, map } from 'rxjs';
-import { environment } from 'src/environments/environment';
+import { environment } from 'environments/environment';
+import { BehaviorSubject} from 'rxjs';
 import { IAdminOrder } from '../prodsharemod/models/IAdminOrder';
+import { IDelivery } from '../prodsharemod/models/IDelivery';
 import { IOrderConfirmation } from '../prodsharemod/models/IOrderConfirmation';
 import { IOrders } from '../prodsharemod/models/IOrders';
 
@@ -28,6 +29,10 @@ export class OrdersService {
     return this.http.get<IAdminOrder[]>(this.baseUrl+'admin')
   }
 
+  getDelivery(){
+    return this.http.get<IDelivery []>(this.baseUrl+'order/delivery')
+  }
+
   GetOrdersById(id:number){
     const token = localStorage.getItem('token');
     let headers = new HttpHeaders();
@@ -48,6 +53,14 @@ export class OrdersService {
 
   UpdateAdminOrderConfirmation(details: IOrderConfirmation){
     return this.http.put<boolean>(this.baseUrl+'admin',details)
+  }
+
+  AddDelivery(value: any){
+    return this.http.post<boolean>(this.baseUrl+'order/delivery',value)
+  }
+
+  deleteDelivery(id : number){
+    return this.http.delete<boolean>(this.baseUrl+'order/'+id); 
   }
 
   

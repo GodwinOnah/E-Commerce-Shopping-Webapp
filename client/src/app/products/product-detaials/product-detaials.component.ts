@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { BasketService } from 'app/basket/basket.service';
+import { IProduct } from 'app/prodsharemod/models/IProduct';
 import { ToastrService } from 'ngx-toastr';
 import { take } from 'rxjs';
-import { BasketService } from 'src/app/basket/basket.service';
-import { IProduct } from 'src/app/prodsharemod/models/IProduct';
 import { BreadcrumbService } from 'xng-breadcrumb';
 import { ProdshopmodService } from '../prodshopmod.service';
 

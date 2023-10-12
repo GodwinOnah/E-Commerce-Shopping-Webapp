@@ -1,4 +1,3 @@
-import {IDelivery}  from './IDelivery';
 import {IItemOrdered}  from './IItemOrdered';
 import { IShippingAddress } from './IShippingAddress';
 

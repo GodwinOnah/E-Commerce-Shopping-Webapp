@@ -1,9 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { isNgTemplate } from '@angular/compiler';
-import {Injectable, OnInit } from '@angular/core';
+import {Injectable} from '@angular/core';
+import { environment } from 'environments/environment';
 import { BehaviorSubject, map } from 'rxjs';
-import { environment } from 'src/environments/environment';
-import { CheckoutServiceService } from '../Checkout/checkout-service.service';
 import { Basket, IBasket, IBasketItem, TotalBasketPrice } from '../prodsharemod/models/IBasket';
 import { IDelivery } from '../prodsharemod/models/IDelivery';
 import { IProduct } from '../prodsharemod/models/IProduct';
@@ -35,6 +33,7 @@ export class BasketService{
   }
 
 SetBasket(basket:IBasket){
+  console.log(basket.deliveryName)
     return this.http.post<IBasket>(this.baseUrl+'basket',basket).subscribe({
       next: basket =>{
         this.basketSource.next(basket);

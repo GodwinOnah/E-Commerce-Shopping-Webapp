@@ -3,10 +3,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { BreadcrumbService } from 'xng-breadcrumb';
 import { OrdersService } from '../orders/orders.service';
-
 import { IAdminOrder } from '../prodsharemod/models/IAdminOrder';
+import { IItemOrdered } from '../prodsharemod/models/IItemOrdered';
 import { IOrderConfirmation } from '../prodsharemod/models/IOrderConfirmation';
-import { IOrders } from '../prodsharemod/models/IOrders';
 
 @Component({
   selector: 'app-order-details-paid',
@@ -15,7 +14,8 @@ import { IOrders } from '../prodsharemod/models/IOrders';
 })
 export class OrderDetailsPaidComponent {
 
-  order?: IAdminOrder;
+  order? : IAdminOrder;
+  itemOrdered? : IItemOrdered[];
   errors : string[] | null = null;
   confirm : boolean = false;
  
@@ -35,11 +35,13 @@ export class OrderDetailsPaidComponent {
   ViewPaidOrder(){
     const id = +this.activatedroute.snapshot.paramMap.get('id');
     id && this.orderService.GetAdminOrdersById(id).subscribe({
-      next: order => {
-        if(order.confirmation==="confirmed")
+      next: paidOrder => {
+        console.log(paidOrder.itemOrdered)
+        if(paidOrder.confirmation==="confirmed")
         this.confirm=true;
-        this.order = order;
-        this.breadcrumbService.set('@OrderDetailed', `Order# ${order.id} - ${order.orderStatus}`);
+        this.order = paidOrder;
+        this.itemOrdered = paidOrder.itemOrdered;
+        this.breadcrumbService.set('@OrderDetailed', `Order# ${paidOrder.id} - ${paidOrder.orderStatus}`);
 } })
 }
 
@@ -89,7 +91,7 @@ AdminOrderConfirmation(id:number,email:string){
 
   this.orderService.UpdateAdminOrderConfirmation(adminOrderConfirmed ).subscribe({
     next: yes =>{
-      this.confirm=true;
+      this.confirm = true;
       if(yes) {
         this.toastr.success("Order confirmed");
         this.OrderConfirmation(adminOrderConfirmed);

@@ -3,7 +3,6 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { IAdverts } from 'src/app/prodsharemod/models/IAdverts';
 import { AdvertsService } from './adverts.service';
 
 @Component({

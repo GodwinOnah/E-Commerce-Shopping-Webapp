@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { BasketService } from 'src/app/basket/basket.service';
+import { BasketService } from 'app/basket/basket.service';
 import { IBasketItem } from '../models/IBasket';
 
 @Component({

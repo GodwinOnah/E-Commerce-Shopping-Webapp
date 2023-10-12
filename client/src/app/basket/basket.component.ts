@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginComponent } from '../Account/login/login.component';
-import { Basket, IBasket, IBasketItem } from '../prodsharemod/models/IBasket';
+import { Basket,IBasketItem } from '../prodsharemod/models/IBasket';
 import { BasketService } from './basket.service';
 @Component({
   selector: 'app-basket',

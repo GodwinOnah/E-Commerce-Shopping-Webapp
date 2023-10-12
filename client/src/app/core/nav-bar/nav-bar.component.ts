@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { UserAccountService } from 'src/app/Account/account.service';
-import { BasketService } from 'src/app/basket/basket.service';
-import { IBasketItem } from 'src/app/prodsharemod/models/IBasket';
-import {  MatDialog } from '@angular/material/dialog';
-import { LoginComponent } from 'src/app/Account/login/login.component';
-import { RegisterComponent } from 'src/app/Account/Register/register.component';
+import { MatDialog } from '@angular/material/dialog';
+import { UserAccountService } from 'app/Account/account.service';
+import { BasketService } from 'app/basket/basket.service';
+import { IBasketItem } from 'app/prodsharemod/models/IBasket';
+
 
 
 

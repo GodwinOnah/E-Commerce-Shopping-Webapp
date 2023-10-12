@@ -4,9 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { UserAccountService } from '../Account/account.service';
 import { BasketService } from '../basket/basket.service';
 import { IProduct } from '../prodsharemod/models/IProduct';
-import { User } from '../prodsharemod/models/User';
 import { ProdshopmodService } from './prodshopmod.service';
-import { ProductDetaialsComponent } from './product-detaials/product-detaials.component';
 
 @Component({
   selector: 'app-product-item-child',

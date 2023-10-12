@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { ToastrService } from 'ngx-toastr';
 import { UserAccountService } from '../Account/account.service';
 import { BasketService } from '../basket/basket.service';
-import { IOrderToCreate } from '../prodsharemod/models/IOrderToCreate';
-import { CheckoutServiceService } from './checkout-service.service';
 
 @Component({
   selector: 'app-checkout',

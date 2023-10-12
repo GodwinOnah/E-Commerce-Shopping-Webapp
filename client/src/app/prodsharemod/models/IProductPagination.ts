@@ -1,6 +1,3 @@
-
-import {IProduct}  from './IProduct';
-
 export interface IProductPagination<T> {
     pageIndex: number
     pageSize: number

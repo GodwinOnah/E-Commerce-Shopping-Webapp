@@ -1,8 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Address } from '@stripe/stripe-js';
+import { environment } from 'environments/environment';
 import { map } from 'rxjs';
-import { environment } from 'src/environments/environment';
 import { IDelivery } from '../prodsharemod/models/IDelivery';
 import { IOrders } from '../prodsharemod/models/IOrders';
 import { IOrderToCreate } from '../prodsharemod/models/IOrderToCreate';

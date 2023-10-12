@@ -1,6 +1,4 @@
 import { v4 as uuidv4 } from 'uuid';
-import { IDelivery } from './IDelivery';
-import { Address } from './User';
 
 export interface IBasket {
   id: string;

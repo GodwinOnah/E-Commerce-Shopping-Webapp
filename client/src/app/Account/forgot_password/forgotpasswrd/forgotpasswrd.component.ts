@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { FormBuilder,Validators } from '@angular/forms';
+import {Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import {  MatDialog } from '@angular/material/dialog';
 import { LoginComponent } from '../../login/login.component';

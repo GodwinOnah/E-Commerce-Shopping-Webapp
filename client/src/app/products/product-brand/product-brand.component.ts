@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
-import { IBrands } from 'src/app/prodsharemod/models/IBrands';
 import { ProdshopmodService } from '../prodshopmod.service';
 
 @Component({

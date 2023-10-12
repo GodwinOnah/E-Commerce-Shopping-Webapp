@@ -4,7 +4,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CoreModule  } from './core/core.module';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { WhenLoadingPage } from './core/Interceptors/Spinner';
 import { ErrorInterceptor } from './core/Interceptors/error.interceptor';
@@ -13,17 +12,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {  MatDialogModule } from '@angular/material/dialog';
 import { ToastrModule } from 'ngx-toastr';
 import { JwtInterceptor } from './core/Interceptors/jwt.interceptor';
-import { AdminModule } from './Admin/admin.module';
 import { BnNgIdleService } from 'bn-ng-idle';
-import { OrderDetailsPaidComponent } from './order-details-paid/order-details-paid.component';
-import {ConfirmBoxConfigModule, NgxAwesomePopupModule} from '@costlydeveloper/ngx-awesome-popup';
-import { AdvertsComponent } from './Adverts/adverts/adverts.component';
+import { CoreModule } from './core/core.module';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    OrderDetailsPaidComponent,
+    AppComponent
        
   ],
   imports: [
@@ -34,7 +29,7 @@ import { AdvertsComponent } from './Adverts/adverts/adverts.component';
     CoreModule,
     HttpClientModule,
     NgxSpinnerModule,
-    HomePageModule ,
+    HomePageModule,
     ReactiveFormsModule,
     
     ToastrModule.forRoot({

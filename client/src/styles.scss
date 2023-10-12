@@ -1,4 +1,4 @@
-@import "node_modules/bootstrap/dist/css/bootstrap.css";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 /* You can add global styles to this file, and also import other style files */
 .xng-breadcrumb-root{
 
@@ -16,5 +16,5 @@ label.xng-breadcrumb-trail{
     display:inline;
     
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body { height: 100%; width: 100%; }
+body { width: 100%; margin: 0 auto; font-family: Roboto, "Helvetica Neue", sans-serif; }

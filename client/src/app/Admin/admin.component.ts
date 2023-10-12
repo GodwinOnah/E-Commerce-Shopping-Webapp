@@ -1,17 +1,17 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { UserAccountService } from '../Account/account.service';
 import { AdvertsComponent } from '../Adverts/adverts/adverts.component';
 import { AdvertsService } from '../Adverts/adverts/adverts.service';
+import { AddDeliveryComponent } from '../orders/add-delivery/add-delivery.component';
 import { OrdersService } from '../orders/orders.service';
 import { IAdminOrder } from '../prodsharemod/models/IAdminOrder';
 import { IAdverts } from '../prodsharemod/models/IAdverts';
-import { IOrders } from '../prodsharemod/models/IOrders';
+import { IDelivery } from '../prodsharemod/models/IDelivery';
 import { ProductBrandComponent } from '../products/product-brand/product-brand.component';
 import { ProductTypeComponent } from '../products/product-type/product-type.component';
 import { ItemsComponent } from '../products/productItems/items/items.component';
-// import { setInterval,clearInterval} from 'timers';
 
 
 @Component({
@@ -29,20 +29,21 @@ export class AdminComponent {
   errors : string[] | null = null;
   exit : number ;
   notice : boolean = false;
+  delNotice : boolean = false;
+  deliveries : IDelivery[]=[];
 
   constructor(
     private matdialog : MatDialog,
     private orderservice: OrdersService,
     private toastr : ToastrService,
     public accountService : UserAccountService,
-    private advert : AdvertsService)
-    {
-
-    }
+    private advert : AdvertsService){}
 
     ngOnInit(): void {
       this.GetPaidOrders();
       this.GetAdverts();
+      this.GetDelivery();
+      
     }
     
   openUploadProduct(){
@@ -70,6 +71,13 @@ export class AdminComponent {
     width: '40%'});
   }
 
+  openAddDelivery(){
+    this.closeDialog();
+    this.matdialog.open(AddDeliveryComponent,
+      {height: 'auto',
+    width: '70%'});
+  }
+
   openAdvertDialog(){
     this.closeDialog();
     this.matdialog.open(AdvertsComponent,
@@ -86,20 +94,21 @@ export class AdminComponent {
   }
 
   confirmer(){
-      this.confirm =true;
+      this.confirm = true;
   } 
 
   GetAdverts(){
       this.advert.getAdverts().subscribe({
         next : advert => {
+
+          if(advert)
               this.advertsString = advert ;
 
               if(advert.length == 0){
                 this.exit = 0; 
                 this.notice = true;
               } 
-              
-
+          
               for(let x of advert) {  
                 this.exit = x.time; 
                 setInterval(()=>{      
@@ -112,6 +121,22 @@ export class AdminComponent {
             this.toastr.success("Can't get advert Ids");
           }
       });
+      }
+
+      deleteDelivery(id:number){
+        console.log(33)
+        this.orderservice.deleteDelivery(id).subscribe({
+          next : yes => {
+               if(yes){
+                window.location.reload(); 
+                this.toastr.success("delivery deleted"); 
+               } 
+          },
+            error : error => { 
+              this.errors = error.errors
+              this.toastr.success("Delivery not delivery");
+            }
+        });
       }
 
       deleteAdvert(id:number){
@@ -129,5 +154,15 @@ export class AdminComponent {
             }
         });
 
+      }
+
+      GetDelivery(){
+        this.orderservice.getDelivery().subscribe({
+          next: deliveries=>{ 
+            this.delNotice=true; 
+              this.deliveries = deliveries
+        },
+          error:error=>console.log(error)         
+      });
       }
 }

@@ -1,22 +1,11 @@
-
-
-   export interface User
+export interface User
     {
         email:string;
         nickName:string;
         token:string
     }
 
-    // export class User implements User{
-      
-    //     email:string="";
-    //     nickName:string="";
-    //     token:string="";
-      
-    //   }
-
-
-    export interface Address
+export interface Address
     {      
         firstName :string 
         middleName :string 

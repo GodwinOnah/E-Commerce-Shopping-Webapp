@@ -1,6 +1,5 @@
 export  interface IProduct
-    {
-        
+    {   
         id: number
         prodName: string
         prodDescription: string

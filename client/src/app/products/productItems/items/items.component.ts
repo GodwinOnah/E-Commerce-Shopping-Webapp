@@ -3,9 +3,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { ProdshopmodService } from '../../prodshopmod.service';
 import { MatDialog } from '@angular/material/dialog';
-import { IBrands } from 'src/app/prodsharemod/models/IBrands';
-import { IProductTypes } from 'src/app/prodsharemod/models/IProductTypes';
-import { HttpClient } from '@angular/common/http';
+import { IProductTypes } from 'app/prodsharemod/models/IProductTypes';
+import { IBrands } from 'app/prodsharemod/models/IBrands';
 
 
 @Component({
@@ -29,8 +28,7 @@ export class ItemsComponent {
     private productsService : ProdshopmodService,
     private toastr : ToastrService,
     private matdialog : MatDialog,
-    private prodshopmodService: ProdshopmodService,
-    private http : HttpClient){
+    private prodshopmodService: ProdshopmodService){
   }
 
   productForm = this.formbuilder.group({

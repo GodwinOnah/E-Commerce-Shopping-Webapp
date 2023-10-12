@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { IProductPagination } from '../prodsharemod/models/IProductPagination';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient,HttpParams } from '@angular/common/http';
 import { IBrands } from '../prodsharemod/models/IBrands';
 import { IProductTypes } from '../prodsharemod/models/IProductTypes';
 import { map, Observable, of } from 'rxjs';
 import { ShopParameters } from '../prodsharemod/models/shopParameters';
 import { IProduct } from '../prodsharemod/models/IProduct';
 import { IAdverts } from '../prodsharemod/models/IAdverts';
-import { environment } from 'src/environments/environment';
+import { environment } from 'environments/environment';
+
 @Injectable({
   providedIn: 'root'
 })
