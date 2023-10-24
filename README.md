@@ -1,16 +1,18 @@
-# BagShop-Client-App
+# BAGSHOP-CLIENT-APP 
 
-![alt text](file:///Users/godwinonah/Desktop/Screenshot%202023-02-26%20at%2012.15.12.png)
+## ABOUT
+This is a client application for display of bag products. 
 
-## About
-This project is about the build of a fronend client application that can search, display, order bag items.
+## WEB API
+https://bagshopclientAPI.azurewebsites.net
 
-## Scope
-This project only contains the display of bag items.
-Only stripe card payment system can be use as the technology for making payments of items oredered.
+## PURPOSE
+The aim of this project is to build an efficient and reliable client web application using Angular.
 
-## Purpose
-The aim of this project is to showcase my skill and ability to build a front end client application with angular using C# and typescript.
+## WEBSITE
+### Host provider
+Azure
 
-## Stacks
-Angular 12+ using C# and typescript.
+### Website link
+https://bagshopclient.azurewebsites.net
+
