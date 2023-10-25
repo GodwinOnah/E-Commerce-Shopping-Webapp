@@ -1,0 +1,27 @@
+<div class="container mt-5" style="margin-top: 200px;">
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-hover" style="cursor: pointer;">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Order</th>
+                        <th>Date</th>
+                        <th>Total</th>
+                        <th>Status</th>
+                        <th>Confirmation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let order of orders" routerLink="/orders/{{order.id}}">
+                        <th>{{order.id}}</th>
+                        <td>{{order.orderDate | date: 'medium'}}</td>
+                        <td>£{{order.total}}</td>
+                        <td>{{order.orderStatus}} by seller</td>
+                        <td>{{order.confirmation}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

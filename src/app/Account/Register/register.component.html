@@ -1,0 +1,68 @@
+<div style="background-color: lightgray; padding-bottom: 40px;border:3px solid black ;">
+<div class="align-content-left">
+    <button style="margin-top: 15px;margin-left: 5px;" class=" btn btn-danger" mat-dialog-close>
+        x
+    </button>
+    </div>
+    <div class="text-center" style="color:blue ;"> <h1>SignUp</h1></div>
+   
+<div class="d-flex justify-content-center">
+
+    <div class="col-3">
+
+        <form [formGroup] = "registerForm" (ngSubmit)="onSubmit()">
+
+            <div class="text-center mt-5">
+              
+              <app-text-inputs [formControl]=" registerForm.controls['NickName']"  [label]="'Nickname'"></app-text-inputs>
+
+              <app-text-inputs [formControl]=" registerForm.controls['FirstName']"  [label]="'Firstname'"></app-text-inputs>
+
+              <app-text-inputs [formControl]=" registerForm.controls['MiddleName']"  [label]="'Middlename (optional)'"></app-text-inputs>
+
+              <app-text-inputs [formControl]=" registerForm.controls['LastName']"  [label]="'Lastname'"></app-text-inputs>
+
+              <app-text-inputs [formControl]=" registerForm.controls['Street']"  [label]="'Street'"></app-text-inputs>
+         
+              <app-text-inputs [formControl]=" registerForm.controls['City']"  [label]="'City'"></app-text-inputs>
+            
+              <app-text-inputs [formControl]=" registerForm.controls['Country']"  [label]="'Country'"></app-text-inputs>
+
+              <app-text-inputs [formControl]=" registerForm.controls['Zipcode']"  [label]="'Zipcode'"></app-text-inputs>
+
+              <app-text-inputs [formControl]=" registerForm.controls['Phone']"  [label]="'Phone'"></app-text-inputs>
+
+              <app-text-inputs [formControl]=" registerForm.controls['Email']"  [label]="'Email Address'" [type]="'email'"></app-text-inputs>
+                <div class="form-group">
+              <app-text-inputs [formControl]=" registerForm.controls['Password1']"  [label]="'Password'" [type]="changetype1?'password':'text'"></app-text-inputs>
+              <span class="eyeicon" (click)="viewpass1()">
+                <i [ngClass]="view1?'fa fa-eye':'fa fa-eye-slash'">
+                 </i>
+                </span>
+                </div>
+                <div class="form-group">
+                    <app-text-inputs [formControl]=" registerForm.controls['Password2']"  [label]="'Confirm Password'" [type]="changetype2?'password':'text'"></app-text-inputs>
+                    <span class="eyeicon" (click)="viewpass2()">
+                      <i [ngClass]="view2?'fa fa-eye':'fa fa-eye-slash'">
+                       </i>
+                      </span>
+                      </div>
+              <!-- <app-text-inputs [formControl]=" registerForm.controls['ConfirmPassword']"  [label]="'Confirm Password'" [type]="'password'"></app-text-inputs> -->
+
+            </div>
+            <div>
+            <ul class="text-danger list-unstyled" *ngIf="errors">
+                    <li *ngIf="let error of errors">
+                            {{error}}
+                    </li>
+            </ul>
+        </div>
+            <div class="d-grid" >
+                <button [disabled]="registerForm.invalid" class="btn btn-lg btn-success" type="submit" style="margin-top:10px ;">
+                   Register
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+</div>

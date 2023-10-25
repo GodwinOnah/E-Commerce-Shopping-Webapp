@@ -1,0 +1,21 @@
+button.nav-link{
+    background: #e9ecef;
+    border-radius: 0;
+    border: none;
+    color: #333;
+
+    &:disabled:not(.active){
+        color: #333;
+        background: #e9ecef;
+        border-radius: 0;
+        
+    }
+}
+
+// .display{
+//     display:grid;
+
+//     grid-template-columns: repeat(auto-fill,minmax(250px,1fr));
+ 
+//     grid-template-rows: repeat(auto-fill,minmax(300px,1fr));
+// }

@@ -1,0 +1,126 @@
+<ng-container *ngIf="(accountService.AppUser$|async) as user">
+    <div class="text-center" *ngIf="user.email!='godwinbillions@gmail.com'">
+       <strong style="color: red; font-weight: bolder; font-size: xx-large;">
+        Sorry!!! Only the admin can access this page
+        <p>Why not continue by clicking products and making orders..</p>
+    </strong> 
+    </div>
+<div class="admin" *ngIf="user.email=='godwinbillions@gmail.com'">
+    <h1 class="text-center"><strong style="color: purple;font-weight:bolder;">
+        ADMIN MANAGEMENT</strong></h1>
+
+        <marquee scrollamount="4">Now that you've login as the admin, you can delete any 
+            product on the product page; add advert(s) to the end of the display strings on the product page; 
+            add and remove brands and types; confirm or delete order, etc. Thanks.
+            Thanks</marquee>
+    <hr style="height: 50px;">
+    <div  class="container mt-5 text-center" style="background-color:black ;" >
+    <strong style="font-weight:bolder; color: gold;"><h1>Customer completed oders</h1></strong>
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-hover" style="cursor: pointer;">
+                <thead class="thead-light">
+                    <tr>
+                        <th>ORDER</th>
+                        <th>CUSTOMER NAME</th>
+                        <th>CUSTOMER EMAIL</th>
+                        <th>CUSTOMER PHONE</th>
+                        <th>DATE</th>
+                        <th>STATUS</th>
+                        <th>CONFIRMATION</th>
+                                    
+                    </tr>
+                </thead>
+                <tbody >
+                   
+                   
+                    <ng-container *ngIf="adminOrders.length==0">
+                        <strong style="color: red;">No order requested.</strong>
+                    </ng-container>
+                     
+                    <tr *ngFor="let order of adminOrders" routerLink="/Admin/{{order.id}}">
+                        <th>{{order.adminOrderId}}</th>
+                        <td>{{order.shippingAddress.firstName +" "+order.shippingAddress.middleName 
+                            +" "+order.shippingAddress.lastName}}
+                        </td>  
+                        <td>{{order.email}}</td>
+                        <td>{{order.shippingAddress.phone}}</td>
+                        <td>{{order.orderDate | date: 'medium'}}</td>
+                        <td>{{order.orderStatus}}</td>
+                        <td>{{order.confirmation}}</td>
+                                      
+                    </tr>
+              
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+    <hr style="height: 50px;">
+
+    <!-- Upload section -->
+    <div class="adminadd " style="padding-bottom:50px; margin: 10px;">
+        <strong style="color: gold ;"><h1>Add new items and properties here</h1></strong>
+        <button (click)="openUploadProduct()"  class="btn btn-primary m-5">
+            Upload new product here
+        </button>
+       
+        <button (click)="openUploadType()"  class="btn btn-primary m-5">
+            Add product type here
+        </button>
+        <button (click)="openUploadBrand()"  class="btn btn-primary m-5">
+            Add product brand here
+        </button>
+    </div>
+
+    <hr style="height: 50px;">
+    
+   <!-- Delivery section -->
+    <div style=" padding-bottom: 40px; margin: 10px;">
+    <div class="text-center" style=" height: auto; background-color: black; margin: 0 auto;overflow: scroll;">
+        <h1 style="color: Gold">ADD DELIVERY</h1> 
+        <hr style="color: gold;">
+        <ng-container *ngIf="deliveries.length>0 && delNotice==true">
+            <h2 style="color: Gold">List of available deliveries</h2>
+        </ng-container>
+        <div *ngFor="let item of deliveries">
+            <Strong>
+                <strong style="color: white;">  Name: {{item.delName}},</strong>  
+                <strong style="color: white;"> Time: {{item.delTime}},</strong>
+                <strong style="color:white;"> Price: £{{item.delPrice}}</strong>
+     <button (click)="deleteDelivery(item.id)">Delete me</button> </Strong>
+        </div> 
+        <div class="text-center" >
+            <button (click)="openAddDelivery()"  class="btn btn-primary m-5">
+                Add new delivery
+            </button>
+            </div> 
+    </div>
+         
+    </div>
+
+    <!-- Advert section -->
+    <div class="text-center" style="background-color:black; padding: 20px; margin: 10px;">
+        <h1 style="color: Gold">Your Adverts</h1>
+        <hr style="color: gold;">
+        <div  style=" max-height: 100px;width: 
+        80%;margin: 0 auto;border-radius: 20px;overflow: scroll;">
+         <ng-container *ngIf="advertsString.length>0 && delNotice==true">
+            <h2 style="color: Gold">List of availabel adverts</h2>
+        </ng-container>
+            <div *ngFor="let item of advertsString">
+                <marquee  scrollAmount="2" onmouseover="this.stop();" onmouseout="this.start();">
+                <strong ><strong  style="color:gold ;">{{item.advert}}
+                </strong><button (click)="deleteAdvert(item.id)">Delete me</button></strong>  
+                </marquee>
+            </div> 
+       
+    </div>
+        <button (click)="openAdvertDialog()"  class="btn btn-primary m-5">
+            Add new adverts
+        </button>
+
+    </div>
+    
+</div>
+</ng-container>

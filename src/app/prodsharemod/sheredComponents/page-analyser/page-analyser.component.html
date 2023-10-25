@@ -1,0 +1,5 @@
+<span class="pageAnalyser" *ngIf="totalPageNumber&&totalPageNumber>0">
+    Items: <strong>{{(pageNumber-1)*pageSize+1}}-{{(pageNumber)*(pageSize)
+        >
+        totalPageNumber?totalPageNumber:(pageNumber)*(pageSize)}}</strong> of <strong>{{totalPageNumber}}</strong></span>
+    
