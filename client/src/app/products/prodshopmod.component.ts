@@ -5,6 +5,7 @@ import { ProdshopmodService } from './prodshopmod.service';
 import { ShopParameters } from '../prodsharemod/models/shopParameters';
 import { UserAccountService } from '../Account/account.service';
 import { ToastrService } from 'ngx-toastr';
+import { environment } from 'environments/environment';
 
 @Component({
   selector: 'app-shop',
@@ -20,6 +21,7 @@ export class ProdshopmodComponent implements OnInit {
   totalPageNumber=0;
   notice : boolean = false;
   errors : string[] | null = null;
+  adminEmail = environment.adminEmail;
   advertsString : string="Stay alert for Averts here";
   sortingOptions=[
     {name:'Alphabeltical', value:'name'},

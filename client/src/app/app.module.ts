@@ -14,6 +14,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { JwtInterceptor } from './core/Interceptors/jwt.interceptor';
 import { BnNgIdleService } from 'bn-ng-idle';
 import { CoreModule } from './core/core.module';
+import { MyProfileComponent } from './MyProfile/my-profile/my-profile.component';
+
 
 
 @NgModule({

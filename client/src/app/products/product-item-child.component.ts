@@ -5,6 +5,7 @@ import { UserAccountService } from '../Account/account.service';
 import { BasketService } from '../basket/basket.service';
 import { IProduct } from '../prodsharemod/models/IProduct';
 import { ProdshopmodService } from './prodshopmod.service';
+import { environment } from 'environments/environment';
 
 @Component({
   selector: 'app-product-item-child',
@@ -14,6 +15,7 @@ import { ProdshopmodService } from './prodshopmod.service';
 export class ProductItemChildComponent implements OnInit{
   
   @Input() product?: IProduct;
+  adminEmail = environment.adminEmail;
  
 
   constructor(private basketService: BasketService,

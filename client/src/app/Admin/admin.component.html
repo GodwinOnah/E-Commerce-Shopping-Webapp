@@ -1,11 +1,11 @@
 <ng-container *ngIf="(accountService.AppUser$|async) as user">
-    <div class="text-center" *ngIf="user.email!='godwinbillions@gmail.com'">
+    <div class="text-center" *ngIf="user.email!=adminEmail">
        <strong style="color: red; font-weight: bolder; font-size: xx-large;">
         Sorry!!! Only the admin can access this page
         <p>Why not continue by clicking products and making orders..</p>
     </strong> 
     </div>
-<div class="admin" *ngIf="user.email=='godwinbillions@gmail.com'">
+<div class="admin" *ngIf="user.email==adminEmail">
     <h1 class="text-center"><strong style="color: purple;font-weight:bolder;">
         ADMIN MANAGEMENT</strong></h1>
 

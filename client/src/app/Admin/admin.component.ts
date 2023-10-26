@@ -12,6 +12,7 @@ import { IDelivery } from '../prodsharemod/models/IDelivery';
 import { ProductBrandComponent } from '../products/product-brand/product-brand.component';
 import { ProductTypeComponent } from '../products/product-type/product-type.component';
 import { ItemsComponent } from '../products/productItems/items/items.component';
+import { environment } from 'environments/environment';
 
 
 @Component({
@@ -31,6 +32,7 @@ export class AdminComponent {
   notice : boolean = false;
   delNotice : boolean = false;
   deliveries : IDelivery[]=[];
+  adminEmail = environment.adminEmail;
 
   constructor(
     private matdialog : MatDialog,

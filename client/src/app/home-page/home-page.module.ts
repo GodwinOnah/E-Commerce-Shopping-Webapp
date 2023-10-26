@@ -5,9 +5,6 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { RouterModule } from '@angular/router';
 
 
-
-
-
 @NgModule({
   declarations: [
     HomePageComponent

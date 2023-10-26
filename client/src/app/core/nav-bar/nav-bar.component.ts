@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { UserAccountService } from 'app/Account/account.service';
 import { BasketService } from 'app/basket/basket.service';
 import { IBasketItem } from 'app/prodsharemod/models/IBasket';
+import { environment } from 'environments/environment';
 
 
 
@@ -15,7 +16,8 @@ import { IBasketItem } from 'app/prodsharemod/models/IBasket';
 export class NavBarComponent {
 
  start=0;
- login: boolean = true
+ login: boolean = true;
+ adminEmail = environment.adminEmail;
 
   constructor(public basketService:BasketService,
      public accountservice:UserAccountService){

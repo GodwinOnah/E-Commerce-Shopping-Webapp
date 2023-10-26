@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserAccountService } from 'app/Account/account.service';
 import { IProduct } from '../prodsharemod/models/IProduct';
-import { ShopParameters } from '../prodsharemod/models/shopParameters';
+import { environment } from 'environments/environment';
 import { ProdshopmodService } from '../products/prodshopmod.service';
 
 @Component({
@@ -12,7 +12,9 @@ import { ProdshopmodService } from '../products/prodshopmod.service';
 export class HomePageComponent implements OnInit{
 
   products:IProduct[];
-  adverts:string="Thank you for visiting my website";
+  adminEmail = environment.adminEmail;
+  adverts:string='Thank you for visiting my website.'+' '.repeat(10);
+  loginAdvert=" Login as admin by using: Email: godwinbillions@gmail.com, Password: Gut101@@"
   errors : string[] | null = null;
   
 

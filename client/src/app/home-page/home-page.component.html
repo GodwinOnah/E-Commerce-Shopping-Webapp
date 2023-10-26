@@ -2,7 +2,11 @@
 
     <div style="height: 50px; margin-top:4%;margin-bottom: auto;">
         <marquee scrollamount="3">
-            <strong style="color:deepskyblue ;font-weight:bold">{{adverts}}</strong> 
+            <strong style="color:blue ;font-weight:bold">{{adverts}}</strong> 
+                <ng-container *ngIf="(accountservice.AppUser$|async) as user" >
+                <strong *ngIf="user==null|| user.email!=adminEmail" 
+                style="color:red ;font-weight:bold">{{loginAdvert}}</strong>
+               </ng-container>
         </marquee>
     </div>
 
