@@ -1,0 +1,11 @@
+.basketSummary{
+width: 90%;
+height: auto;
+}
+
+@media (max-width: 679px) {
+    .basketSummary{
+        width: 80%;
+        height: auto;
+        }
+}

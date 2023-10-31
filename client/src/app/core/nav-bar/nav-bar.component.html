@@ -1,0 +1,56 @@
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary" aria-label="Main navigation" style="width: 1400px;">
+   
+  <div class="d-flex log"  >
+ 
+      <img  routerLink="/" src="/assets/ObandeLogo.jpeg" alt="No Image" height="70px" width="auto">
+      
+   
+    <div class="d-flex log1">
+            <a class="log2" routerLink="/" 
+            (click)="closeDialog()">Home
+    </a>   
+            <a class="log2" routerLink="/products"  
+            (click)="closeDialog()">Products
+  </a>     
+         
+           
+           <div class="d-flex ">
+            <ng-container *ngIf="(accountservice.AppUser$|async)==null" >
+            <a (click)="openRegDialog()" class="log2" >Register</a>    
+            <a (click)="openLoginDialog()" class="log2" >Login</a>
+          </ng-container>
+          </div>
+         
+
+        <ng-container *ngIf="(accountservice.AppUser$|async) as user">
+         
+            <a *ngIf="user.email==adminEmail" class="log2"
+             routerLink="/Admin" >Admin page</a>  
+          <div class="btn-group" dropdown>
+            <a class="welcomedropdown" id="button-basic" dropdownToggle type="button"
+            class="btn btn-primary dropdown-toggle log3"
+                    aria-controls="dropdown-basic">
+                    Welcome {{user.nickName}} 
+          </a>
+            <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu logout"
+                role="menu" aria-labelledby="button-basic">
+              <li role="menuitem"><a class="dropdown-item" (click)="Logout()">Logout</a></li>
+              <li role="menuitem"><a class="dropdown-item" routerLink="/orders">View Orders</a></li>
+              <li role="menuitem"><a class="dropdown-item" routerLink="/basket">View basket</a></li>
+        
+            </ul>
+          </div>
+      </ng-container >
+    </div>
+            <div (click)="closeDialog()" class="basket" routerLink="/basket">
+                <div  *ngIf="(basketService.basket$|async) as basket" 
+                 class="cartQuantity">
+                  {{TotalQuantity(basket.items)}}
+                </div>
+                 <div class="cartLabel fa fa-shoping-cart">
+                  <i class=" fa-cart-plus fa-2x"></i>
+                  </div>
+              
+            </div>
+          </div>     
+  </nav>

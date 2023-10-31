@@ -1,0 +1,23 @@
+p{margin-top: 0;}
+.checkout{color:white ; width: 150px; 
+    height: 60px; border-radius: 10px;margin-left: 10px;}
+.checkout:hover{background-color: grey;}
+.p-body{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 20%;
+    right: 0;
+   
+}
+
+@media (max-width: 679px) {
+    .p-body{
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        margin-bottom: 20%;
+        right: 0;
+       
+    }
+}

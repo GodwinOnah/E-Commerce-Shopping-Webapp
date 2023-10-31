@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/79fed2a8-8e34-4f84-9298-01fc2d0b0fdb/resourceGroups/Bagshop-rsg/providers/Microsoft.Web/sites/Bagshopclient",
+    "appService.deploySubpath": "."
+}

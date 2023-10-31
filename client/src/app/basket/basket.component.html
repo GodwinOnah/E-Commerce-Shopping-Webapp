@@ -1,0 +1,40 @@
+<div class="container p-body">
+<div *ngIf="(basketService.basket$|async)===null">
+    <strong style="color: red; font-size:30px; margin-top:300px">
+        Sorry!! Basket is now empty...</strong>   
+ </div> 
+<div class="container" style="margin-top:110px;">
+    <ng-container  *ngIf="(basketService.basket$|async) as basket">
+        <marquee class="mb-4 fst-italic">
+            Thank you for you interest in our product.  
+             Your feedback is important to us for improvement...
+            </marquee>
+          
+            <div class="row col-12 mb-5" style="margin: 0 auto;">
+                <app-basket-summary
+                (addItem)="IncreaseQuantity($event)"
+                (removeItem)="ReduceQuantity($event)">
+                </app-basket-summary>
+        
+            
+            <div class="row align-items-center">
+                <div class="row">
+                    <app-order-total></app-order-total>
+                    </div>
+                    <div *ngIf="basket!=null" class="d-flex mt-5 mb-5" > 
+                        <button  class="checkout" (click)="deleteBasket(basket)" 
+                        style="background-color: red;" >
+                            <strong style="color: white; font-size:auto;">Clear basket</strong> 
+                        </button>
+                        <button routerLink="/Checkout" class="checkout"  style="background-color: green;">
+                            <strong style="color:white; font-size:auto;">Proceed to checkout</strong>
+                         </button>
+                    </div>
+                </div>
+                </div>
+           
+           
+    </ng-container>
+</div>
+</div>
+

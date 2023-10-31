@@ -1,0 +1,50 @@
+<div class="mt-4" *ngIf="deliveryForm" [formGroup]="deliveryForm">
+    <div class="row mt-3" formGroupName = "deliveryForm" >  
+        <ng-container  *ngIf="(basketService.basket$|async) as basket"> 
+        <div class = "col-6 form-group"  *ngFor="let deliveryFm of  deliverys"> 
+            
+            <input 
+            class="form-check-input"
+            id = "{{deliveryFm.id}}"
+            value = "{{deliveryFm.deliveryPrice}}"
+            name="delivery"
+            (click)="setDeliveryPrice(deliveryFm)"
+            type="radio"
+            [checked]="deliveryFm.delPrice == basket.deliveryPrice">
+            
+            <label for="{{deliveryFm.id}}" class="form-check-label ms-2 mb-3">
+                <table>     
+                    <tr>
+                        <td>
+                            <strong style="color: purple; margin: 5px;">
+                                Arrival date</strong>
+                        </td>
+                        <td>
+                            <strong>{{deliveryFm .delTime}}</strong>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong style="color: purple;margin: 5px;">Price</strong>
+                        </td>
+                        <td>
+                            £{{deliveryFm .delPrice}}
+                        </td>
+                    </tr>
+                </table>
+            
+            </label> 
+                   
+        </div>
+    </ng-container>  
+    </div>
+</div>
+<div class="d-flex justify-content-between flex-row mb-5">
+    <button  class="btn btn-danger" cdkStepperPrevious>
+        <i class="fa fa-angle-left"></i> Address
+    </button>
+    <button class="btn btn-danger" cdkStepperNext>
+        Review <i class="fa fa-angle-right"></i>
+    </button>
+
+</div>

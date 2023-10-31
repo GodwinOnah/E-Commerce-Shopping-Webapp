@@ -1,0 +1,133 @@
+<div class="row homepage1">
+
+    <div style="height: 50px; margin-bottom: 5%; font-size: large;">
+        <marquee scrollamount="3">
+            {{welcome}}
+            <ng-container *ngIf="(accountservice.AppUser$|async) == null" >
+                <strong  style="color:red ;font-weight:bold">{{loginAdvert}}</strong>
+            </ng-container>
+            <ng-container *ngIf="(accountservice.AppUser$|async) as user" >
+                <strong *ngIf="user.email!=adminEmail" 
+                style="color:red ;font-weight:bold">{{loginAdvert}}</strong>
+            </ng-container>    
+              <strong style="color:green;font-weight:bold">IFORMATION:</strong> {{advert}}
+        </marquee>
+    </div>
+
+    <!-- averts -->
+    <div class="row">
+    <div class="col-8">
+    <div class="row">
+        <div class="col-6">
+    <carousel>
+        <slide  *ngFor="let product of products" >
+            <div>
+                <img src={{product.prodPicture}} alt="Averts" class="section1">      
+            </div>
+            <a routerLink="/products/{{product.id}}"><strong style="font-size: 20px; 
+                color:rebeccapurple; text-decoration: underline;margin-left: 20px; cursor: pointer;">
+                    Grab this for <strong style="color:red">£{{product.prodPrice}}
+                    </strong>
+                </strong>
+            </a>
+        </slide > 
+    </carousel>        
+    </div>
+
+
+
+    <div class="col-6">
+        <carousel>
+            <slide >
+                <img src="/assets/bagsale2.jpeg" alt="First Slide"  class="section2">
+            </slide>
+            <slide>
+                <img src="/assets/bagsale1.jpeg" alt="Second Slide" class="section2">
+            </slide>
+            <slide>
+                <img src="/assets/can-fit4.gif" alt="Third Slide" class="section2">
+            </slide>
+            <slide>
+                <img src="/assets/bagsale3.jpeg" alt="Fourth Slide" class="section2">
+            </slide>
+            <slide>
+                <img src="/assets/bagsale4.jpeg" alt="Fift Slide" class="section2">
+            </slide>
+            <slide>
+                <img src="/assets/buyingapplebag.jpeg" alt="Sixt Slide" class="section2">
+            </slide>
+            <slide>
+                <img src="/assets/pexels-godisable-jacob-1943465.jpeg" alt="Sevent Slide" class="section2">
+            </slide>
+            <slide>
+                <img src="/assets/womenwithbags.jpeg" alt="Eigth Slide" class="section2">
+            </slide>
+            <slide>
+                <img src="/assets/airportbag.jpeg" alt="Nineth Slide" class="section2">
+            </slide>
+        </carousel>
+        <strong style="font-size: 20px; color:rebeccapurple;margin: 10px;margin: 5px;">
+            Travel with confidence
+        </strong>
+    </div>
+
+    <!-- Sell bag -->
+    <div class="row">
+
+        <div class="text-center sell">
+            <a routerLink="/sell-product">
+                <strong style="color: deepskyblue; text-decoration: underline;cursor: pointer;">
+                     Sell your bag
+                    </strong> 
+            </a>
+        </div>
+    
+        <div class="text-center sell">
+            <a>
+                <strong style="color: deepskyblue; text-decoration: underline;cursor: pointer;">
+                     Meet with website owner here
+                    </strong> 
+            </a>
+        </div>
+    
+    </div>
+</div>
+</div>
+    <div class="col-4">
+        <div class="section3">
+            <p>Register with us and get a free discount in your first £100 purchance made. 
+                Our products are unique and made from the best of raw materials you can ever find.
+                <p>The collections might not contain your taste; you can give a 
+                    <a><strong style="color: deepskyblue; text-decoration: underline;cursor: pointer;">
+                        feedback here</strong></a> </p>
+                    <p>If you are not among those already enjoying the benefit of discounts, 
+                        <a (click)="openRegDialog()"><strong style="color:deepskyblue; 
+                        text-decoration: underline;cursor: pointer;"> Register here</strong>
+                        </a>
+                    </p>
+        </div>
+    </div>
+</div>
+<hr style="margin-top:30px ;">
+    <div class="mission text-center">
+        <div>
+            <h5><strong class="policyandmission">Mission</strong> </h5>
+            <p>Our mission is to statify our customers
+                needs by putting smiles on their faces after business 
+                transctions with us.
+              </p>
+        </div>
+        <div style="margin-top: 40px;">
+            <h5><strong class="policyandmission">Policy</strong></h5>
+            <p>Our policy is unique and is geared towards making you 
+              happy for the rest of your life..
+            </p>  
+        </div>
+
+          
+    </div>
+
+</div>
+    
+   
+   

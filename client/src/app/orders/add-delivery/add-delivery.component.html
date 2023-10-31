@@ -1,0 +1,45 @@
+<div style="background-color: lightgray; padding-bottom: 40px;border:5px solid skyblue ;">
+    <div class="align-content-left">
+        <button (click)="closeDialog()" style="margin-top: 15px;margin-left: 5px;"
+    class=" btn btn-danger">
+        x    
+    </button>
+   
+        </div>
+        <div class="text-center" style="color:blue ;"> <h1>Add new delivery</h1></div>
+       
+    <div class="d-flex justify-content-center">
+    
+        <div class="col-3">
+    
+            <form [formGroup] = "delForm" (ngSubmit)="onSubmit()">
+    
+                <div class="text-center mt-5">
+                  
+                  <app-text-inputs [formControl]="delForm.controls['delName']"  [label]="'Name of delivery'"></app-text-inputs>
+
+                  <app-text-inputs [formControl]="delForm.controls['delTime']"  [label]="'Time(days)'"></app-text-inputs>
+
+                  <app-text-inputs [formControl]=" delForm.controls['delDescription']"  [label]="'Describe delivery'"></app-text-inputs>
+    
+                  <app-text-inputs [formControl]=" delForm.controls['delPrice']"  [label]="'Price'"></app-text-inputs>
+                </div>
+                <div>
+                <ul class="text-danger list-unstyled" *ngIf="errors">
+                        <li *ngIf="let error of errors">
+                                {{error}}
+                        </li>
+                </ul>
+            </div>
+
+            <br>
+                <div class="d-grid" >
+                    <button [disabled]="delForm.invalid" class="btn btn-lg btn-success" type="submit" style="margin-top:10px ;">
+                      Add
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+    

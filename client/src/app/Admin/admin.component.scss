@@ -1,0 +1,22 @@
+.admin{
+    margin-top: 100px;
+}
+
+.customerOrders{
+    height: auto;
+    max-height: 300px;
+   overflow: scroll;
+   border: 2px solid black ;
+   border-radius: 10px;
+   background-color:mintcream;
+   position: relative;
+   margin-bottom: 20px;
+}
+
+.adminadd{
+    padding: 10px;
+    position: relative; 
+    background-color:black;
+    text-align: center;
+    margin: auto 0;
+}

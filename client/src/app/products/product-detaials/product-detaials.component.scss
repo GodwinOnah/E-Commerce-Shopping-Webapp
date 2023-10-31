@@ -1,0 +1,119 @@
+.txt{
+   background-color: lightgray; 
+}
+
+.inputxt{
+    font-size:70%; 
+    width: 100%;
+}
+
+.btn-prodDetails{
+    background-color: green;
+    width: auto;
+    height: 50%;
+    margin: 5%;
+    border-radius: 20% ;
+    border: solid black 5px;    
+}
+
+.btn-prodDetails:hover{
+    background-color:white;
+    color:black; 
+ 
+}
+.btn-pbasket:hover{
+    background-color: pink;
+}
+
+.btn-order{
+    margin-top: 50px;
+    font-size: 20px;
+    font-weight: bolder;
+   
+}
+.totalPrice{  
+    margin-top: 10px;
+}
+
+.changeQntyBtn:hover{
+    background-color: black; 
+    border-radius: 10px;}
+
+.btn-quantity-number{
+    font-weight: bolder;
+    margin: 20px;
+    font-size: 20px;
+}
+
+.p-body{
+    background-color: whitesmoke;
+    border: 5px solid;
+    width: 100%;
+    height: auto;
+    padding: 5%;  
+}
+
+.ax{
+    text-align: right;
+    color:grey;
+}
+
+.ay{
+    text-align: center;
+    color:black;
+}
+
+tr{
+    line-height:50px;
+    width: 300px;
+}
+
+table{
+    font-size: 30px;
+    font-weight: bolder;
+    margin: 10px;
+    table-layout:fixed;
+    width:80%;
+}
+input { 
+    text-align: right; 
+}
+
+
+.price{
+    margin-bottom: 10px;
+    margin-top: 10px;}
+
+.addTotalContainer{
+    margin: 0 auto;
+    padding: 10px;
+    position: relative;   
+}
+
+@media (max-width: 679px) {
+    .txt{
+        background-color: lightgray; 
+     }
+
+     .p-body{
+        background-color: whitesmoke;
+        border: 5px solid;
+        width: 100%;
+        height: auto;
+        padding: 5%;  
+    }
+
+    .inputxt{
+        font-size:70%; 
+        width: 100%;
+    }
+
+    .btn-prodDetails{
+        background-color: green;
+        width: auto;
+        height: 50%;
+        margin: 5%;
+        border-radius: 20% ;
+        border: solid black 5px;    
+    }
+}

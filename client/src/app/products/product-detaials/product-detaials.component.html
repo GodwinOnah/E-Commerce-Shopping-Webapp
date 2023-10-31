@@ -1,0 +1,87 @@
+<div *ngIf="productDetails" class="p-body" >       
+    <div class="txt">
+            <marquee  direction="left" >
+            <h4 *ngIf="quantityInBasket>1">
+                <strong>{{quantityInBasket}} of this item are in your basket</strong>             
+            </h4>
+
+            <h4 *ngIf="quantityInBasket==1"> 
+                <strong>{{quantityInBasket}} of this item is in your basket</strong>               
+            </h4>  
+
+            <h4 *ngIf="quantityInBasket==0"> 
+                <strong>This item is not in your basket</strong>               
+            </h4>  
+            </marquee>       
+            </div>
+       
+             <div class="row" style="height:50%;">
+                <div class="col-8 align-items-center" >
+                    <img src={{productDetails.prodPicture}} class="card-img-top img-fluids" height="500px" 
+                  style="margin-left:5px ; border-radius: 20px;" alt={{productDetails.prodName}}>
+                </div>               
+                <div class="col-4">
+                    <strong  style="font-weight: bolder;"><h2>What you're buying</h2></strong>
+                    <p>{{productDetails.prodDescription}}</p>                  
+                </div>
+        </div>
+        <hr>
+        <div style="height:40%; margin-left: 20%;" >
+            <div  class=" btn-quantity-name">
+                <table>
+                    <tr>
+                        
+                        <td class="ay"> <i (click)="ReduceQuantity()" 
+                            class="fa fa-minus-circle text-primary m-2 changeQntyBtn" 
+                            style="cursor: pointer; font-size:2em"></i> 
+                        </td>
+                        <td>
+                            <strong >
+                                <input type="number" [(ngModel)]="quantity" (keyup.enter)="AddItem()" 
+                                      class="inputxt" />
+                             </strong>
+                        </td>
+
+                        <td>
+                            <i (click)=" IncreaseQuantity()" 
+                           class="fa fa-plus-circle text-primary m-2 changeQntyBtn" 
+                           style="cursor: pointer; font-size:2em"></i>
+                        </td>
+                    </tr>
+                    <tr class="price">
+                        <td  class="ax"> Price:</td>
+                        <td colspan="2" class="ay align-items-center">  <strong>£{{productDetails.prodPrice}}</strong>
+                        </td>
+                    </tr>
+                    <tr class="totalPrice">
+                        <td  class="ax"> Total Price:</td>
+                        <td colspan="2" class="ay"> <strong>£{{productDetails.prodPrice*quantity}}</strong>
+                        </td>
+                    </tr>
+                </table>   
+            </div>  
+
+            <div class="btn-order" style="margin-left: 5%;"> 
+
+                <button  (click)="AddItem()"
+                [disabled]="quantity == quantityInBasket" 
+                class="btn-prodDetails">
+                    <strong>{{ButtonTxt}}</strong>
+                </button>
+              
+                <button  routerLink="/basket"
+                    class="btn-prodDetails" >
+                        <strong>Go to basket</strong>
+                </button>
+               
+            </div>
+         </div>
+    </div>
+
+
+  
+  
+    
+       
+
+ 

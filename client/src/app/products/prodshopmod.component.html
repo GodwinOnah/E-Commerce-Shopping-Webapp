@@ -1,0 +1,200 @@
+<div class="container p-body" >
+<!-- Adverts -->
+  <div>
+    <div *ngIf="(accountService.AppUser$|async) ==null" >
+      <div class="marquee">
+        <Marquee scrollamount="3">Welcome to Obande unique bag collections. 
+        We are delighted that you chose us. You can make your choice from the best collections 
+        you can find around the world....
+        <strong style="color: red;">*IMPORTANT: </strong>{{advertsString}}
+      </Marquee></div>
+      </div>
+
+    <div *ngIf="(accountService.AppUser$|async) as user" >
+    <div class="marquee2" *ngIf="totalPageNumber!=0">
+      <Marquee scrollamount="3">
+      <strong>Hi {{user.nickName}}!!. </strong> 
+      <strong *ngIf="notice == false">
+      Thank you for viewing our items. 
+      There are loads of these other items not displayed here. 
+     Give us a call today. Your commitment is the 
+      reason we have upgraded to serve you better.
+      </strong >
+        <strong *ngIf="notice == true" style="color: red;"> *NOTICE/ADVERT(S):
+         </strong>
+         <ng-container *ngIf="adverts">
+          <strong *ngFor="let advert of adverts">
+          <strong  style="color:blue ;font-weight:bold">.&nbsp;&nbsp;{{advert.advert}}</strong> 
+          </strong>
+          </ng-container>
+           </Marquee>
+    </div>
+    </div>
+    <div *ngIf="(accountService.AppUser$|async) as user" >
+      <div class="marquee2" *ngIf="totalPageNumber==0">
+        <Marquee scrollamount="3">
+        Sorry {{user.nickName}}. We are really sorry for any incovieniences 
+        not finding your product right now might have cost you. We might be 
+        short of supply but will still take your orders and deliver it to 
+        your door step if you want. Better still, check if your spellings 
+        are correct if you are using the search option or you can give us a feedback. Thanks.</Marquee>
+      </div>
+      </div>
+    </div>
+
+          
+               <!-- Section1 -->
+               <div class="row content">
+                <section class="col-2  left-section"> 
+                      <hr width="80%">
+                      <div class="adverts">
+                        <app-product-adverts></app-product-adverts>
+                      </div>
+                      <hr width="80%"> 
+
+                      <div class="yourPick">   
+                     <ng-container *ngIf="(basketService.basket$|async) == null">
+                      <strong style="color:black ;">
+                        <p>The collections might not contain your taste; you can give a 
+                          <a><strong style="color: deepskyblue; text-decoration: underline;cursor: pointer;">
+                              feedback here</strong>
+                            </a> 
+                            </p>
+                      </strong>
+                    </ng-container>
+                    <ng-container *ngIf="(basketService.basket$ |async) as basket">
+                        <div class="dv4pickimage">
+                        <h3>
+                          <strong class="yourpicktxt">
+                            Your pick
+                        </strong> 
+                      </h3>
+                      <div class="divPickImage">
+                        <div *ngFor="let item of basket.items">
+                          <img class="pickimage" src={{item.prodPicture}} alt="">
+                          X{{item.quantity}}
+                        </div>
+                      </div>
+                    </div>
+                    </ng-container> 
+
+                        
+                       
+                      </div>      
+                </section>
+
+
+             <!-- Section2 -->
+                <section class="col-8 text-center">
+                      <!-- search -->
+                      <div class="row right-section-search">
+                        <ng-container *ngIf="products">
+                            <form class="d-flex search" >
+                              <input (keyup.enter)="Search()" type="text" 
+                              class="form-control me-2 search-text" #search  placeholder="Products" >
+                              <button (click)="Search()" class="btn btn-outline-success bg-primary 
+                               text-light search-btn">Search</button>
+                              <button (click)="ResetSearch()" class="btn btn-outline-success bg-primary text-light search-btn" >Reset</button>
+                            </form>
+                         </ng-container>
+                        </div>
+                
+
+                    <!-- products -->
+                    <ng-container *ngIf="products">
+                      <div class="container item-container">
+                        <div class="card-container mb-4 " *ngFor="let item of products">
+                              <app-product-item-child [product]="item"></app-product-item-child>
+                      </div>
+                      <div class="noResult" *ngIf="totalPageNumber==0">
+                            <strong><p style="color:red">Sorry!!!.. </p>
+                            <p>No result for this search can be found.</p>
+                            <p>You can reload page to bring back products items.</p> 
+                            <p>Better still, click a brand and/or type.</p>
+                            </strong>
+                          </div>
+                        </div>
+                      </ng-container>
+                
+              <!-- pagination -->
+            <div class="d-grid justify-content-center mt-3" *ngIf="totalPageNumber&&totalPageNumber>0">
+                  <app-pagination-shared-componet
+                  [totalPageNumber]="totalPageNumber"
+                  [pageSize]="shopParameters.pageSize"
+                  [pageNumber]="shopParameters.pageNumber"
+                  (pageChange)="PageChange($event)">
+                  ></app-pagination-shared-componet>
+                <div style="color:blue ; font-weight:bolder">
+                  <app-page-analyser 
+                  [totalPageNumber]="totalPageNumber"
+                  [pageNumber]="shopParameters.pageNumber"
+                  [pageSize]="shopParameters.pageSize">
+                  </app-page-analyser>
+                </div>  
+                </div>
+            </section>
+                
+
+   <!-- Section3 -->
+    <section class="col-2 right-section">  
+
+       <!-- Sort-->
+       <div class="row">
+      <h5>Sort Products</h5>
+      <select class="form-select sort" 
+      (change)="SortedProducts($event)">
+        <option *ngFor="let item of sortingOptions"
+        [selected]="shopParameters.sort==item.value"
+        [value]="item.value"
+        >{{item.name}}</option>
+      </select>
+    </div>
+
+    <!-- Brands -->
+    <div class="row">
+       <ng-container *ngIf="brands && productTypes">  
+        <div class="right">
+        <h5>Brands</h5>
+          <div class="right-section-b" >    
+              <ul class="list-group">
+                 <li class="list-group-item"
+                    *ngFor="let item of brands"
+                    [class.active]="item.id === shopParameters.brandId" 
+                    [value]="item.id"
+                    (click)="SelectedBrand(item.id)">
+                    {{item.name}}
+                    <ng-container *ngIf="(accountService.AppUser$|async) as user" >  
+                    <button *ngIf="user.email==adminEmail" 
+                    (click)="DeleteBrand(item.id)">Delete</button>
+                  </ng-container>
+                  </li>
+              </ul>
+           
+           </div>
+          </div> 
+
+       <!-- Types -->
+       <div class="right">
+       <h5>Types</h5>
+       <div class="right-section-b" >  
+          <ul class="list-group">
+                <li class="list-group-item"
+                *ngFor="let item of productTypes"
+                [class.active]="item.id === this.shopParameters.typeId" 
+                [value]="item.id"
+                (click)="SelectedType(item.id)"> 
+                {{item.name}} 
+                <ng-container *ngIf="(accountService.AppUser$|async) as user" >   
+                <button *ngIf="user.email==adminEmail" 
+                (click)="DeleteType(item.id)">Delete</button>
+              </ng-container>
+              </li>
+          </ul> 
+       
+       </div>
+      </div>
+   </ng-container>
+  </div>
+ </section>
+ </div>
+</div>

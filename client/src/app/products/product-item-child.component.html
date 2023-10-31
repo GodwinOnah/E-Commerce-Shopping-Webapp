@@ -1,0 +1,24 @@
+<div class="card cardItems">
+    <img routerLink="/products/{{product.id}}" src={{product.prodPicture}} 
+    class="card-img-top img-fluids cardImage"  alt={{product.prodName}}>
+    <strong class="productname">{{product.prodName}}</strong>
+    <div class="card-body">
+      <strong class="pricing">£{{product.prodPrice}}</strong>
+
+      <div class="d-flex justify-content-center">
+       
+      <button (click)="AddItem()" class="btnOrder">
+      <strong class="ak">Buy</strong>
+      </button>
+   
+        <button routerLink="/products/{{product.id}}" class="btnOrder">
+         <strong class="ak">View</strong>
+        </button>
+       
+        <ng-container *ngIf="(accountService.AppUser$|async) as user" >
+          <button *ngIf="user.email==adminEmail" (click)="DeletItem(product.id)" 
+          class="btnOrder"><strong class="ak">Delete</strong></button>
+           </ng-container>
+        </div>
+    </div>
+  </div>

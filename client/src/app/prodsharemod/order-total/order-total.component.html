@@ -1,0 +1,22 @@
+
+<div class=" px-4 py-3 text-uppercase fw-bold" style="background-color: skyblue;margin: 0%;">
+   Order summary
+</div>
+<div class="p-4" style="background-color: lightgrey;">
+    <p class="mb-4 fst-italic">Your oder charge and arrival time depends on your location</p>
+    <ul class="list-unstyled mb-4" *ngIf="(basketService.totalBasketPriceSource$|async) as basketTotals">
+        <li class="d-flex justify-content-between py-4 border-bottom">
+            <strong class="text-muted">Total Price Before Shipping</strong>
+            <strong style="color: red;">£{{basketTotals.subTotal}}</strong>
+        </li>
+        <li class="d-flex justify-content-between py-4 border-bottom">
+            <strong class="text-muted">Shipping Price</strong>
+            <strong style="color: red;">£{{basketTotals.shippingPrice}}</strong>
+        </li>
+        <li class="d-flex justify-content-between py-4 border-bottom">
+            <strong class="text-muted">Total Price with Shipping</strong>
+            <strong style="color: red;">£{{basketTotals.total}}</strong>
+        </li>
+    </ul>
+
+</div>

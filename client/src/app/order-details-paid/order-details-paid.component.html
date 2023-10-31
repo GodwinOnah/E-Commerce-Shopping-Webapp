@@ -1,0 +1,124 @@
+<div class="container mt-5">
+    <div class="row">
+         <div   class="col-8">
+
+             <div class="table-responsive" >
+    
+                  <table class="table" >
+                     <thead>
+                        <tr>
+                              <th scope="col" class="border-0 bg-light">
+                                    <div class="p-2 text-uppercase">Product</div>
+                              </th>
+                              <th scope="col" class="border-0 bg-light">
+                                     <div class="py-2 text-uppercase">Price</div>
+                              </th>
+                              <th scope="col" class="border-0 bg-light">
+                                     <div class="py-2 text-uppercase">Quantity</div>
+                              </th>
+                              <th scope="col" class="border-0 bg-light">
+                                     <div class="py-2 text-uppercase">Total</div>
+                              </th>
+                         </tr>
+                     </thead>
+                     <tbody >
+                         <tr  *ngFor="let item of order.itemOrdered">
+                             <td scope="row">
+                                <div class="p-2">
+                                    <img src="{{item.prodPicture}}" alt="{{item.prodName}}"
+                                     class="img-fluid" style="max-height: 50px">
+                                <div class="ml-3 d-inline-block align-middle">
+                                 <h5 class="mb-0">
+                                     {{item.prodName}}
+                                 </h5>
+                                 </div>
+                                 </div>
+                             </td>
+                             <td class="align-middle"><strong>£{{item.itemPrice}}</strong></td>
+                             <td class="align-middle">
+                             <span class="font-weight-bold px-2">{{item.quantity}}</span>
+                             </td>
+                             <td class="align-middle"><strong>£{{item.itemPrice* item.quantity}}</strong></td>
+                         </tr>
+                    </tbody>
+             </table>
+    </div> 
+</div>
+
+<div class="col-4">
+    <div class="bg-light px-4 py-3 text-uppercase font-weight-bold">Choice of delivery
+    </div>
+
+<div>
+    <div class="row mt-2" style="border:5px solid red; height:auto; width: auto;">
+        <p><strong class="info">Delivery Name: </strong><strong class="info2">{{order.delivery.delName}}</strong></p>
+        <p><strong class="info">Delivery time: </strong><strong class="info2">{{order.delivery.delTime}}</strong></p>
+    </div>
+</div>
+</div>
+</div>
+
+    <div class="row">
+        <strong>Customer address details</strong>
+        <hr>
+        <div class="customeraddress">
+        <table class="table">
+            <tr>
+                <td>
+                    <strong class="info">Street: </strong>
+                </td>
+                <td>
+                    <strong class="info2">{{order.shippingAddress.street}}</strong>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong class="info">City: </strong>
+                </td>
+                <td>
+                    <strong class="info2">{{order.shippingAddress.city}}</strong>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong class="info">Zipcode: </strong>
+                
+                </td>
+                <td>
+                    <strong class="info2">{{order.shippingAddress.zipcode}}</strong>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong class="info">Country: </strong>
+                </td>
+                <td>
+                    <strong class="info2">{{order.shippingAddress.country}}</strong>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong class="info">Phone: </strong>
+                </td>
+                <td>
+                    <strong class="info2">{{order.shippingAddress.phone}}</strong>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<hr>
+<div class="d-flex justify-content-center">
+    <div class="text-center" style="margin:20px ;">
+       <button (click)="AdminOrderConfirmation(order.id,order.email)" 
+       class="btn btn-success text-center" style="width:auto;">
+       {{ButtonTxt}}</button>
+    </div>
+    <div class="text-center" style="margin:20px ;padding-bottom: 100px;">
+        <button (click)="deleteAdminOrder(order.id)" 
+        class="btn btn-success text-center" style="width:auto;">
+        Delete
+    </button>
+     </div>
+    </div>
+    </div>

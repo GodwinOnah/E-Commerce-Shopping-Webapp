@@ -1,0 +1,54 @@
+<div class="login">
+<div class="align-content-left">
+    <button class=" btn btn-danger delete"  mat-dialog-close>
+        x    
+    </button>
+</div>
+<div class="text-center" style="color:blue ;padding: 0;"> 
+    <h1>Signin</h1>
+</div>   
+<div class="d-flex justify-content-center" style="width: auto;height: auto;">
+    <div class="col-3">
+
+        <form [formGroup] = "loginForm" (ngSubmit)="onLoginSubmit()">
+            <div class="text-center mt-5">
+                    <app-text-inputs [formControl]="loginForm.controls['Email']" 
+                    [type]="'email'"  [label]="'Email Address'">
+                    </app-text-inputs>
+                    <div class="form-group">
+                   <app-text-inputs [formControl]="loginForm.controls['Password']" 
+                    [type]="changetype?'password':'text'" [label]="'Password'">
+                    </app-text-inputs>
+                    <span class="eyeicon" (click)="viewpass()">
+                    <i [ngClass]="view?'fa fa-eye':'fa fa-eye-slash'">
+                     </i>
+                    </span>
+                    </div>                   
+                </div>
+            
+            <div class="d-grid">    
+                <button    [disabled]="loginForm.invalid" 
+                class="btn btn-lg btn-success" type="submit" style="margin-top:10px ;" >
+                    Login
+                </button>
+               
+            </div>
+            <div class="d-flex justify-content-between mt-4" 
+            style="color: blue;  font-size: smaller; cursor: pointer;">
+                <a (click)="openConfirmEmailDialog()">Forgot Password</a> 
+                <a (click)="openRegDialog()">New User</a>
+            </div>
+           
+        </form>
+        
+    </div>
+    
+</div>
+<Marquee scrollamount="4">You can login as an admin? Use: <strong style="color:red ;">
+        Email:</strong>godwinbillions@gmail.com; <strong 
+        style="color:red ;">Password:</strong>Gut101@@. 
+</Marquee>
+</div>
+<div>
+    
+</div>

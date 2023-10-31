@@ -1,0 +1,42 @@
+<div style="background-color: lightgray;padding-bottom: 20px;border:5px solid yellow ;">
+<div class="align-content-left">
+    <button style="margin-top: 15px;margin-left: 5px;"
+    class=" btn btn-danger"  mat-dialog-close>
+        x
+    </button>
+    </div>
+
+
+<div class="d-flex justify-content-center" style="width: auto;">
+
+    <div class="col-3">
+
+        <form [formGroup] = "forgotpasswrdForm" (ngSubmit)="onForgotPassSubmit()">
+            <div class="text-center mt-5">
+                <app-text-inputs [formControl]="forgotpasswrdForm.controls['Email']" [type]="'email'"  [label]="'Email Address'"></app-text-inputs>
+                <div class="form-group">    
+                <app-text-inputs [formControl]="forgotpasswrdForm.controls['Password1']" [type]="changetype1?'password':'text'"   [label]="'Choose password'"></app-text-inputs>
+                <span class="eyeicon1" (click)="viewpass1()"><i [ngClass]="view1?'fa fa-eye':'fa fa-eye-slash'"></i></span>
+                </div>
+                <div class="form-group">   
+                    <app-text-inputs [formControl]="forgotpasswrdForm.controls['Password2']" [type]="changetype2?'password':'text'"  [label]="'Confirm Password'"></app-text-inputs>
+                    <span class="eyeicon2" (click)="viewpass2()"><i [ngClass]="view2?'fa fa-eye':'fa fa-eye-slash'"></i></span>
+                </div>
+            </div>
+            
+            <div class="d-grid">
+               
+                <button  [disabled]="forgotpasswrdForm.invalid" 
+                class="btn btn-lg btn-success" type="submit" style="margin-top:10px ;" >
+                   Change
+                </button>
+               
+            </div>
+            <div class="d-flex justify-content-between mt-4" style="color: blue;  font-size: smaller; cursor: pointer;">
+                 <a (click)="openLoginDialog()">login</a>
+            </div>
+           
+        </form>
+    </div>
+</div>
+</div>

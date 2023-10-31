@@ -1,0 +1,149 @@
+    .nav-item{color:red}
+
+    .cartQuantity{
+        font-size: 17px;
+        color: gold;
+       text-decoration: none;
+       text-decoration-line: none;
+        font-weight: bold; 
+        margin-left: 30px; 
+        margin-bottom: 0; 
+        padding:1px;
+        border-radius: 7px;
+        width: auto;
+        background-color: black;
+        
+    }
+
+    .navItems{
+        font-weight: bold;
+        font-size: 120%;
+        color: white;
+        padding-right: 8%;
+        padding-left: 5%;			
+    }
+
+    a:hover{
+    color: red;
+    }
+
+    a{  
+        text-decoration: none;   
+        &.active{
+            color: white;
+        }}
+
+    .log{
+            margin-left: 25px;
+            margin-right: 10px;
+           
+        }
+
+    .log1{
+            margin-left: 45px; 
+            padding-top: 20px;    
+        }
+
+
+    .log2{     
+        color: white;
+        font-size: 20px;
+        font-weight: bolder; 
+        margin-right: 40px; 
+        cursor: pointer;   
+    }
+
+    .cartLabel{      
+        color:white;
+        font-size: 20px;
+        margin-top: 0;
+        padding-top: 0;
+        margin-left: 0;
+    }
+
+    .basket{      
+       position: fixed;
+       right: 0;
+        margin-right: 35px;
+        padding: 5px; 
+        
+    }
+
+    @media (max-width: 679px) {
+        .basket{        
+            position: fixed;
+            right: 0;
+            margin-right: 18px;
+            padding: 1px; 
+                
+        }
+
+        .log{
+            margin-left: 5px;
+            margin-right: 10px;
+            }
+
+        .log1{
+            margin-left: 15px;
+            padding-top: 10px;     
+        }
+
+        .log2{
+    
+            color: white;
+            font-weight: bolder; 
+            margin-right: 15px; 
+            font-size: 12px;
+            cursor: pointer;   
+        }
+
+        .nav-link{
+            font-weight: bold;
+            font-size: 10px;
+            color: white;		
+        }
+
+        .cartQuantity{
+            font-size: 13px;
+            color: gold;
+            text-decoration: none;
+            text-decoration-line: none;
+            font-weight: bold;
+            margin-left: 15px;  
+            margin-bottom: 0; 
+            border-radius: 3px;
+            width: auto;
+            background-color: black;     
+        }
+
+        .cartLabel{      
+            color:white;
+            font-size: 10px;
+            margin-top: 0;
+            padding-top: 0;
+            margin-left: 0;
+        }
+
+        img{
+            height: 40px;
+            width: 40px;
+        }
+
+        .welcomedropdown{
+            color: gold;
+        }
+    }
+
+    .basket:hover{
+            background-color: red;
+        }
+
+    .logout{
+        cursor: pointer;
+    }
+
+    .welcomedropdown{
+        font-size:30px ;color: gold;
+    }
+    
+    

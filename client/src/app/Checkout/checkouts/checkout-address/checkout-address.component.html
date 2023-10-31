@@ -1,0 +1,44 @@
+<div class="mt-4" *ngIf="checkOutForm" [formGroup]="checkOutForm">
+    <div class="d-flex justify-content-between align-items-cetnter">
+        <h4>Address</h4>
+        <button (click)="UpdateAddress()" [disabled]="!checkOutForm.get('addressForm')?.valid || 
+        !checkOutForm.get('addressForm')?.dirty"
+       class="btn bg-primary">Make default address</button>
+    </div>
+    <div class="row mt-3" formGroupName = "addressForm" >
+        <div class="form-group col-6">
+            <app-text-inputs formControlName="firstName"  [label]="'Firstname'"></app-text-inputs>
+        </div>
+            <div class="form-group col-6">
+              <app-text-inputs formControlName="middleName"  [label]="'Middlename (optional)'"></app-text-inputs>
+            </div>
+             <div class="form-group col-6">
+              <app-text-inputs formControlName="lastName"  [label]="'Lastname'"></app-text-inputs>
+            </div>
+            <div class="form-group col-6">
+              <app-text-inputs formControlName="street"  [label]="'Street Address'"></app-text-inputs>
+            </div>
+             <div class="form-group col-6">
+              <app-text-inputs formControlName="city"  [label]="'City'"></app-text-inputs>
+            </div>
+            <div class="form-group col-6">
+                <app-text-inputs formControlName="country"  [label]="'Country'"></app-text-inputs>
+              </div>
+             <div class="form-group col-6">
+              <app-text-inputs formControlName="zipcode"  [label]="'Zipcode'"></app-text-inputs>
+            </div>
+             <div class="form-group col-6">
+              <app-text-inputs formControlName="phone"  [label]="'Phone'"></app-text-inputs>
+        </div>
+    </div>
+</div>
+<div class="d-flex justify-content-between flex-row mb-5">
+    <button class="btn btn-danger" routerLink="/basket">
+        <i class="fa fa-angle-left"></i>  Go to basket
+    </button>
+    <button [disabled]="checkOutForm.get('addressForm')?.invalid" 
+    class="btn btn-danger" cdkStepperNext>
+        Delivery <i class="fa fa-angle-right"></i>
+    </button>
+
+</div>

@@ -1,0 +1,42 @@
+.form-group{
+    position: relative;
+    width: 100%;
+}
+
+.form-group app-text-inputs{
+    padding-right: 35px;
+}
+
+.eyeicon{
+    position: absolute;
+    right: -1px;
+    top: 13px;
+    padding: 8px;
+    margin-left: 10px;
+}
+.login{
+    background-color: lightgray;
+    border:3px solid green ;
+    height: 100%;
+    width:100%;
+}
+
+.delete{
+    margin-top: 15px;
+    margin-left: 5px;
+}
+
+@media(max-width: 679px) {
+    .delete{
+        margin-top: 8px;
+        margin-left: 2px;
+    }
+
+    .login{
+        background-color: lightgray;
+        border:1px solid green ;
+        height: 100%;
+        width: 100%;
+    }
+    
+}
