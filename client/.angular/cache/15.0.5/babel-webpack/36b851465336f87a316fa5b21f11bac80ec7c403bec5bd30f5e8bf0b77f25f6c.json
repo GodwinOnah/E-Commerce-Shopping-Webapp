@@ -1,0 +1,1 @@
+{"ast":null,"code":"export class ShopParameters {\n  constructor() {\n    this.brandId = 0;\n    this.typeId = 0;\n    this.sort = \"name\";\n    this.pageNumber = 1;\n    this.pageSize = 8; //same with that from API but will be overitten by that from API\n  }\n}","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}
