@@ -35,8 +35,11 @@ export class OrderDetailsPaidComponent implements OnInit{
     const id = +this.activatedroute.snapshot.paramMap.get('id');
     id && this.orderService.GetAdminOrdersById(id).subscribe({
       next: paidOrder => {
-        if(paidOrder)this.order = paidOrder;
-        if(paidOrder.confirmation==="confirmed") this.confirm = true; 
+        console.log(paidOrder);
+        if(paidOrder)
+        this.order = paidOrder;
+        if(paidOrder.confirmation==="confirmed") 
+        this.confirm = true; 
         this.breadcrumbService.set('@OrderDetailed', 
         `Order# ${paidOrder.id} - ${paidOrder.orderStatus}`);
 }})}

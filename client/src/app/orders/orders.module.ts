@@ -6,11 +6,13 @@ import { OrdersDetailsComponent } from '../orderDetails/orders-details.component
 import { AddDeliveryComponent } from './add-delivery/add-delivery.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserAccountModule } from '../Account/account.module';
+import { OrderDetailsPaidComponent } from 'app/order-details-paid/order-details-paid.component';
 
 @NgModule({
   declarations: [
     OrdersComponent,
     OrdersDetailsComponent,
+    OrderDetailsPaidComponent,
     AddDeliveryComponent 
   ],
   imports: [
