@@ -1,16 +1,16 @@
 # BAGSHOP-CLIENT-APP 
 
 ## ABOUT
-This is a client application for the display of bag products. 
+This is a front-end application for the display of bag products in a nice GUI. 
 
-## WEB API
-https://bagshopstoreapi.azurewebsites.net
+##SUPPORTED API
+blessingcollectionsapi.azurewebsites.net
 
 ## PURPOSE
-The aim of this project is to build an efficient and reliable client web application using Angular.
+The aim of this project is to build an efficient and reliable front-end application using Angular.
 
 ## WEBSITE
-### Host provider
+### Host 
 Azure
 
 ### Website link
