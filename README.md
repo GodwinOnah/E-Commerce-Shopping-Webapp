@@ -3,7 +3,7 @@
 ## ABOUT
 This is a front-end application for the display of bag products in a nice GUI. 
 
-##SUPPORTED API
+## SUPPORTED API
 blessingcollectionsapi.azurewebsites.net
 
 ## PURPOSE
