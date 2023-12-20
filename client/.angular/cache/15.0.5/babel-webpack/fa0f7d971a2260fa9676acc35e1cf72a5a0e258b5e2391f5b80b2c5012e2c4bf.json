@@ -1,1 +1,0 @@
-{"ast":null,"code":"export const environment = {\n  production: true,\n  apiUrl: 'https://bagshopclientapi.azurewebsites.net/',\n  adminEmail: 'godwinbillions@gmail.com'\n};","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}
