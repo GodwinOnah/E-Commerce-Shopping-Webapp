@@ -25,10 +25,10 @@ export interface IBasketItem {
 export class Basket implements IBasket {
   id = uuidv4();
   items = [];
-  deliveryPrice: number=2.5;
-  deliveryName: string= "";
-  deliveryTime: string= "";
-  deliveryDescription: string= "";
+  deliveryPrice: number = 4;
+  deliveryName: string = "";
+  deliveryTime: string = "";
+  deliveryDescription: string = "";
 
 }
 
@@ -36,9 +36,7 @@ export class Basket implements IBasket {
 export interface TotalBasketPrice {
        shippingPrice: number;
        subTotal: number;
-       total: number;
-     
-      
+       total: number;     
     }
 
 

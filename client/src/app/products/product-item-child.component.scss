@@ -12,7 +12,7 @@
 }
 .productname{
     color: black;
-    font-size: 60%;
+    font-size: 90%;
     margin: 0;
 }
 
@@ -26,7 +26,8 @@ color: red;
 
 .pricing{
     font-weight: bold;
-    font-size: 90%;
+    font-size: 190%;
+    margin: 10px;
 }
 
 button:hover{
@@ -35,14 +36,16 @@ button:hover{
   }
 
   .cardItems{
-    width: 70%; 
-    height:90%;
-    margin: 10%;
+    width: 300px; 
+    height:300px;
+    margin: 50px;
+    border: none;
+    background: none;
     
   }
 
   .cardImage{
-    height: 50%;
+    height: 70%;
     width: auto;
   }
 

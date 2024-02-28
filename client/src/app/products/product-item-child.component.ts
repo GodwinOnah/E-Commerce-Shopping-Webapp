@@ -34,7 +34,9 @@ export class ProductItemChildComponent implements OnInit{
   AddItem(){ 
     this.product && this.basketService.AddItemsToBasket(this.product,1)
   }
+  
   DeletItem(){
+    if(confirm('Are sure you want to delete this item ?')){
     this.productsService.DeleteProduct(this.product.id).subscribe(
         deleted=>{
           if(deleted==true){
@@ -44,6 +46,6 @@ export class ProductItemChildComponent implements OnInit{
         }
     );
   }
-  
+}
  
 }

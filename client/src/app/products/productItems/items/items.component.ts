@@ -82,7 +82,6 @@ if(this.foundProductPrice.toString() ===
 }
 
 sendData(){
-
           this.productsService.UploadProduct(this.productForm.value).subscribe({
           next: ()=>{
             this.toastr.success("Product uploaded");
@@ -125,12 +124,10 @@ GetProductTypes(){
 } 
 
 uploadPicture(e){
-
     if(e.target.files.length>0){      
        const file = e.target.files[0];
        var formData = new FormData();
        formData.append('myFiles',file);
-      this.formdata = formData;
-      
+      this.formdata = formData;     
   }}}
 

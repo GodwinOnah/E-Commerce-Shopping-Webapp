@@ -1,5 +1,5 @@
 export const environment = {
     production: false,
-    apiUrl: 'https://bagshopstoreapi.azurewebsites.net/',
+    apiUrl: 'https://blessingbagstoe.azurewebsites.net/',
     adminEmail:'godwinbillions@gmail.com'
   };

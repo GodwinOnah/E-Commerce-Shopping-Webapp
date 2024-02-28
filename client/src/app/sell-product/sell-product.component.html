@@ -1,8 +1,10 @@
-<ng-container *ngIf="(accountService.AppUser$|async) as user">
+<div style="padding:200px ;">
+    <marquee scrollamount="4">Please be aware that you have to pay, upload,
+        wait for confirmation to see your goods online. Thank you</marquee>
+
+    <ng-container *ngIf="(accountService.AppUser$|async) as user">
     <h1 class="text-center"><strong style="color: purple;font-weight:bolder;">
-        user.name sell your bag easily </strong></h1>
-        <marquee scrollamount="4">Please be aware that you have to pay, upload,
-             wait for confirmation to see your goods online. Thank you</marquee>
+        {{user.nickName}} Sell your bag easily for free</strong></h1>
    
              <hr style="height: 50px;">
     
@@ -11,9 +13,11 @@
        
     <div class="d-flex justify-content-center">
     
-        <div class="col-3">
+        <div>
+
+           <button class="btn btn-primary" (click)="addItem()">Add Item</button> 
     
-            <form [formGroup] = "productForm" (ngSubmit)="onSubmit()">
+            <!-- <form [formGroup] = "productForm" (ngSubmit)="onSubmit()">
     
                 <div class="text-center mt-5">
                   
@@ -75,18 +79,10 @@
                       Upload Product
                     </button>
                 </div>
-            </form>
+            </form> -->
         </div>
     </div>
     </div>
-    
-    <hr style="height: 50px;">
-    <div class="adminadd " style="padding-bottom:50px; margin: 10px;">
-        <strong style="color: gold ;"><h1>Make payment here</h1></strong>
-        <button class="btn btn-primary m-5">
-            Pay here
-        </button>
-    </div>
-    <hr style="height: 50px;">
 </ng-container>
 
+</div>

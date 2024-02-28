@@ -9,22 +9,18 @@
 
 *{
     max-width: 100vw; // view width
-    max-height: 100vh; // view height
+    max-height: auto; // view height
 }
 .item-container {
-   width: 90%;
-   height: 90%;
+   width: 100%;
+   height:auto;
    padding: 5%;
-   overflow: scroll;
    margin-left: 1%; 
-   margin-right: 0;
-   border: 2px solid black ;
-   border-radius: 10px;
-   background-color:mintcream;
+   margin-right: 10px;
    position: relative;
    display:grid;
-   grid-template-columns: repeat(auto-fill,minmax(30%,1fr));
-   grid-template-rows: repeat(auto-fill,minmax(60%,1fr)); 
+   grid-template-columns: repeat(auto-fill,minmax(40%,1fr));
+   grid-template-rows: repeat(auto-fill,minmax(20%,auto));
 }
 
 li{list-style-type: none;
@@ -33,15 +29,15 @@ li{list-style-type: none;
 }
 
 .right-section{
-    margin-left: 10; 
-    padding: 0;
+     
+    padding-left: 12px;
     right: 0;
+    border-left: 1px solid grey;
 }
 
 .right-section-b{
-    font-size: 90%; 
+    font-size: 70%; 
     font-weight: bolder;
-    overflow: scroll;
     height: 70%; 
     width: 55%; 
 }
@@ -56,13 +52,17 @@ li{list-style-type: none;
     right: 0;  
 }
 
-.left-section{
-    font-size: 50%; 
+.left-section{ 
     margin-left: 0;
     padding:2%;
+    border-right: 1px solid grey;
 }
 
 h5{
+    color:purple; 
+    font-weight: bolder;
+}
+h1{
     color:purple; 
     font-weight: bolder;
 }
@@ -87,6 +87,11 @@ h5{
 .content{
     margin-top: 50px;
     position: relative;
+    height: auto;
+}
+
+.right-right{
+    font-size: 20px                                                                                   ;
 }
 .search{
     width:  60%;

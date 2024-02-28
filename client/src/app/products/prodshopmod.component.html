@@ -17,7 +17,7 @@
       <strong *ngIf="notice == false">
       Thank you for viewing our items. 
       There are loads of these other items not displayed here. 
-     Give us a call today. Your commitment is the 
+      Give us a call today. Your commitment is the 
       reason we have upgraded to serve you better.
       </strong >
         <strong *ngIf="notice == true" style="color: red;"> *NOTICE/ADVERT(S):
@@ -46,12 +46,32 @@
                <!-- Section1 -->
                <div class="row content">
                 <section class="col-2  left-section"> 
-                      <hr width="80%">
-                      <div class="adverts">
-                        <app-product-adverts></app-product-adverts>
+                      <div >
+                        <h1>Buy Me</h1>
+                        <carousel>
+                          <slide  *ngFor="let product of products" >
+                              <div>
+                                  <img src={{product.prodPicture}} alt="Averts" height="auto" width="100%">      
+                              </div>
+                              <a routerLink="/products/{{product.id}}"><strong style="font-size: 20px; 
+                                  color:rebeccapurple; text-decoration: underline;margin-left: 20px; cursor: pointer;">
+                                      Grab this for <strong style="color:red">£{{product.prodPrice}}
+                                      </strong>
+                                  </strong>
+                              </a>
+                          </slide > 
+                      </carousel> 
                       </div>
                       <hr width="80%"> 
-
+                      <div>
+                        <h1>INTEGRITY</h1>
+                       <p style="font-size: 15px; text-align:justify;">
+                        On this website, you will not be asked to provide your personal information.
+                        It is strictly designed as a prototype of project completed for one Mrs Precious; a 
+                        business tycoon, who deals in all kinds of beauty products, cloths, shoes, and bag collections.
+                       </p>  
+                    </div>
+                    <hr width="80%"> 
                       <div class="yourPick">   
                      <ng-container *ngIf="(basketService.basket$|async) == null">
                       <strong style="color:black ;">
@@ -66,7 +86,7 @@
                         <div class="dv4pickimage">
                         <h3>
                           <strong class="yourpicktxt">
-                            Your pick
+                            Items selected
                         </strong> 
                       </h3>
                       <div class="divPickImage">
@@ -77,15 +97,15 @@
                       </div>
                     </div>
                     </ng-container> 
-
-                        
-                       
-                      </div>      
+                   </div> 
+                   <hr width="80%"> 
+                  
                 </section>
 
 
              <!-- Section2 -->
-                <section class="col-8 text-center">
+                <section class="col-7 text-center">
+
                       <!-- search -->
                       <div class="row right-section-search">
                         <ng-container *ngIf="products">
@@ -98,11 +118,12 @@
                             </form>
                          </ng-container>
                         </div>
-                
+                <hr>
 
                     <!-- products -->
-                    <ng-container *ngIf="products">
+                   <div>
                       <div class="container item-container">
+                        <ng-container *ngIf="products">
                         <div class="card-container mb-4 " *ngFor="let item of products">
                               <app-product-item-child [product]="item"></app-product-item-child>
                       </div>
@@ -113,8 +134,10 @@
                             <p>Better still, click a brand and/or type.</p>
                             </strong>
                           </div>
+                        </ng-container>
                         </div>
-                      </ng-container>
+                        <hr>
+                     
                 
               <!-- pagination -->
             <div class="d-grid justify-content-center mt-3" *ngIf="totalPageNumber&&totalPageNumber>0">
@@ -132,7 +155,9 @@
                   </app-page-analyser>
                 </div>  
                 </div>
+              </div>
             </section>
+        
                 
 
    <!-- Section3 -->
@@ -154,7 +179,7 @@
     <div class="row">
        <ng-container *ngIf="brands && productTypes">  
         <div class="right">
-        <h5>Brands</h5>
+        <h5>BRANDS</h5>
           <div class="right-section-b" >    
               <ul class="list-group">
                  <li class="list-group-item"
@@ -174,9 +199,9 @@
           </div> 
 
        <!-- Types -->
-       <div class="right">
-       <h5>Types</h5>
+       <div class="right">     
        <div class="right-section-b" >  
+        <h5>TYPES</h5>
           <ul class="list-group">
                 <li class="list-group-item"
                 *ngFor="let item of productTypes"
@@ -193,6 +218,12 @@
        
        </div>
       </div>
+      <div style="margin-top:20px ;">
+       <div class="adverts">
+      <app-product-adverts></app-product-adverts>
+       </div>
+      </div>
+                    
    </ng-container>
   </div>
  </section>

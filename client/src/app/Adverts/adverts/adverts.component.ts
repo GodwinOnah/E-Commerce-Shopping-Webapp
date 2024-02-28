@@ -31,6 +31,10 @@ export class AdvertsComponent {
 });
 
 submitAdvert(){
+  if(this.advertForm.value.time.length==0){
+    this.toastr.success("Add lifespane (time)");
+    return;
+  }
   this.advert.submitAdvert(this.advertForm.value).subscribe({
     next : advert => {
       this.closeDialog();

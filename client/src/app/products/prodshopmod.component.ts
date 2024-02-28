@@ -51,9 +51,11 @@ export class ProdshopmodComponent implements OnInit {
 
   GetProducts(){
       this.prodshopmodService.getProducts().subscribe({
-         next: response=>{    
+         next: response=>{ 
+          console.log(response)     
            this.products=response.data; 
            this.totalPageNumber=response.count;
+           console.log(this.products)  
           },
       error: error => console.log(error)
     
@@ -75,6 +77,7 @@ export class ProdshopmodComponent implements OnInit {
   GetProductTypes(){
         this.prodshopmodService.getProductTypes().subscribe({
           next: response=>{ 
+            console.log(response) 
               this.productTypes=[{id:0,name:'All'}, ...response];;
             },
             error:error=>console.log(error)   

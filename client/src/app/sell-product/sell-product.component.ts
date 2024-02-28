@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { UserAccountService } from 'app/Account/account.service';
+import { ItemsComponent } from 'app/products/productItems/items/items.component';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -17,5 +18,15 @@ export class SellProductComponent {
     public accountService : UserAccountService,
     // private advert : AdvertsService
     ){}
+ addItem(){
+  
 
+    this
+        .matdialog
+        .open(ItemsComponent, {
+            height: 'auto',
+            width: '80%'
+     
 }
+        );
+}}

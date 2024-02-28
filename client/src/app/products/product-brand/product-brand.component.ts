@@ -54,9 +54,7 @@ export class ProductBrandComponent {
           
         });
       }
-    
-   
-  
+     
   closeDialog(){
     this.matdialog.closeAll(); // <- Close the mat dialog
   }

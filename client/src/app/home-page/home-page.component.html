@@ -13,11 +13,13 @@
               <strong style="color:green;font-weight:bold">IFORMATION:</strong> {{advert}}
         </marquee>
     </div>
-
+<div style="display:flex ; justify-content:center;margin-bottom: 50px;font-size: 40px;color: blue;">
+   <strong>Welcome to my page</strong>
+</div>
+<hr>
     <!-- averts -->
-    <div class="row">
-    <div class="col-8">
-    <div class="row">
+    <div>
+    <div class="row" style="padding: 50px; margin-bottom: 50px;">
         <div class="col-6">
     <carousel>
         <slide  *ngFor="let product of products" >
@@ -70,10 +72,26 @@
             Travel with confidence
         </strong>
     </div>
+</div>
 
+   <hr>
+        <div class="section3">
+            <p>Register with ease. 
+                The products on this website, although not for sale but for sake of displaying the content and ability of this project, are unique and made from the best of raw materials you can ever find.
+                <p>The collections might not contain your desire, however, you can give me a 
+                    <a><strong style="color: deepskyblue; text-decoration: underline;cursor: pointer;">
+                        feedback here</strong></a> </p>
+                    <p>If you are not among those that have full access to the website, 
+                        <a (click)="openRegDialog()"><strong style="color:deepskyblue; 
+                        text-decoration: underline;cursor: pointer;"> Register here</strong>
+                        </a>
+                    </p>
+        </div>
+   
+        <hr>
     <!-- Sell bag -->
-    <div class="row">
-
+    <div >
+        <div style="justify-content:center ; display: d-flex;">
         <div class="text-center sell">
             <a routerLink="/sell-product">
                 <strong style="color: deepskyblue; text-decoration: underline;cursor: pointer;">
@@ -83,51 +101,38 @@
         </div>
     
         <div class="text-center sell">
-            <a>
+            <a href="https://godwinportfolio.azurewebsites.net">
                 <strong style="color: deepskyblue; text-decoration: underline;cursor: pointer;">
                      Meet with website owner here
                     </strong> 
             </a>
         </div>
+    </div>
     
-    </div>
+    
 </div>
 </div>
-    <div class="col-4">
-        <div class="section3">
-            <p>Register with us and get a free discount in your first £100 purchance made. 
-                Our products are unique and made from the best of raw materials you can ever find.
-                <p>The collections might not contain your taste; you can give a 
-                    <a><strong style="color: deepskyblue; text-decoration: underline;cursor: pointer;">
-                        feedback here</strong></a> </p>
-                    <p>If you are not among those already enjoying the benefit of discounts, 
-                        <a (click)="openRegDialog()"><strong style="color:deepskyblue; 
-                        text-decoration: underline;cursor: pointer;"> Register here</strong>
-                        </a>
-                    </p>
-        </div>
-    </div>
+   
 </div>
-<hr style="margin-top:30px ;">
-    <div class="mission text-center">
+
+    <div class="mission text-center" style="margin: 100px;">
         <div>
             <h5><strong class="policyandmission">Mission</strong> </h5>
-            <p>Our mission is to statify our customers
-                needs by putting smiles on their faces after business 
-                transctions with us.
-              </p>
+            <strong>My mission is to design a website for commercial purposes, which will statify customer
+                needs through out any period of time.
+            </strong>
         </div>
         <div style="margin-top: 40px;">
             <h5><strong class="policyandmission">Policy</strong></h5>
-            <p>Our policy is unique and is geared towards making you 
-              happy for the rest of your life..
-            </p>  
+            <strong>My policy is unique and is geared towards making you 
+              happy for the rest of your life after patronizing my work and skills..
+            </strong>  
         </div>
 
           
     </div>
 
-</div>
+
     
    
    
