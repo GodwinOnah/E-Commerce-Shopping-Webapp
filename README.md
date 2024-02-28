@@ -1,7 +1,7 @@
 // README.md
 # BAGSHOP-CLIENT-APP 
 ### Introduction
-BagSho-API  is an e-commerce web application built with Angular. It allows users to select and add, then pay for these items by adding them into a redis database (Azure Redis Cashe for this project), pay using stripe card payment system. Orders made are save in an SQL database (Azure SQL database for this project) with ease and efficiency.
+BagShop-Client-App  is an e-commerce frontend web application built with Angular. It allows users to select and add, then pay for these items by adding them into a redis database (Azure Redis Cashe for this project), pay using stripe card payment system. Orders made are save in an SQL database (Azure SQL database for this project) with ease and efficiency.
 ### Project Support Features
 * Users can signup and login to their accounts
 * Public (non-authenticated) users can access items but will need to login to buy them on this application
@@ -15,7 +15,6 @@ BagSho-API  is an e-commerce web application built with Angular. It allows users
 * Create an .env file in your project root folder and add your variables. See .env.sample for assistance.
 ### Usage
 * Run ng start to start the application.
-* Connect to the API using Postman using the link https://blessingbagstoe.azurewebsites.net
 ### Technologies Used
 * [Angular](https://angular.com) Angular is a TypeScript-based, free and open-source single-page web application framework led by the Angular Team at Google and by a community of individuals and corporations. Angular is a complete rewrite from the same team that built AngularJS.
 *  [Azure] Microsoft Azure, often referred to as Azure, is a cloud computing platform run by Microsoft. It offers access, management, and the development of applications and services through global data centers
