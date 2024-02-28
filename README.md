@@ -17,7 +17,7 @@ BagShop-Client-App  is an e-commerce frontend web application built with Angular
 * Run ng start to start the application.
 ### Technologies Used
 * [Angular](https://angular.com) Angular is a TypeScript-based, free and open-source single-page web application framework led by the Angular Team at Google and by a community of individuals and corporations. Angular is a complete rewrite from the same team that built AngularJS.
-*  [Azure] Microsoft Azure, often referred to as Azure, is a cloud computing platform run by Microsoft. It offers access, management, and the development of applications and services through global data centers
+* [Azure](https://portal.azure.com) Microsoft Azure, often referred to as Azure, is a cloud computing platform run by Microsoft. It offers access, management, and the development of applications and services through global data centers
 ### Authors
 * [Onah Godwin Obande](https://godwinportfolio.azurewebsites.net)
 * ![alt text](https://github.com/GodwinOnah/BlessingAPI/blob/main/API/files/Author/godwin-onah.png?raw=true)
